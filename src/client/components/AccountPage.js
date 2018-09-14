@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
@@ -5,7 +7,11 @@ import { Link } from 'react-router-dom';
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 import SettingsMenu from './SettingsMenu';
 
-const AccountPage = (props) => {
+type Props = {
+  viewer: any,
+};
+
+const AccountPage = (props: Props) => {
   const { viewer } = props;
   return (
     <div>

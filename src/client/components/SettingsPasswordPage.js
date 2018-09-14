@@ -1,13 +1,23 @@
+// @flow
+
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import type { FieldProps, FormProps } from 'redux-form';
 
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 import SettingsMenu from './SettingsMenu';
 
-const SettingsProfilePage = (props) => {
+type Props = {
+  viewer: any,
+  currentPassword: FieldProps,
+  newPassword: FieldProps,
+  handleSubmit: FormProps,
+};
+
+const SettingsProfilePage = (props: Props) => {
   const {
     viewer,
     currentPassword,

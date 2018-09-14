@@ -1,3 +1,5 @@
+// @flow
+
 import axios from 'axios';
 import {
   all,
@@ -6,6 +8,7 @@ import {
   put,
   takeEvery,
 } from 'redux-saga/effects';
+import type { Saga } from 'redux-saga';
 
 import {
   postItemRequested, postItemSucceeded, postItemFailed,
@@ -178,7 +181,7 @@ const Api = {
   },
 };
 
-function* postItem(action) {
+function* postItem(action): Saga<void> {
   try {
     const { title, tagNames, body } = action.payload;
     const { err, item } = yield call(Api.postItem, title, tagNames, body);
@@ -193,7 +196,7 @@ function* postItem(action) {
   }
 }
 
-function* fetchItem(action) {
+function* fetchItem(action): Saga<void> {
   try {
     const { err, item } = yield call(Api.fetchItem, action.payload.itemId);
     if (err) {
@@ -206,7 +209,7 @@ function* fetchItem(action) {
   }
 }
 
-function* fetchItems() {
+function* fetchItems(): Saga<void> {
   try {
     const { err, items } = yield call(Api.fetchItems);
     if (err) {
@@ -219,7 +222,7 @@ function* fetchItems() {
   }
 }
 
-function* like(action) {
+function* like(action): Saga<void> {
   try {
     const { item, user } = action.payload;
     const { err, data } = yield call(Api.like, item.id);
@@ -233,7 +236,7 @@ function* like(action) {
   }
 }
 
-function* unlike(action) {
+function* unlike(action): Saga<void> {
   try {
     const { itemId, userId } = action.payload;
     const { err, data } = yield call(Api.unlike, itemId);
@@ -247,7 +250,7 @@ function* unlike(action) {
   }
 }
 
-function* stock(action) {
+function* stock(action): Saga<void> {
   try {
     const { item } = action.payload;
     const { err, data } = yield call(Api.stock, item.id);
@@ -261,7 +264,7 @@ function* stock(action) {
   }
 }
 
-function* unstock(action) {
+function* unstock(action): Saga<void> {
   try {
     const { itemId } = action.payload;
     const { err, data } = yield call(Api.unstock, itemId);
@@ -275,7 +278,7 @@ function* unstock(action) {
   }
 }
 
-function* postComment(action) {
+function* postComment(action): Saga<void> {
   try {
     const { text, itemId } = action.payload;
     const { err, comment } = yield call(Api.postComment, text, itemId);
@@ -321,7 +324,7 @@ function* watchPostComment() {
   yield takeEvery(postCommentRequested.getType(), postComment);
 }
 
-function* rootSaga() {
+function* rootSaga(): Saga<void> {
   yield all([
     fork(watchPostItem),
     fork(watchFetchItem),

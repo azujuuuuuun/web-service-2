@@ -1,10 +1,16 @@
+// @flow
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 
-const AppPage = (props) => {
+type Props = {
+  items: Array<any>,
+};
+
+const AppPage = (props: Props) => {
   const { items } = props;
   return (
     <div>

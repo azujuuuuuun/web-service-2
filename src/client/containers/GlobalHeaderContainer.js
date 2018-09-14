@@ -1,10 +1,23 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 
 import GlobalHeader from '../components/GlobalHeader';
 import { openDropdown, closeDropdown } from '../actions';
 
-class GlobalHeaderContainer extends React.Component { // eslint-disable-line
+type Props = {
+  viewer: any,
+  dropdown: {
+    kind: string,
+    isOpen: boolean,
+  },
+  openCommunityDropdown: any,
+  openViewerDropdown: any,
+  _closeDropdown: any,
+};
+
+class GlobalHeaderContainer extends React.Component<Props, void> { // eslint-disable-line
   render() {
     const {
       viewer,
@@ -30,7 +43,7 @@ const mapStateToProps = state => ({
   dropdown: state.dropdown,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
   openCommunityDropdown: () => dispatch(openDropdown({ kind: 'community' })),
   openViewerDropdown: () => dispatch(openDropdown({ kind: 'viewer' })),
   _closeDropdown: () => dispatch(closeDropdown()),

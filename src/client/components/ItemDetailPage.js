@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
@@ -10,11 +12,24 @@ import IconButton from '@material-ui/core/IconButton';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import TextField from '@material-ui/core/TextField';
+import type { FieldProps, FormProps } from 'redux-form';
 
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 import NotFound from './NotFound';
 
-const ItemDetailPage = (props) => {
+type Props = {
+  item: any,
+  hasLiked: boolean,
+  handleClickLike: any,
+  handleClickUnlike: any,
+  hasStocked: boolean,
+  handleClickStock: any,
+  handleClickUnstock: any,
+  text: FieldProps,
+  handleSubmit: FormProps,
+};
+
+const ItemDetailPage = (props: Props) => {
   const {
     item,
     hasLiked,

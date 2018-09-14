@@ -1,3 +1,5 @@
+// @flow
+
 import axios from 'axios';
 import {
   all,
@@ -6,6 +8,7 @@ import {
   put,
   takeEvery,
 } from 'redux-saga/effects';
+import type { Saga } from 'redux-saga';
 
 import {
   signupRequested, signupSucceeded, signupFailed,
@@ -77,7 +80,7 @@ const Api = {
   },
 };
 
-function* signup(action) {
+function* signup(action): Saga<void> {
   try {
     const { err, user } = yield call(Api.signup, action.payload.username, action.payload.password);
     if (err) {
@@ -91,7 +94,7 @@ function* signup(action) {
   }
 }
 
-function* login(action) {
+function* login(action): Saga<void> {
   try {
     const { err, user } = yield call(Api.login, action.payload.username, action.payload.password);
     if (err) {
@@ -105,7 +108,7 @@ function* login(action) {
   }
 }
 
-function* logout() {
+function* logout(): Saga<void> {
   try {
     localStorage.removeItem('token');
     yield call(history.push, '/');
@@ -115,7 +118,7 @@ function* logout() {
   }
 }
 
-function* authenticate() {
+function* authenticate(): Saga<void> {
   try {
     const { err, user } = yield call(Api.authenticate);
     if (err) {
@@ -144,7 +147,7 @@ function* watchAuthenticate() {
   yield takeEvery(authenticateRequested.getType(), authenticate);
 }
 
-function* rootSaga() {
+function* rootSaga(): Saga<void> {
   yield all([
     fork(watchSignup),
     fork(watchLogin),

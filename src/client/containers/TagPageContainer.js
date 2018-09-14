@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -7,7 +9,16 @@ import {
   fetchTagRequested, followTagRequested, unfollowTagRequested,
 } from '../actions';
 
-class TagPageContainer extends React.Component { // eslint-disable-line
+type Props = {
+  viewer: any,
+  tag: any,
+  match: any,
+  fetchTagRequest: any,
+  followTagRequest: any,
+  unfollowTagRequest: any,
+};
+
+class TagPageContainer extends React.Component<Props, void> { // eslint-disable-line
   componentDidMount() {
     const { match, fetchTagRequest } = this.props;
     const { tagName } = match.params;
@@ -45,7 +56,7 @@ const mapStateToProps = state => ({
   tag: state.tag,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
   fetchTagRequest: tagName => dispatch(fetchTagRequested({ tagName })),
   followTagRequest: (tag, user) => dispatch(followTagRequested({
     tag, user,

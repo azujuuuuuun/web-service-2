@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Button from '@material-ui/core/Button';
@@ -8,7 +10,15 @@ import Avatar from '@material-ui/core/Avatar';
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 import NotFound from './NotFound';
 
-const UserPage = (props) => {
+type Props = {
+  user: any,
+  isViewer: boolean,
+  hasFollowed: boolean,
+  followRequest: any,
+  unfollowRequest: any,
+};
+
+const UserPage = (props: Props) => {
   const {
     user, isViewer, hasFollowed, followRequest, unfollowRequest,
   } = props;

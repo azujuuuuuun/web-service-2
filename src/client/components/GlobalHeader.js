@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,7 +12,18 @@ import PeopleIcon from '@material-ui/icons/People';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const GlobalHeader = (props) => {
+type Props = {
+  viewer: any,
+  dropdown: {
+    kind: string,
+    isOpen: boolean,
+  },
+  openCommunityDropdown: () => void,
+  openViewerDropdown: () => void,
+  closeDropdown: () => void,
+};
+
+const GlobalHeader = (props: Props) => {
   const {
     viewer,
     dropdown,

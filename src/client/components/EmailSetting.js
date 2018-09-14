@@ -1,9 +1,17 @@
+// @flow
+
 import React from 'react';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import type { FieldProps, FormProps } from 'redux-form';
 
-const EmailSetting = (props) => {
+type Props = {
+  email: FieldProps,
+  handleSubmit: FormProps,
+};
+
+const EmailSetting = (props: Props) => {
   const { email, handleSubmit } = props;
   return (
     <div>

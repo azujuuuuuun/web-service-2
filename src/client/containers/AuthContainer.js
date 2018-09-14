@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -5,7 +7,12 @@ import { withRouter } from 'react-router-dom';
 
 import { authenticateRequested } from '../actions';
 
-class AuthContainer extends React.Component {
+type Props = {
+  authenticateRequest: any,
+  children: any,
+};
+
+class AuthContainer extends React.Component<Props, void> {
   componentDidMount() {
     const { authenticateRequest } = this.props;
     authenticateRequest();
@@ -19,7 +26,7 @@ class AuthContainer extends React.Component {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
   authenticateRequest: () => dispatch(authenticateRequested()),
 });
 

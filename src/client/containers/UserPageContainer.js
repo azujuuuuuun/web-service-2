@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -7,7 +9,16 @@ import {
   fetchUserRequested, followRequested, unfollowRequested,
 } from '../actions';
 
-class UserPageContainer extends React.Component { // eslint-disable-line
+type Props = {
+  match: any,
+  viewer: any,
+  user: any,
+  fetchUserRequest: any,
+  followRequest: any,
+  unfollowRequest: any,
+};
+
+class UserPageContainer extends React.Component<Props, void> { // eslint-disable-line
   componentDidMount() {
     const { match, fetchUserRequest } = this.props;
     const { username } = match.params;
@@ -39,7 +50,7 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
   fetchUserRequest: username => dispatch(fetchUserRequested({ username })),
   followRequest: user => dispatch(followRequested({ user })),
   unfollowRequest: followedId => dispatch(unfollowRequested({ followedId })),

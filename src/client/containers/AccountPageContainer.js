@@ -1,10 +1,16 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 
 import Loading from './LoadingContainer';
 import AccountPage from '../components/AccountPage';
 
-class AccountPageContainer extends React.Component { // eslint-disable-line
+type Props = {
+  viewer: any,
+};
+
+class AccountPageContainer extends React.Component<Props, void> { // eslint-disable-line
   render() {
     const { viewer } = this.props;
     return (

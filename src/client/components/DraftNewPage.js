@@ -1,10 +1,20 @@
+// @flow
+
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import type { FieldProps, FormProps } from 'redux-form';
 
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 
-const DraftNewPage = (props) => {
+type Props = {
+  title: FieldProps,
+  tagNames: FieldProps,
+  body: FieldProps,
+  handleSubmit: FormProps,
+};
+
+const DraftNewPage = (props: Props) => {
   const {
     title, tagNames, body, handleSubmit,
   } = props;

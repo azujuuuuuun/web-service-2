@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import PeopleIcon from '@material-ui/icons/People';
 import Avatar from '@material-ui/core/Avatar';
@@ -5,7 +7,11 @@ import { Link } from 'react-router-dom';
 
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 
-const UsersPage = (props) => {
+type Props = {
+  users: Array<any>,
+};
+
+const UsersPage = (props: Props) => {
   const { users } = props;
   return (
     <div>

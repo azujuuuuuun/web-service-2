@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import Avatar from '@material-ui/core/Avatar';
@@ -8,7 +10,11 @@ import ChatBubbleOutline from '@material-ui/icons/ChatBubbleOutline';
 
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 
-const StockPage = (props) => {
+type Props = {
+  stocks: Array<any>,
+};
+
+const StockPage = (props: Props) => {
   const { stocks } = props;
   return (
     <div>

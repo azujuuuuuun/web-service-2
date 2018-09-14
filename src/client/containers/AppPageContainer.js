@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -5,7 +7,12 @@ import Loading from './LoadingContainer';
 import AppPage from '../components/AppPage';
 import { fetchItemsRequested } from '../actions';
 
-class AppPageContainer extends React.Component { // eslint-disable-line
+type Props = {
+  items: Array<any>,
+  fetchItemsRequest: any,
+};
+
+class AppPageContainer extends React.Component<Props, void> { // eslint-disable-line
   componentDidMount() {
     const { fetchItemsRequest } = this.props;
     fetchItemsRequest();
@@ -25,7 +32,7 @@ const mapStateToProps = state => ({
   items: state.items,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
   fetchItemsRequest: () => dispatch(fetchItemsRequested()),
 });
 

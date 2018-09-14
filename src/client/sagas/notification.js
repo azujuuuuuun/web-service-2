@@ -1,3 +1,5 @@
+// @flow
+
 import axios from 'axios';
 import {
   all,
@@ -6,6 +8,7 @@ import {
   put,
   takeEvery,
 } from 'redux-saga/effects';
+import type { Saga } from 'redux-saga';
 
 import {
   updateNotificationsRequested, updateNotificationsSucceeded, updateNotificationsFailed,
@@ -38,7 +41,7 @@ const Api = {
   },
 };
 
-function* updateNotifications(action) {
+function* updateNotifications(action): Saga<void> {
   try {
     const { err, notifications } = yield call(Api.updateNotifications, action.payload);
     if (err) {
@@ -55,7 +58,7 @@ function* watchUpdateNotifications() {
   yield takeEvery(updateNotificationsRequested.getType(), updateNotifications);
 }
 
-function* rootSaga() {
+function* rootSaga(): Saga<void> {
   yield all([fork(watchUpdateNotifications)]);
 }
 

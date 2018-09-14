@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { Fields, reduxForm } from 'redux-form';
 import sha256 from 'crypto-js/sha256';
@@ -9,7 +11,12 @@ import Loading from './LoadingContainer';
 import SettingProfilePage from '../components/SettingsPasswordPage';
 import { updatePasswordRequested } from '../actions';
 
-class SettingsPasswordContainer extends React.Component { // eslint-disable-line
+type Props = {
+  viewer: any,
+  handleSubmit: any,
+};
+
+class SettingsPasswordContainer extends React.Component<Props, void> { // eslint-disable-line
   render() {
     const { viewer, handleSubmit } = this.props;
     return (
