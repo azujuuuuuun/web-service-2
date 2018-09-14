@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
@@ -20,7 +22,11 @@ import IndexPage from './IndexPageContainer';
 import SignupPage from './SignupPageContainer';
 import LoginPage from './LoginPageContainer';
 
-class RoutingContainer extends React.Component { // eslint-disable-line
+type Props = {
+  isLoggedIn: boolean,
+};
+
+class RoutingContainer extends React.Component<Props, void> { // eslint-disable-line
   render() {
     const { isLoggedIn } = this.props;
     return isLoggedIn ? (

@@ -1,10 +1,16 @@
+// @flow
+
 import React from 'react';
 import { Fields, reduxForm } from 'redux-form';
 
 import EmailSetting from '../components/EmailSetting';
 import { updateUserRequested } from '../actions';
 
-class EmailSettingContainer extends React.Component { // eslint-disable-line
+type Props = {
+  handleSubmit: any,
+};
+
+class EmailSettingContainer extends React.Component<Props, void> { // eslint-disable-line
   render() {
     const { handleSubmit } = this.props;
     return (

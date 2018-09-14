@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { Fields, reduxForm } from 'redux-form';
@@ -15,7 +17,19 @@ import {
   postCommentRequested,
 } from '../actions';
 
-class ItemDetailPageContainer extends React.Component { // eslint-disable-line
+type Props = {
+  item: any,
+  viewer: any,
+  handleSubmit: any,
+  fetchItemRequest: any,
+  likeRequest: any,
+  unlikeRequest: any,
+  stockRequest: any,
+  unstockRequest: any,
+  match: any,
+};
+
+class ItemDetailPageContainer extends React.Component<Props, void> { // eslint-disable-line
   componentDidMount() {
     const { match, fetchItemRequest } = this.props;
     const { itemId } = match.params;
@@ -66,7 +80,7 @@ const mapStateToProps = state => ({
   viewer: state.viewer,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
   fetchItemRequest: itemId => dispatch(fetchItemRequested({ itemId })),
   likeRequest: (item, user) => dispatch(likeRequested({
     item, user,

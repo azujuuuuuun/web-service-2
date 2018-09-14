@@ -1,9 +1,15 @@
+// @flow
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 
-const TagsPage = (props) => {
+type Props = {
+  tags: Array<any>,
+};
+
+const TagsPage = (props: Props) => {
   const { tags } = props;
   return (
     <div>

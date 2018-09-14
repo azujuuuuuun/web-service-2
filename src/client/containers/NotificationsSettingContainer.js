@@ -1,10 +1,16 @@
+// @flow
+
 import React from 'react';
 import { Fields, reduxForm } from 'redux-form';
 
 import NotificationsSetting from '../components/NotificationsSetting';
 import { updateNotificationsRequested } from '../actions';
 
-class NotificationsSettingContainer extends React.Component { // eslint-disable-line
+type Props = {
+  handleSubmit: any,
+};
+
+class NotificationsSettingContainer extends React.Component<Props, void> { // eslint-disable-line
   render() {
     const { handleSubmit } = this.props;
     return (

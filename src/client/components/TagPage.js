@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
@@ -7,7 +9,14 @@ import { Link } from 'react-router-dom';
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 import NotFound from './NotFound';
 
-const TagPage = (props) => {
+type Props = {
+  tag: any,
+  hasFollowed: boolean,
+  handleClickFollow: any,
+  handleClickUnfollow: any,
+};
+
+const TagPage = (props: Props) => {
   const {
     tag, hasFollowed, handleClickFollow, handleClickUnfollow,
   } = props;

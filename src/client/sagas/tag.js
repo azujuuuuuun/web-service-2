@@ -1,3 +1,5 @@
+// @flow
+
 import axios from 'axios';
 import {
   all,
@@ -6,6 +8,7 @@ import {
   put,
   takeEvery,
 } from 'redux-saga/effects';
+import type { Saga } from 'redux-saga';
 
 import {
   fetchTagRequested, fetchTagSucceeded, fetchTagFailed,
@@ -84,7 +87,7 @@ const Api = {
   },
 };
 
-function* fetchTag(action) {
+function* fetchTag(action): Saga<void> {
   try {
     const { err, tag } = yield call(Api.fetchTag, action.payload.tagName);
     if (err) {
@@ -97,7 +100,7 @@ function* fetchTag(action) {
   }
 }
 
-function* fetchTags() {
+function* fetchTags(): Saga<void> {
   try {
     const { err, tags } = yield call(Api.fetchTags);
     if (err) {
@@ -110,7 +113,7 @@ function* fetchTags() {
   }
 }
 
-function* followTag(action) {
+function* followTag(action): Saga<void> {
   try {
     const { tag, user } = action.payload;
     const { err, data } = yield call(Api.followTag, tag.id);
@@ -124,7 +127,7 @@ function* followTag(action) {
   }
 }
 
-function* unfollowTag(action) {
+function* unfollowTag(action): Saga<void> {
   try {
     const { tagId, userId } = action.payload;
     const { err, data } = yield call(Api.unfollowTag, tagId);
@@ -154,7 +157,7 @@ function* watchUnfollowTag() {
   yield takeEvery(unfollowTagRequested.getType(), unfollowTag);
 }
 
-function* rootSaga() {
+function* rootSaga(): Saga<void> {
   yield all([
     fork(watchFetchTag),
     fork(watchFetchTags),

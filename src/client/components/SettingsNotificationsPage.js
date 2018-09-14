@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
@@ -7,7 +9,11 @@ import SettingsMenu from './SettingsMenu';
 import EmailSetting from '../containers/EmailSettingContainer';
 import NotificationsSetting from '../containers/NotificationsSettingContainer';
 
-const SettingsNotificationsPage = (props) => {
+type Props = {
+  viewer: any,
+};
+
+const SettingsNotificationsPage = (props: Props) => {
   const { viewer } = props;
   return (
     <div>

@@ -1,11 +1,32 @@
+// @flow
+
 import React from 'react';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
+import type { FieldProps, FormProps } from 'redux-form';
 
-const NotificationsSetting = (props) => {
+type Props = {
+  newsMail: FieldProps,
+  stockListMail: FieldProps,
+  editRequestMail: FieldProps,
+  editRequestWeb: FieldProps,
+  commentMail: FieldProps,
+  commentWeb: FieldProps,
+  mentionMail: FieldProps,
+  mentionWeb: FieldProps,
+  linkWeb: FieldProps,
+  likeWeb: FieldProps,
+  stockWeb: FieldProps,
+  followMail: FieldProps,
+  followWeb: FieldProps,
+  twitterWeb: FieldProps,
+  handleSubmit: FormProps,
+};
+
+const NotificationsSetting = (props: Props) => {
   const {
     newsMail,
     stockListMail,

@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -5,7 +7,12 @@ import Loading from './LoadingContainer';
 import UsersPage from '../components/UsersPage';
 import { fetchUsersRequested } from '../actions';
 
-class UsersPageContainer extends React.Component { // eslint-disable-line
+type Props = {
+  users: Array<any>,
+  fetchUsersRequest: any,
+};
+
+class UsersPageContainer extends React.Component<Props, void> { // eslint-disable-line
   componentDidMount() {
     const { fetchUsersRequest } = this.props;
     fetchUsersRequest();
@@ -25,7 +32,7 @@ const mapStateToProps = state => ({
   users: state.users,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
   fetchUsersRequest: () => dispatch(fetchUsersRequested()),
 });
 

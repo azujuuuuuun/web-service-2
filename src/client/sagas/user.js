@@ -1,3 +1,5 @@
+// @flow
+
 import axios from 'axios';
 import {
   all,
@@ -6,6 +8,7 @@ import {
   put,
   takeEvery,
 } from 'redux-saga/effects';
+import type { Saga } from 'redux-saga';
 
 import {
   fetchUserRequested, fetchUserSucceeded, fetchUserFailed,
@@ -158,7 +161,7 @@ const Api = {
   },
 };
 
-function* fetchUser(action) {
+function* fetchUser(action): Saga<void> {
   try {
     const { err, user } = yield call(Api.fetchUser, action.payload.username);
     if (err) {
@@ -171,7 +174,7 @@ function* fetchUser(action) {
   }
 }
 
-function* fetchUsers() {
+function* fetchUsers(): Saga<void> {
   try {
     const { err, users } = yield call(Api.fetchUsers);
     if (err) {
@@ -184,7 +187,7 @@ function* fetchUsers() {
   }
 }
 
-function* updateUser(action) {
+function* updateUser(action): Saga<void> {
   try {
     const { err, data } = yield call(Api.updateUser, action.payload);
     if (err) {
@@ -197,7 +200,7 @@ function* updateUser(action) {
   }
 }
 
-function* updatePassword(action) {
+function* updatePassword(action): Saga<void> {
   try {
     const { currentPassword, newPassword } = action.payload;
     const { err, data } = yield call(Api.updatePassword, currentPassword, newPassword);
@@ -211,7 +214,7 @@ function* updatePassword(action) {
   }
 }
 
-function* follow(action) {
+function* follow(action): Saga<void> {
   try {
     const { user } = action.payload;
     const { err, data } = yield call(Api.follow, user.id);
@@ -225,7 +228,7 @@ function* follow(action) {
   }
 }
 
-function* unfollow(action) {
+function* unfollow(action): Saga<void> {
   try {
     const { followedId } = action.payload;
     const { err, data } = yield call(Api.unfollow, followedId);
@@ -239,7 +242,7 @@ function* unfollow(action) {
   }
 }
 
-function* unloadImage(action) {
+function* unloadImage(action): Saga<void> {
   try {
     const { err, avatarImgSrc } = yield call(Api.uploadImage, action.payload.image);
     if (err) {
@@ -281,7 +284,7 @@ function* watchUploadImage() {
   yield takeEvery(uploadImageRequested.getType(), unloadImage);
 }
 
-function* rootSaga() {
+function* rootSaga(): Saga<void> {
   yield all([
     fork(watchFetchUser),
     fork(watchFetchUsers),

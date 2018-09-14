@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { Fields, reduxForm } from 'redux-form';
 import { compose } from 'redux';
@@ -7,7 +9,12 @@ import Loading from './LoadingContainer';
 import SettingProfilePage from '../components/SettingsProfilePage';
 import { updateUserRequested } from '../actions';
 
-class SettingsProfileContainer extends React.Component { // eslint-disable-line
+type Props = {
+  viewer: any,
+  handleSubmit: any,
+};
+
+class SettingsProfileContainer extends React.Component<Props, void> { // eslint-disable-line
   render() {
     const { viewer, handleSubmit } = this.props;
     return (

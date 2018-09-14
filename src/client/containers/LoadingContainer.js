@@ -1,8 +1,15 @@
+// @flow
+
 import React from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { connect } from 'react-redux';
 
-class LoadingContainer extends React.Component { // eslint-disable-line
+type Props = {
+  loading: boolean,
+  children: any,
+};
+
+class LoadingContainer extends React.Component<Props, void> { // eslint-disable-line
   render() {
     const { loading, children } = this.props;
     return loading ? (

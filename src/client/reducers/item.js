@@ -1,3 +1,5 @@
+// @flow
+
 import { createReducer } from 'redux-act';
 
 import {
@@ -17,18 +19,18 @@ const itemDefaultState = {
 const itemsDefaultState = [];
 
 export const item = createReducer({
-  [postItemSucceeded]: (state, payload) => payload.item,
-  [fetchItemSucceeded]: (state, payload) => payload.item,
-  [likeSucceeded]: (state, payload) => Object.assign({}, state, {
+  [postItemSucceeded.getType()]: (state, payload) => payload.item,
+  [fetchItemSucceeded.getType()]: (state, payload) => payload.item,
+  [likeSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     likers: [
       payload.user,
       ...state.likers,
     ],
   }),
-  [unlikeSucceeded]: (state, payload) => Object.assign({}, state, {
+  [unlikeSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     likers: state.likers.filter(u => u.id !== payload.userId),
   }),
-  [postCommentSucceeded]: (state, payload) => Object.assign({}, state, {
+  [postCommentSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     comments: [
       payload.comment,
       ...state.comments,
@@ -37,5 +39,5 @@ export const item = createReducer({
 }, itemDefaultState);
 
 export const items = createReducer({
-  [fetchItemsSucceeded]: (state, payload) => payload.items,
+  [fetchItemsSucceeded.getType()]: (state, payload) => payload.items,
 }, itemsDefaultState);

@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { Fields, reduxForm } from 'redux-form';
 import sha256 from 'crypto-js/sha256';
@@ -7,7 +9,11 @@ import Loading from './LoadingContainer';
 import LoginPage from '../components/LoginPage';
 import { loginRequested } from '../actions';
 
-class LoginPageContainer extends React.Component { // eslint-disable-line
+type Props = {
+  handleSubmit: any,
+};
+
+class LoginPageContainer extends React.Component<Props> { // eslint-disable-line
   render() {
     const { handleSubmit } = this.props;
     return (

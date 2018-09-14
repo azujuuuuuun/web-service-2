@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -5,7 +7,16 @@ import Loading from './LoadingContainer';
 import ProfileImageUploadPage from '../components/ProfileImageUploadPage';
 import { uploadImageRequested } from '../actions';
 
-class ProfileImageUploadPageContainer extends React.Component { // eslint-disable-line
+type Props = {
+  viewer: any,
+  uploadImageRequest: any,
+};
+
+type State = {
+  file: any,
+};
+
+class ProfileImageUploadPageContainer extends React.Component<Props, State> { // eslint-disable-line
   constructor(props) {
     super(props);
     this.state = { file: undefined };
@@ -41,7 +52,7 @@ const mapStateToProps = state => ({
   viewer: state.viewer,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
   uploadImageRequest: image => dispatch(uploadImageRequested({ image })),
 });
 

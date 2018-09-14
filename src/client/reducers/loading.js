@@ -9,15 +9,15 @@ import {
 const defaultState = true;
 
 const loading = createReducer({
-  [authenticateRequested]: () => true,
-  [authenticateSucceeded]: () => false,
-  [authenticateFailed]: () => false,
-  [fetchItemRequested]: () => true,
-  [fetchItemSucceeded]: () => false,
-  [fetchItemFailed]: () => false,
-  [fetchItemsRequested]: () => true,
-  [fetchItemsSucceeded]: () => false,
-  [fetchItemsFailed]: () => false,
+  [authenticateRequested.getType()]: () => true,
+  [authenticateSucceeded.getType()]: () => false,
+  [authenticateFailed.getType()]: () => false,
+  [fetchItemRequested.getType()]: () => true,
+  [fetchItemSucceeded.getType()]: () => false,
+  [fetchItemFailed.getType()]: () => false,
+  [fetchItemsRequested.getType()]: () => true,
+  [fetchItemsSucceeded.getType()]: () => false,
+  [fetchItemsFailed.getType()]: () => false,
 }, defaultState);
 
 export default loading;
