@@ -1,3 +1,5 @@
+// @flow
+
 /* eslint-disable import/prefer-default-export */
 
 import { createAction } from 'redux-act';

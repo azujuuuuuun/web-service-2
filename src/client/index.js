@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
@@ -29,5 +31,6 @@ sagaMiddleware.run(mySaga);
 
 hydrate(
   <Root store={store} />,
+  // $FlowFixMe
   document.getElementById('root'),
 );
