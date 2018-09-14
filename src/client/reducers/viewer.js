@@ -1,3 +1,5 @@
+// @flow
+
 import { createReducer } from 'redux-act';
 
 import {
@@ -27,59 +29,59 @@ const defaultState = {
 };
 
 const viewer = createReducer({
-  [signupSucceeded]: (state, payload) => Object.assign({}, state, {
+  [signupSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     isLoggedIn: true,
     ...payload.user,
   }),
-  [loginSucceeded]: (state, payload) => Object.assign({}, state, {
+  [loginSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     isLoggedIn: true,
     ...payload.user,
   }),
-  [logoutSucceeded]: () => ({ isLoggedIn: false }),
-  [authenticateSucceeded]: (state, payload) => Object.assign({}, state, {
+  [logoutSucceeded.getType()]: () => ({ isLoggedIn: false }),
+  [authenticateSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     isLoggedIn: true,
     ...payload.user,
   }),
-  [likeSucceeded]: (state, payload) => Object.assign({}, state, {
+  [likeSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     likes: [
       payload.item,
       ...state.likes,
     ],
   }),
-  [unlikeSucceeded]: (state, payload) => Object.assign({}, state, {
+  [unlikeSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     likes: state.likes.filter(i => i.id !== payload.itemId),
   }),
-  [stockSucceeded]: (state, payload) => Object.assign({}, state, {
+  [stockSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     stocks: [
       payload.item,
       ...state.stocks,
     ],
   }),
-  [unstockSucceeded]: (state, payload) => Object.assign({}, state, {
+  [unstockSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     stocks: state.stocks.filter(i => i.id !== payload.itemId),
   }),
-  [followRequested]: (state, payload) => Object.assign({}, state, {
+  [followRequested.getType()]: (state, payload) => Object.assign({}, state, {
     followings: [
       payload.user,
       ...state.followings,
     ],
   }),
-  [unfollowRequested]: (state, payload) => Object.assign({}, state, {
+  [unfollowRequested.getType()]: (state, payload) => Object.assign({}, state, {
     followings: state.followings.filter(f => f.id !== payload.followedId),
   }),
-  [followTagSucceeded]: (state, payload) => Object.assign({}, state, {
+  [followTagSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     followingTags: [
       payload.tag,
       ...state.followingTags,
     ],
   }),
-  [unfollowTagSucceeded]: (state, payload) => Object.assign({}, state, {
+  [unfollowTagSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     followingTags: state.followingTags.filter(t => t.id !== payload.tagId),
   }),
-  [updateNotificationsSucceeded]: (state, payload) => Object.assign({}, state, {
+  [updateNotificationsSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     notifications: payload.notifications,
   }),
-  [uploadImageSucceeded]: (state, payload) => Object.assign({}, state, {
+  [uploadImageSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     avatarImgSrc: payload.avatarImgSrc,
   }),
 }, defaultState);

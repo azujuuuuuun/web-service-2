@@ -8,11 +8,11 @@ const userDefaultState = {
 };
 
 export const user = createReducer({
-  [fetchUserSucceeded]: (state, payload) => payload.user,
+  [fetchUserSucceeded.getType()]: (state, payload) => payload.user,
 }, userDefaultState);
 
 const usersDefaultState = [];
 
 export const users = createReducer({
-  [fetchUsersSucceeded]: (state, payload) => payload.users,
+  [fetchUsersSucceeded.getType()]: (state, payload) => payload.users,
 }, usersDefaultState);

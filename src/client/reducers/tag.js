@@ -1,3 +1,5 @@
+// @flow
+
 import { createReducer } from 'redux-act';
 
 import {
@@ -13,14 +15,14 @@ const tagDefaultState = {
 };
 
 export const tag = createReducer({
-  [fetchTagSucceeded]: (state, payload) => payload.tag,
-  [followTagSucceeded]: (state, payload) => Object.assign({}, state, {
+  [fetchTagSucceeded.getType()]: (state, payload) => payload.tag,
+  [followTagSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     followers: [
       payload.user,
       ...state.followers,
     ],
   }),
-  [unfollowTagSucceeded]: (state, payload) => Object.assign({}, state, {
+  [unfollowTagSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
     followers: state.followers.filter(u => u.id !== payload.userId),
   }),
 }, tagDefaultState);
@@ -28,5 +30,5 @@ export const tag = createReducer({
 const tagsDefaultState = [];
 
 export const tags = createReducer({
-  [fetchTagsSucceeded]: (state, payload) => payload.tags,
+  [fetchTagsSucceeded.getType()]: (state, payload) => payload.tags,
 }, tagsDefaultState);
