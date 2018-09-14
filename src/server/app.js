@@ -43,7 +43,7 @@ const renderFullPage = (html, preloadedState) => (
     <html>
       <head>
         <meta charset="UTF-8">
-        <title>web-service-tracing-4</title>
+        <title>web-service-2</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="/public/css/style.css">
@@ -81,5 +81,5 @@ const handleRender = (req, res) => {
 app.use(handleRender);
 
 app.listen(3000, () => {
-  console.log('web-service-tracing-template listening on port 3000!'); // eslint-disable-line no-console
+  console.log('web-service-2 listening on port 3000!'); // eslint-disable-line no-console
 });
