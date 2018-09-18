@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Button from '@material-ui/core/Button';
 import LabelIcon from '@material-ui/icons/Label';
@@ -28,50 +29,52 @@ const UserPage = (props: Props) => {
       {!user.username ? (
         <NotFound />
       ) : (
-        <div>
-          {user.avatarImgSrc && <img src={user.avatarImgSrc} alt="アバター" />}
-          <h3>{`@${user.username}`}</h3>
-          {isViewer ? (
-            <Link to="/settings/profile">
-              <SettingsIcon />
-              <span>プロフィールを編集する</span>
-            </Link>
-          ) : (
+        <Grid container justify="center" spacing={16}>
+          <Grid item xs={3}>
+            {user.avatarImgSrc && <img src={user.avatarImgSrc} alt="アバター" />}
+            <h3>{`@${user.username}`}</h3>
+            {isViewer ? (
+              <Link to="/settings/profile">
+                <SettingsIcon />
+                <span>プロフィールを編集する</span>
+              </Link>
+            ) : (
+              <div>
+                <Button
+                  onClick={() => followRequest(user)}
+                  disabled={hasFollowed}
+                >
+                  フォロー
+                </Button>
+                <Button disabled={!hasFollowed}>
+                  フォロー中
+                </Button>
+                <Button
+                  onClick={() => unfollowRequest(user.id)}
+                  disabled={!hasFollowed}
+                >
+                  解除
+                </Button>
+              </div>
+            )}
             <div>
-              <Button
-                onClick={() => followRequest(user)}
-                disabled={hasFollowed}
-              >
-                フォロー
-              </Button>
-              <Button disabled={!hasFollowed}>
-                フォロー中
-              </Button>
-              <Button
-                onClick={() => unfollowRequest(user.id)}
-                disabled={!hasFollowed}
-              >
-                解除
-              </Button>
+              <div>
+                <LabelIcon />
+                <span>フォロー中のタグ</span>
+                <span>{user.followingTags.length}</span>
+              </div>
+              <div>
+                {user.followingTags.map(t => (
+                  <li key={t.id}>
+                    <Link to={`/tags/${t.name}`}>
+                      {t.name}
+                    </Link>
+                  </li>
+                ))}
+              </div>
             </div>
-          )}
-          <div>
-            <div>
-              <LabelIcon />
-              <span>フォロー中のタグ</span>
-              <span>{user.followingTags.length}</span>
-            </div>
-            <div>
-              {user.followingTags.map(t => (
-                <li key={t.id}>
-                  <Link to={`/tags/${t.name}`}>
-                    {t.name}
-                  </Link>
-                </li>
-              ))}
-            </div>
-          </div>
-          <div>
+          </Grid>
+          <Grid item xs={7}>
             {user.items.map(i => (
               <div key={i.id}>
                 <div>
@@ -92,8 +95,8 @@ const UserPage = (props: Props) => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
+          </Grid>
+        </Grid>
       )}
     </div>
   );
