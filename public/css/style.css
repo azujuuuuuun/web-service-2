@@ -2,43 +2,6 @@
   margin-bottom: 65px;
 }
 
-.item-list .item .content .date {
-  color: gray;
-  display: inline-block;
-}
-
-/* ItemDetailPage Component */
-.item-detail-page .item {
-  margin-top: 2rem;
-}
-
-.item-detail-page .item .avatar {
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-
-.item-detail-page .item .avatar {
-  display: inline-block;
-}
-
-.item-detail-page .item .username {
-  color: black;
-  margin-right: 1rem;
-  text-decoration: none;
-}
-
-.item-detail-page .item .username:hover {
-  text-decoration: underline;
-}
-
-.item-detail-page .item .date {
-  color: gray;
-}
-
-.item-detail-page .item .title {
-  margin-bottom: 0.5rem;
-}
-
 /* UserPage Component */
 .user-page .img {
   margin-bottom: 0.75rem;
