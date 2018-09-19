@@ -10,6 +10,7 @@ import type { FieldProps, FormProps } from 'redux-form';
 
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 import SettingsMenu from './SettingsMenu';
+import TitleSection from './TitleSection';
 
 type Props = {
   viewer: any,
@@ -42,24 +43,11 @@ const SettingsProfilePage = (props: Props) => {
         </Grid>
         <Grid item xs={7}>
           <div className="profile">
-            <div className="titleSection">
-              <div className="account">
-                <div className="avatar">
-                  <Avatar src={viewer.avatarImgSrc}>
-                    {viewer.username}
-                  </Avatar>
-                </div>
-                <div className="username">
-                  <Link to={`/${viewer.username}`}>
-                    {viewer.username}アカウント
-                  </Link>
-                </div>
-              </div>
-              <span>/</span>
-              <div className="title">
-                <span>公開用プロフィール</span>
-              </div>
-            </div>
+            <TitleSection
+              avatarImgSrc={viewer.avatarImgSrc}
+              username={viewer.username}
+              title="公開用プロフィール"
+            />
             <div className="input">
               <div>名前</div>
               <div className="first-name">
