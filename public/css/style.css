@@ -254,3 +254,18 @@
 .title-section .title span {
   font-size: 1.5rem;
 }
+
+/* AccountPage Component */
+.account-page .account .icon .img {
+  display: block;
+  width: 2.5rem;
+}
+
+.account-page .account .icon .upload-link a {
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.account-page .account .icon .upload-link a:hover {
+  text-decoration: underline;
+}
