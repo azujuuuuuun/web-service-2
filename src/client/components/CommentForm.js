@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import styled from 'styled-components';
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -12,18 +13,27 @@ type Props = {
   handleSubmit: FormProps,
 };
 
+const Header = styled.div`
+  margin-bottom: 0;
+`;
+
+const AvatarWrapper = styled.div`
+  display: inline-block;
+  margin-right: 0.5rem; 
+`;
+
 const CommentForm = (props: Props) => {
   const { viewer, text, handleSubmit } = props;
   return (
-    <div className="comment-form">
-      <div className="header">
-        <div className="avatar">
+    <div>
+      <Header>
+        <AvatarWrapper>
           <Avatar src={viewer.avatarImgSrc} alt="アバター">
             {viewer.username}
           </Avatar>
-        </div>
-        <span className="label">コメントを投稿する</span>
-      </div>
+        </AvatarWrapper>
+        <span>コメントを投稿する</span>
+      </Header>
       <div>
         <TextField
           value={text.input.value}
