@@ -15,12 +15,14 @@ type Props = {
 const CommentForm = (props: Props) => {
   const { viewer, text, handleSubmit } = props;
   return (
-    <div>
-      <div>
-        <Avatar src={viewer.avatarImgSrc} alt="アバター">
-          {viewer.username}
-        </Avatar>
-        <span>コメントを投稿する</span>
+    <div className="comment-form">
+      <div className="header">
+        <div className="avatar">
+          <Avatar src={viewer.avatarImgSrc} alt="アバター">
+            {viewer.username}
+          </Avatar>
+        </div>
+        <span className="label">コメントを投稿する</span>
       </div>
       <div>
         <TextField
@@ -29,6 +31,7 @@ const CommentForm = (props: Props) => {
           placeholder="コメントを入力してください"
           multiline
           rows="4"
+          fullWidth
         />
       </div>
       <div>
