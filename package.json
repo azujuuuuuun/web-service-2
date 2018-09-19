@@ -17,6 +17,7 @@
     "@material-ui/core": "^1.5.1",
     "@material-ui/icons": "^2.0.3",
     "axios": "^0.18.0",
+    "babel-plugin-styled-components": "^1.7.1",
     "body-parser": "^1.18.3",
     "cli-highlight": "^2.0.0",
     "crypto-js": "^3.1.9-1",
