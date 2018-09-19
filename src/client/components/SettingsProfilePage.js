@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
@@ -33,72 +34,89 @@ const SettingsProfilePage = (props: Props) => {
     handleSubmit,
   } = props;
   return (
-    <div>
+    <div className="settings-profile-page">
       <GlobalHeader />
-      <SettingsMenu />
-      <div>
-        <div>
-          <div>
-            <Avatar src={viewer.avatarImgSrc}>
-              {viewer.username}
-            </Avatar>
-            <Link to={`/${viewer.username}`}>
-              {viewer.username}アカウント
-            </Link>
+      <Grid container justify="center" spacing={16}>
+        <Grid item xs={3}>
+          <SettingsMenu />
+        </Grid>
+        <Grid item xs={7}>
+          <div className="profile">
+            <div className="titleSection">
+              <div className="account">
+                <div className="avatar">
+                  <Avatar src={viewer.avatarImgSrc}>
+                    {viewer.username}
+                  </Avatar>
+                </div>
+                <div className="username">
+                  <Link to={`/${viewer.username}`}>
+                    {viewer.username}アカウント
+                  </Link>
+                </div>
+              </div>
+              <span>/</span>
+              <div className="title">
+                <span>公開用プロフィール</span>
+              </div>
+            </div>
+            <div className="input">
+              <div>名前</div>
+              <div className="first-name">
+                <TextField
+                  value={firstName.input.value}
+                  onChange={firstName.input.onChange}
+                  placeholder="名"
+                />
+              </div>
+              <TextField
+                value={lastName.input.value}
+                onChange={lastName.input.onChange}
+                placeholder="姓"
+              />
+            </div>
+            <div className="input">
+              <div>サイト/ブログ</div>
+              <TextField
+                value={web.input.value}
+                onChange={web.input.onChange}
+                fullWidth
+              />
+            </div>
+            <div className="input">
+              <div>所属している組織・会社</div>
+              <TextField
+                value={organization.input.value}
+                onChange={organization.input.onChange}
+                fullWidth
+              />
+            </div>
+            <div className="input">
+              <div>居住地</div>
+              <TextField
+                value={location.input.value}
+                onChange={location.input.onChange}
+                fullWidth
+              />
+            </div>
+            <div className="input">
+              <div>自己紹介</div>
+              <TextField
+                value={description.input.value}
+                onChange={description.input.onChange}
+                multiline
+                rows="4"
+                fullWidth
+              />
+            </div>
+            <div>
+              <Button onClick={handleSubmit}>
+                更新する
+              </Button>
+            </div>
           </div>
-          <div>
-            <span>公開用プロフィール</span>
-          </div>
-        </div>
-        <div>
-          <div>名前</div>
-          <TextField
-            value={firstName.input.value}
-            onChange={firstName.input.onChange}
-            placeholder="名"
-          />
-          <TextField
-            value={lastName.input.value}
-            onChange={lastName.input.onChange}
-            placeholder="姓"
-          />
-        </div>
-        <div>
-          <div>サイト/ブログ</div>
-          <TextField
-            value={web.input.value}
-            onChange={web.input.onChange}
-          />
-        </div>
-        <div>
-          <div>所属している組織・会社</div>
-          <TextField
-            value={organization.input.value}
-            onChange={organization.input.onChange}
-          />
-        </div>
-        <div>
-          <div>居住地</div>
-          <TextField
-            value={location.input.value}
-            onChange={location.input.onChange}
-          />
-        </div>
-        <div>
-          <div>自己紹介</div>
-          <TextField
-            value={description.input.value}
-            onChange={description.input.onChange}
-            multiline
-            rows="4"
-          />
-        </div>
-        <div>
-          <Button onClick={handleSubmit}>
-            更新する
-          </Button>
-        </div>
-      </div>
+        </Grid>
+      </Grid>
     </div>
   );
 };
