@@ -11,23 +11,30 @@ type Props = {
 const CommentList = (props: Props) => {
   const { comments } = props;
   return (
-    <div>
+    <div className="comment-list">
       {comments.map(c => (
-        <div key={c.id}>
-          <div>
-            <div>
-              <Avatar src={c.user.avatarImgSrc} alt="アバター">
-                {c.user.username}
-              </Avatar>
-              <Link to={`/${c.user.username}`}>
-                {c.user.username}
-              </Link>
+        <div key={c.id} className="comment">
+          <div className="header">
+            <div className="creator">
+              <div className="avatar">
+                <Avatar
+                  src={c.user.avatarImgSrc}
+                  alt="アバター"
+                >
+                  {c.user.username}
+                </Avatar>
+              </div>
+              <div className="username">
+                <Link to={`/${c.user.username}`}>
+                  {c.user.username}
+                </Link>
+              </div>
             </div>
-            <div>
-              <span>{c.createdAt}</span>
+            <div className="metadata">
+              <span className="date">{c.createdAt}</span>
             </div>
           </div>
-          <p>{c.text}</p>
+          <p className="text">{c.text}</p>
         </div>
       ))}
     </div>
