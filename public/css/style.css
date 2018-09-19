@@ -2,50 +2,6 @@
   margin-bottom: 65px;
 }
 
-/* ItemList Component */
-.item-list .item {
-  border-top: 1px solid lightgray;
-  padding: 0.75rem;
-}
-
-.item-list .item .avatar {
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-
-.item-list .item .content {
-  display: inline-block;
-}
-
-.item-list .item .content .title {
-  color: black;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.item-list .item .content .title:hover {
-  text-decoration: underline;
-}
-
-.item-list .item .content .user {
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-
-.item-list .item .content .user span {
-  color: gray;
-  margin-right: 0.25rem;
-}
-
-.item-list .item .content .user a {
-  color: gray;
-  text-decoration: none;
-}
-
-.item-list .item .content .user a:hover {
-  text-decoration: underline;
-}
-
 .item-list .item .content .date {
   color: gray;
   display: inline-block;
