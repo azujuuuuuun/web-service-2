@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 
 import GlobalHeader from '../containers/GlobalHeaderContainer';
@@ -17,22 +18,30 @@ type Props = {
   hasFollowed: boolean,
 };
 
+const Img = styled.img`
+  margin-bottom: 0.75rem;
+  width: 100%;
+`;
+
+const Username = styled.h3`
+  margin: 0;
+`;
+
 const UserPage = (props: Props) => {
   const { user, isViewer, hasFollowed } = props;
   return (
-    <div className="user-page">
+    <div>
       <GlobalHeader />
       {!user.username ? (
         <NotFound />
       ) : (
         <Grid container justify="center" spacing={16}>
           <Grid item xs={3}>
-            <img
-              className="img"
+            <Img
               src={user.avatarImgSrc}
               alt="アバター"
             />
-            <h3 className="username">{`@${user.username}`}</h3>
+            <Username>{`@${user.username}`}</Username>
             {isViewer ? (
               <EditProfileLink />
             ) : (
