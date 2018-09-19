@@ -192,44 +192,6 @@
 }
 
 /* SettingsProfilePage Component */
-.settings-profile-page .profile .titleSection {
-  margin-bottom: 2rem;
-}
-
-.settings-profile-page .profile .titleSection .account {
-  display: inline-block;
-}
-
-.settings-profile-page .profile .titleSection .account .avatar {
-  display: inline-block;
-}
-
-.settings-profile-page .profile .titleSection .account .username {
-  display: inline-block;
-}
-
-.settings-profile-page .profile .titleSection .account .username a {
-  color: black;
-  font-size: 1.5rem;
-  text-decoration: none;
-}
-
-.settings-profile-page .profile .titleSection .account .username a:hover {
-  text-decoration: underline;
-}
-
-.settings-profile-page .profile .titleSection span {
-  font-size: 1.5rem;
-}
-
-.settings-profile-page .profile .titleSection .title {
-  display: inline-block;
-}
-
-.settings-profile-page .profile .titleSection .title span {
-  font-size: 1.5rem;
-}
-
 .settings-profile-page .profile .input {
   margin-bottom: 2rem;
 }
@@ -256,4 +218,39 @@
 
 .settings-menu .menu-item a:hover {
   text-decoration: underline;
+}
+
+/* TitleSection Component */
+.title-section .account {
+  display: inline-block;
+}
+
+.title-section .account .avatar {
+  display: inline-block;
+}
+
+.title-section .account .username {
+  display: inline-block;
+}
+
+.title-section .account .username a {
+  color: black;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.title-section .account .username a:hover {
+  text-decoration: underline;
+}
+
+.title-section .separater {
+  font-size: 1.5rem;
+}
+
+.title-section .title {
+  display: inline-block;
+}
+
+.title-section .title span {
+  font-size: 1.5rem;
 }
