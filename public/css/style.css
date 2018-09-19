@@ -190,3 +190,70 @@
 .table-list .item .body .title a {
   text-decoration: none;
 }
+
+/* SettingsProfilePage Component */
+.settings-profile-page .profile .titleSection {
+  margin-bottom: 2rem;
+}
+
+.settings-profile-page .profile .titleSection .account {
+  display: inline-block;
+}
+
+.settings-profile-page .profile .titleSection .account .avatar {
+  display: inline-block;
+}
+
+.settings-profile-page .profile .titleSection .account .username {
+  display: inline-block;
+}
+
+.settings-profile-page .profile .titleSection .account .username a {
+  color: black;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.settings-profile-page .profile .titleSection .account .username a:hover {
+  text-decoration: underline;
+}
+
+.settings-profile-page .profile .titleSection span {
+  font-size: 1.5rem;
+}
+
+.settings-profile-page .profile .titleSection .title {
+  display: inline-block;
+}
+
+.settings-profile-page .profile .titleSection .title span {
+  font-size: 1.5rem;
+}
+
+.settings-profile-page .profile .input {
+  margin-bottom: 2rem;
+}
+
+.settings-profile-page .profile .input .first-name {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+/* SettingsMenu Component */
+.settings-menu .menu-item {
+  padding: 0.25rem 0.5rem;
+}
+
+.settings-menu .menu-item:not(:last-child) {
+  border-bottom: 1px solid lightgray;
+}
+
+.settings-menu .menu-item a {
+  color: gray;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.settings-menu .menu-item a:hover {
+  text-decoration: underline;
+}
