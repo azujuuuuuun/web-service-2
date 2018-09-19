@@ -28,30 +28,33 @@ const ItemDetailPage = (props: Props) => {
     viewer,
   } = props;
   return (
-    <div>
+    <div className="item-detail-page">
       <GlobalHeader />
       {!item.user ? (
         <NotFound />
       ) : (
         <Grid container justify="center">
           <Grid item xs={7}>
-            <div>
+            <div className="item">
               <div>
-                <Avatar src={item.user.avatarImgSrc} alt="アバター">
+                <Avatar className="avatar" src={item.user.avatarImgSrc} alt="アバター">
                   {item.user.username}
                 </Avatar>
-                <Link to={`/${item.user.username}`}>
+                <Link
+                  className="username"
+                  to={`/${item.user.username}`}
+                >
                   {`@${item.user.username}`}
                 </Link>
-                <span>{item.updatedAt}</span>
+                <span className="date">{item.updatedAt}</span>
               </div>
-              <h1>{item.title}</h1>
+              <h1 className="title">{item.title}</h1>
               <Tags tags={item.tags} />
               <LikeButton item={item} hasLiked={hasLiked} viewer={viewer} />
               <StockButton item={item} hasStocked={hasStocked} />
               <p>{item.body}</p>
             </div>
-            <div>
+            <div className="comment">
               <CommentList comments={item.comments} />
               <CommentForm viewer={viewer} />
             </div>
