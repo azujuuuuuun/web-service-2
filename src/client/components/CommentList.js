@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import styled from 'styled-components';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 
@@ -8,34 +9,64 @@ type Props = {
   comments: Array<any>,
 };
 
+const Comment = styled.div`
+  margin-bottom: 1rem;
+`;
+
+const Header = styled.div`
+  margin-bottom: 0.5rem;
+`;
+
+const Creator = styled.div`
+  display: inline-block;
+`;
+
+const AvatarWrapper = styled.div`
+  display: inline-block;
+  margin-right: 0.5rem;
+`;
+
+const Username = styled.div`
+  display: inline-block;
+`;
+
+const Metadata = styled.div`
+  display: inline-block;
+`;
+
+const Text = styled.p`
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  margin: 0;
+  padding: 1rem;
+`;
+
 const CommentList = (props: Props) => {
   const { comments } = props;
   return (
     <div className="comment-list">
       {comments.map(c => (
-        <div key={c.id} className="comment">
-          <div className="header">
-            <div className="creator">
-              <div className="avatar">
+        <Comment key={c.id}>
+          <Header>
+            <Creator>
+              <AvatarWrapper>
                 <Avatar
                   src={c.user.avatarImgSrc}
                   alt="アバター"
                 >
                   {c.user.username}
                 </Avatar>
-              </div>
-              <div className="username">
+              </AvatarWrapper>
+              <Username>
                 <Link to={`/${c.user.username}`}>
                   {c.user.username}
                 </Link>
-              </div>
-            </div>
-            <div className="metadata">
-              <span className="date">{c.createdAt}</span>
-            </div>
-          </div>
-          <p className="text">{c.text}</p>
-        </div>
+              </Username>
+            </Creator>
+            <Metadata>{c.createdAt}</Metadata>
+          </Header>
+          <Text>{c.text}</Text>
+        </Comment>
       ))}
     </div>
   );
