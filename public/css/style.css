@@ -36,37 +36,6 @@
   text-decoration: none;
 }
 
-/* TableList Component */
-.table-list .item {
-  border-top: 1px solid lightgray;
-  padding: 0.75rem;
-}
-
-.table-list .item .avatar {
-  display: inline-block;
-  margin-right: 0.5rem; 
-}
-
-.table-list .item .avatar a {
-  text-decoration: none;
-}
-
-.table-list .item .body {
-  display: inline-block;
-}
-
-.table-list .item .body .info {
-  font-size: 0.75rem;
-}
-
-.table-list .item .body .info a {
-  text-decoration: none;
-}
-
-.table-list .item .body .title a {
-  text-decoration: none;
-}
-
 /* SettingsProfilePage Component */
 .settings-profile-page .profile .input {
   margin-bottom: 2rem;
