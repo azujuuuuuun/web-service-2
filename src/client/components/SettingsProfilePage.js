@@ -1,9 +1,8 @@
 // @flow
 
 import React from 'react';
+import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
-import Avatar from '@material-ui/core/Avatar';
-import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import type { FieldProps, FormProps } from 'redux-form';
@@ -23,6 +22,15 @@ type Props = {
   handleSubmit: FormProps,
 };
 
+const InputWrapper = styled.div`
+  margin-bottom: 2rem;
+`;
+
+const FirstName = styled.div`
+  display: inline-block;
+  margin-right: 1rem;
+`;
+
 const SettingsProfilePage = (props: Props) => {
   const {
     viewer,
@@ -35,59 +43,59 @@ const SettingsProfilePage = (props: Props) => {
     handleSubmit,
   } = props;
   return (
-    <div className="settings-profile-page">
+    <div>
       <GlobalHeader />
       <Grid container justify="center" spacing={16}>
         <Grid item xs={3}>
           <SettingsMenu />
         </Grid>
         <Grid item xs={7}>
-          <div className="profile">
+          <div>
             <TitleSection
               avatarImgSrc={viewer.avatarImgSrc}
               username={viewer.username}
               title="公開用プロフィール"
             />
-            <div className="input">
+            <InputWrapper>
               <div>名前</div>
-              <div className="first-name">
+              <FirstName>
                 <TextField
                   value={firstName.input.value}
                   onChange={firstName.input.onChange}
                   placeholder="名"
                 />
-              </div>
+              </FirstName>
               <TextField
                 value={lastName.input.value}
                 onChange={lastName.input.onChange}
                 placeholder="姓"
               />
-            </div>
-            <div className="input">
+            </InputWrapper>
+            <InputWrapper>
               <div>サイト/ブログ</div>
               <TextField
                 value={web.input.value}
                 onChange={web.input.onChange}
                 fullWidth
               />
-            </div>
-            <div className="input">
+            </InputWrapper>
+            <InputWrapper>
               <div>所属している組織・会社</div>
               <TextField
                 value={organization.input.value}
                 onChange={organization.input.onChange}
                 fullWidth
               />
-            </div>
-            <div className="input">
+            </InputWrapper>
+            <InputWrapper>
               <div>居住地</div>
               <TextField
                 value={location.input.value}
                 onChange={location.input.onChange}
                 fullWidth
               />
-            </div>
-            <div className="input">
+            </InputWrapper>
+            <InputWrapper>
               <div>自己紹介</div>
               <TextField
                 value={description.input.value}
@@ -96,7 +104,7 @@ const SettingsProfilePage = (props: Props) => {
                 rows="4"
                 fullWidth
               />
-            </div>
+            </InputWrapper>
             <div>
               <Button onClick={handleSubmit}>
                 更新する
