@@ -18,7 +18,9 @@ router.post('/', async (req, res) => {
     try {
       const decoded = jwt.verify(token, 'shhhhh');
       const { userId } = decoded;
-      const user = await User.findById(userId);
+      const user = await User.findById(userId, {
+        attributes: User.customAttributes,
+      });
       if (!user) {
         res.status(400).send('User was not found');
       } else {
@@ -59,7 +61,10 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const items = await Item.findAll({
-      include: [Item.User],
+      include: [{
+        association: Item.User,
+        attributes: User.customAttributes,
+      }],
     });
     res.status(200).send({ items });
   } catch (err) {
@@ -75,13 +80,18 @@ router.get('/:itemId', async (req, res) => {
       where: { id: itemId },
       include: [{
         association: Item.User,
+        attributes: User.customAttributes,
       }, {
         association: Item.Tags,
       }, {
         association: Item.Likers,
+        attributes: User.customAttributes,
       }, {
         association: Item.Comments,
-        include: [Comment.User],
+        include: [{
+          association: Comment.User,
+          attributes: User.customAttributes,
+        }],
       }],
     });
     if (!item) {
