@@ -104,5 +104,6 @@ module.exports = (sequelize, DataTypes) => {
       as: 'notifications',
     });
   };
+  User.customAttributes = { exclude: ['email', 'password'] };
   return User;
 };
