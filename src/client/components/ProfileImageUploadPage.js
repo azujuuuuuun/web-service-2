@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
 import ImageIcon from '@material-ui/icons/Image';
@@ -16,50 +17,82 @@ type Props = {
   handleClickUploadImage: any,
 };
 
+const Img = styled.img`
+  margin-right: 1rem;
+  width: 3rem;
+`;
+
+const File = styled.div`
+  display: inline-block;
+`;
+
+const Input = styled.input`
+  display: block;
+`;
+
+const FileSize = styled.span`
+  font-size: 0.75rem;
+`;
+
+const UploadButton = styled(Button)`
+  display: inline-block;
+`;
+
+const CancelButton = styled.div`
+  border-radius: 3px;
+  display: inline-block;
+  padding: 0.25rem 1rem;
+`;
+
+const StyledLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+  &:hover {
+    background-color: lightgray;
+  }
+`;
+
 const ProfileImageUploadPage = (props: Props) => {
   const { viewer, handleChangeFile, handleClickUploadImage } = props;
   return (
-    <div className="profile-image-upload-page">
+    <div>
       <GlobalHeader />
       <Grid container justify="center" spacing={16}>
         <Grid item xs={3}>
           <SettingsMenu />
         </Grid>
         <Grid item xs={7}>
-          <div className="main">
+          <div>
             <TitleSection
               avatarImgSrc={viewer.avatarImgSrc}
               username={viewer.username}
               title="プロフィール画像アップロード"
             />
-            <div className="body">
-              <div className="upload">
+            <div>
+              <div>
                 {viewer.avatarImgSrc ? (
-                  <img className="img" src={viewer.avatarImgSrc} alt="アバター" />
+                  <Img src={viewer.avatarImgSrc} alt="アバター" />
                 ) : (
-                  <div className="img-icon">
-                    <ImageIcon />
-                  </div>
+                  <ImageIcon />
                 )}
-                <div className="file">
-                  <input
-                    className="input"
+                <File>
+                  <Input
                     type="file"
                     name="avatar"
                     onChange={handleChangeFile}
                   />
-                  <span className="file-size">10MBまで</span>
-                </div>
+                  <FileSize>10MBまで</FileSize>
+                </File>
               </div>
-              <div className="btn-group">
-                <div className="upload-btn">
-                  <Button onClick={handleClickUploadImage}>
-                    新しい画像をアップロードする
-                  </Button>
-                </div>
-                <div className="cancel-btn">
-                  <Link to="/settings/account">キャンセル</Link>
-                </div>
+              <div>
+                <UploadButton onClick={handleClickUploadImage}>
+                  新しい画像をアップロードする
+                </UploadButton>
+                <CancelButton>
+                  <StyledLink to="/settings/account">
+                    キャンセル
+                  </StyledLink>
+                </CancelButton>
               </div>
             </div>
           </div>
