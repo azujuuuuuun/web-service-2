@@ -16,12 +16,14 @@ module.exports = {
     return queryInterface.bulkInsert('Items', [{
       title: 'item1',
       body: 'item1 body',
+      status: 'posted',
       createdAt: now,
       updatedAt: now,
       userId: 1,
     }, {
       title: 'item2',
       body: 'item2 body',
+      status: 'draft',
       createdAt: now,
       updatedAt: now,
       userId: 2,
