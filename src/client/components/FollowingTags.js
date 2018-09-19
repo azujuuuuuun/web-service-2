@@ -11,19 +11,19 @@ type Props = {
 const FollowingTags = (props: Props) => {
   const { tags } = props;
   return (
-    <div>
-      <div>
-        <div>
+    <div className="following-tags">
+      <div className="heading">
+        <div className="label">
           <LabelIcon />
           <span>フォロー中のタグ</span>
         </div>
-        <div>
+        <div className="count">
           <span>{tags.length}</span>
         </div>
       </div>
-      <ol>
+      <ol className="tag-list">
         {tags.map(t => (
-          <li key={t.id}>
+          <li key={t.id} className="tag">
             <Link to={`/tags/${t.name}`}>{t.name}</Link>
           </li>
         ))}

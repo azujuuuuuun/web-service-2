@@ -125,3 +125,68 @@
   display: inline-block;
   margin-right: 0.5rem; 
 }
+
+/* UserPage Component */
+.user-page .img {
+  margin-bottom: 0.75rem;
+  width: 100%;
+}
+
+.user-page .username {
+  margin: 0;
+}
+
+/* FollowingTags Component */
+.following-tags .heading .label,
+.following-tags .heading .count {
+  display: inline-block;
+}
+
+.following-tags .tag-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.following-tags .tag-list .tag {
+  background-color: lightgray;
+  display: inline-block;
+  padding: 0 0.25rem;
+}
+
+.following-tags .tag-list .tag a {
+  color: black;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+/* TableList Component */
+.table-list .item {
+  border-top: 1px solid lightgray;
+  padding: 0.75rem;
+}
+
+.table-list .item .avatar {
+  display: inline-block;
+  margin-right: 0.5rem; 
+}
+
+.table-list .item .avatar a {
+  text-decoration: none;
+}
+
+.table-list .item .body {
+  display: inline-block;
+}
+
+.table-list .item .body .info {
+  font-size: 0.75rem;
+}
+
+.table-list .item .body .info a {
+  text-decoration: none;
+}
+
+.table-list .item .body .title a {
+  text-decoration: none;
+}
