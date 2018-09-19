@@ -1,13 +1,3 @@
-/* UserPage Component */
-.user-page .img {
-  margin-bottom: 0.75rem;
-  width: 100%;
-}
-
-.user-page .username {
-  margin: 0;
-}
-
 /* SettingsProfilePage Component */
 .settings-profile-page .profile .input {
   margin-bottom: 2rem;
