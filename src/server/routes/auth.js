@@ -10,7 +10,9 @@ const { User, Item, Tag } = db;
 router.post('/signup', async (req, res) => {
   const { username, password } = req.body;
   try {
-    const user = await User.create({ username, password });
+    const user = await User.create({ username, password }, {
+      attributes: User.customAttributes,
+    });
     const token = jwt.sign({ userId: user.id }, 'shhhhh');
     res.status(200).send({ token, user });
   } catch (err) {
@@ -22,7 +24,10 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
-    const user = await User.findOne({ where: { username, password } });
+    const user = await User.findOne({
+      where: { username, password },
+      attributes: User.customAttributes,
+    });
     if (!user) {
       res.status(400).send('User was not found.');
     } else {
@@ -44,22 +49,42 @@ router.post('/auth', async (req, res) => {
       const decoded = jwt.verify(token, 'shhhhh');
       const { userId } = decoded;
       const user = await User.findById(userId, {
+        attributes: { exclude: ['email', 'password'] },
         include: [{
           association: User.Likes,
         }, {
           association: User.Stocks,
-          include: [Item.User, Item.Likers, Item.Comments],
+          include: [{
+            association: Item.User,
+            attributes: User.customAttributes,
+          }, {
+            association: Item.Likers,
+            attributes: User.customAttributes,
+          }, {
+            association: Item.Comments,
+          }],
         }, {
           association: User.Followings,
+          attributes: User.customAttributes,
         }, {
           association: User.Followers,
+          attributes: User.customAttributes,
         }, {
           association: User.FollowingTags,
           include: [{
             association: Tag.Items,
-            include: [Item.User, Item.Likers, Item.Tags],
+            include: [{
+              association: Item.User,
+              attributes: User.customAttributes,
+            }, {
+              association: Item.Likers,
+              attributes: User.customAttributes,
+            }, {
+              association: Item.Tags,
+            }],
           }, {
             association: Tag.Followers,
+            attributes: User.customAttributes,
           }],
         }, {
           association: User.Notifications,
