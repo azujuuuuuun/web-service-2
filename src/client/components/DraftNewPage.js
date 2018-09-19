@@ -27,6 +27,7 @@ const DraftNewPage = (props: Props) => {
             value={title.input.value}
             onChange={title.input.onChange}
             placeholder="タイトル"
+            fullWidth
           />
         </div>
         <div>
@@ -34,6 +35,7 @@ const DraftNewPage = (props: Props) => {
             value={tagNames.input.value}
             onChange={tagNames.input.onChange}
             placeholder="プログラミング技術に関連するタグをスペース区切りで5つまで入力（例: Ruby Rails:4.2.0）"
+            fullWidth
           />
         </div>
         <div>
@@ -43,6 +45,7 @@ const DraftNewPage = (props: Props) => {
             placeholder="プログラミング知識をMarkdown法で書いて共有しよう"
             multiline
             rows="18"
+            fullWidth
           />
         </div>
         <div>
