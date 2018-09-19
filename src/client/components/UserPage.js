@@ -2,27 +2,23 @@
 
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import SettingsIcon from '@material-ui/icons/Settings';
-import Button from '@material-ui/core/Button';
-import LabelIcon from '@material-ui/icons/Label';
-import { Link } from 'react-router-dom';
-import Avatar from '@material-ui/core/Avatar';
 
 import GlobalHeader from '../containers/GlobalHeaderContainer';
 import NotFound from './NotFound';
+import FollowButton from '../containers/FollowButtonContainer';
+import UnfollowButton from '../containers/UnfollowButtonContainer';
+import EditProfileLink from './EditProfileLink';
+import FollowingTags from './FollowingTags';
+import TableList from './TableList';
 
 type Props = {
   user: any,
   isViewer: boolean,
   hasFollowed: boolean,
-  followRequest: any,
-  unfollowRequest: any,
 };
 
 const UserPage = (props: Props) => {
-  const {
-    user, isViewer, hasFollowed, followRequest, unfollowRequest,
-  } = props;
+  const { user, isViewer, hasFollowed } = props;
   return (
     <div>
       <GlobalHeader />
@@ -31,70 +27,23 @@ const UserPage = (props: Props) => {
       ) : (
         <Grid container justify="center" spacing={16}>
           <Grid item xs={3}>
-            {user.avatarImgSrc && <img src={user.avatarImgSrc} alt="アバター" />}
+            <img src={user.avatarImgSrc} alt="アバター" />
             <h3>{`@${user.username}`}</h3>
             {isViewer ? (
-              <Link to="/settings/profile">
-                <SettingsIcon />
-                <span>プロフィールを編集する</span>
-              </Link>
+              <EditProfileLink />
             ) : (
               <div>
-                <Button
-                  onClick={() => followRequest(user)}
-                  disabled={hasFollowed}
-                >
-                  フォロー
-                </Button>
-                <Button disabled={!hasFollowed}>
-                  フォロー中
-                </Button>
-                <Button
-                  onClick={() => unfollowRequest(user.id)}
-                  disabled={!hasFollowed}
-                >
-                  解除
-                </Button>
+                {!hasFollowed ? (
+                  <FollowButton user={user} />
+                ) : (
+                  <UnfollowButton userId={user.id} />
+                )}
               </div>
             )}
-            <div>
-              <div>
-                <LabelIcon />
-                <span>フォロー中のタグ</span>
-                <span>{user.followingTags.length}</span>
-              </div>
-              <div>
-                {user.followingTags.map(t => (
-                  <li key={t.id}>
-                    <Link to={`/tags/${t.name}`}>
-                      {t.name}
-                    </Link>
-                  </li>
-                ))}
-              </div>
-            </div>
+            <FollowingTags tags={user.followingTags} />
           </Grid>
           <Grid item xs={7}>
-            {user.items.map(i => (
-              <div key={i.id}>
-                <div>
-                  <Avatar src={i.user.avatarImgSrc} alt="アバター">
-                    {i.user.username}
-                  </Avatar>
-                </div>
-                <div>
-                  <Link to={`/${i.user.username}`}>
-                    {i.user.username}
-                  </Link>
-                  が{i.updatedAt}に投稿
-                </div>
-                <div>
-                  <Link to={`/${i.user.username}/items/${i.id}`}>
-                    {i.title}
-                  </Link>
-                </div>
-              </div>
-            ))}
+            <TableList items={user.items} />
           </Grid>
         </Grid>
       )}
