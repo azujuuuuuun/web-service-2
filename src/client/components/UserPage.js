@@ -20,15 +20,19 @@ type Props = {
 const UserPage = (props: Props) => {
   const { user, isViewer, hasFollowed } = props;
   return (
-    <div>
+    <div className="user-page">
       <GlobalHeader />
       {!user.username ? (
         <NotFound />
       ) : (
         <Grid container justify="center" spacing={16}>
           <Grid item xs={3}>
-            <img src={user.avatarImgSrc} alt="アバター" />
-            <h3>{`@${user.username}`}</h3>
+            <img
+              className="img"
+              src={user.avatarImgSrc}
+              alt="アバター"
+            />
+            <h3 className="username">{`@${user.username}`}</h3>
             {isViewer ? (
               <EditProfileLink />
             ) : (
