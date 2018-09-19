@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import styled from 'styled-components';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Link } from 'react-router-dom';
@@ -23,6 +24,10 @@ type Props = {
   closeDropdown: () => void,
 };
 
+const Header = styled.div`
+  margin-bottom: 65px;
+`;
+
 const GlobalHeader = (props: Props) => {
   const {
     viewer,
@@ -32,7 +37,7 @@ const GlobalHeader = (props: Props) => {
     closeDropdown,
   } = props;
   return (
-    <div className="header">
+    <Header>
       <AppBar>
         <Toolbar posithin="static">
           <Link to="/">Qiita</Link>
@@ -74,7 +79,7 @@ const GlobalHeader = (props: Props) => {
           </Menu>
         </Toolbar>
       </AppBar>
-    </div>
+    </Header>
   );
 };
 

@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import styled from 'styled-components';
 import LabelIcon from '@material-ui/icons/Label';
 import { Link } from 'react-router-dom';
 
@@ -8,26 +9,48 @@ type Props = {
   tags: Array<any>,
 };
 
+const InlineBlock = styled.div`
+  display: inline-block;
+`;
+
+const TagList = styled.ol`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const Tag = styled.li`
+  background-color: lightgray;
+  display: inline-block;
+  padding: 0 0.25rem;
+`;
+
+const StyledLink = styled(Link)`
+  color: black;
+  font-size: 0.75rem;
+  text-decoration: none;
+`;
+
 const FollowingTags = (props: Props) => {
   const { tags } = props;
   return (
-    <div className="following-tags">
-      <div className="heading">
-        <div className="label">
+    <div>
+      <div>
+        <InlineBlock>
           <LabelIcon />
           <span>フォロー中のタグ</span>
-        </div>
-        <div className="count">
+        </InlineBlock>
+        <InlineBlock>
           <span>{tags.length}</span>
-        </div>
+        </InlineBlock>
       </div>
-      <ol className="tag-list">
+      <TagList>
         {tags.map(t => (
-          <li key={t.id} className="tag">
-            <Link to={`/tags/${t.name}`}>{t.name}</Link>
-          </li>
+          <Tag key={t.id}>
+            <StyledLink to={`/tags/${t.name}`}>{t.name}</StyledLink>
+          </Tag>
         ))}
-      </ol>
+      </TagList>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
@@ -20,6 +21,32 @@ type Props = {
   viewer: any,
 };
 
+const Item = styled.div`
+  margin-top: 2rem;
+`;
+
+const AvatarWrapper = styled.div`
+  display: inline-block;
+  margin-right: 0.5rem;
+`;
+
+const Date = styled.span`
+  color: gray;
+`;
+
+const Title = styled.h1`
+  margin-bottom: 0.5rem;
+`;
+
+const StyledLink = styled(Link)`
+  color: black;
+  margin-right: 1rem;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 const ItemDetailPage = (props: Props) => {
   const {
     item,
@@ -28,33 +55,34 @@ const ItemDetailPage = (props: Props) => {
     viewer,
   } = props;
   return (
-    <div className="item-detail-page">
+    <div>
       <GlobalHeader />
       {!item.user ? (
         <NotFound />
       ) : (
         <Grid container justify="center">
           <Grid item xs={7}>
-            <div className="item">
+            <Item>
               <div>
-                <Avatar className="avatar" src={item.user.avatarImgSrc} alt="アバター">
-                  {item.user.username}
-                </Avatar>
-                <Link
-                  className="username"
+                <AvatarWrapper>
+                  <Avatar src={item.user.avatarImgSrc} alt="アバター">
+                    {item.user.username}
+                  </Avatar>
+                </AvatarWrapper>
+                <StyledLink
                   to={`/${item.user.username}`}
                 >
                   {`@${item.user.username}`}
-                </Link>
-                <span className="date">{item.updatedAt}</span>
+                </StyledLink>
+                <Date>{item.updatedAt}</Date>
               </div>
-              <h1 className="title">{item.title}</h1>
+              <Title>{item.title}</Title>
               <Tags tags={item.tags} />
               <LikeButton item={item} hasLiked={hasLiked} viewer={viewer} />
               <StockButton item={item} hasStocked={hasStocked} />
               <p>{item.body}</p>
-            </div>
-            <div className="comment">
+            </Item>
+            <div>
               <CommentList comments={item.comments} />
               <CommentForm viewer={viewer} />
             </div>
