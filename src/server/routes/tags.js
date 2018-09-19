@@ -11,7 +11,12 @@ const {
 
 router.get('/', async (req, res) => {
   try {
-    const tags = await Tag.findAll({ include: [Tag.Followers] });
+    const tags = await Tag.findAll({
+      include: [{
+        association: Tag.Followers,
+        attributes: User.customAttributes,
+      }],
+    });
     res.status(200).send({ tags });
   } catch (err) {
     console.log(err); // eslint-disable-line no-console
@@ -26,9 +31,18 @@ router.get('/:tagName', async (req, res) => {
       where: { name: tagName },
       include: [{
         association: Tag.Items,
-        include: [Item.User, Item.Likers, Item.Tags],
+        include: [{
+          association: Item.User,
+          attributes: User.customAttributes,
+        }, {
+          association: Item.Likers,
+          attributes: User.customAttributes,
+        }, {
+          association: Item.Tags,
+        }],
       }, {
         association: Tag.Followers,
+        attributes: User.customAttributes,
       }],
     });
     if (!tag) {

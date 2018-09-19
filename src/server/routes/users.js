@@ -12,9 +12,13 @@ router.get('/:username', async (req, res) => {
     const { username } = req.params;
     const user = await User.findOne({
       where: { username },
+      attributes: User.customAttributes,
       include: [{
         association: User.Items,
-        include: [Item.User],
+        include: [{
+          association: Item.User,
+          attributes: User.customAttributes,
+        }],
       }, {
         association: User.FollowingTags,
       }],
@@ -32,7 +36,9 @@ router.get('/:username', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const users = await User.findAll({});
+    const users = await User.findAll({
+      attributes: User.customAttributes,
+    });
     res.status(200).send({ users });
   } catch (err) {
     console.log(err); // eslint-disable-line no-console
