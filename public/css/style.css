@@ -39,39 +39,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* CommentList Component */
-.comment-list .comment {
-  margin-bottom: 1rem;
-}
-
-.comment-list .comment .header {
-  margin-bottom: 0.5rem;
-}
-
-.comment-list .comment .header .creator {
-  display: inline-block;
-}
-
-.comment-list .comment .header .creator .avatar {
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-
-.comment-list .comment .header .creator .username {
-  display: inline-block;
-}
-
-.comment-list .comment .header .metadata {
-  display: inline-block;
-}
-
-.comment-list .comment .text {
-  border: 1px solid lightgray;
-  border-radius: 3px;
-  margin: 0;
-  padding: 1rem;
-}
-
 /* CommentForm Component */
 .comment-form  .header {
   margin-bottom: 0;
