@@ -1,38 +1,3 @@
-/* TitleSection Component */
-.title-section .account {
-  display: inline-block;
-}
-
-.title-section .account .avatar {
-  display: inline-block;
-}
-
-.title-section .account .username {
-  display: inline-block;
-}
-
-.title-section .account .username a {
-  color: black;
-  font-size: 1.5rem;
-  text-decoration: none;
-}
-
-.title-section .account .username a:hover {
-  text-decoration: underline;
-}
-
-.title-section .separater {
-  font-size: 1.5rem;
-}
-
-.title-section .title {
-  display: inline-block;
-}
-
-.title-section .title span {
-  font-size: 1.5rem;
-}
-
 /* AccountPage Component */
 .account-page .account .icon .img {
   display: block;
