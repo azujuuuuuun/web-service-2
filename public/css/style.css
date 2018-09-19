@@ -39,16 +39,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* CommentForm Component */
-.comment-form  .header {
-  margin-bottom: 0;
-}
-
-.comment-form  .header .avatar {
-  display: inline-block;
-  margin-right: 0.5rem; 
-}
-
 /* UserPage Component */
 .user-page .img {
   margin-bottom: 0.75rem;
