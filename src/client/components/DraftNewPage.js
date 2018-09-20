@@ -15,9 +15,7 @@ type Props = {
 };
 
 const DraftNewPage = (props: Props) => {
-  const {
-    title, tagNames, body, handleSubmit,
-  } = props;
+  const { title, tagNames, body, handleSubmit } = props;
   return (
     <div>
       <GlobalHeader />
@@ -49,9 +47,7 @@ const DraftNewPage = (props: Props) => {
           />
         </div>
         <div>
-          <Button onClick={handleSubmit}>
-            Qiitaに投稿
-          </Button>
+          <Button onClick={handleSubmit}>Qiitaに投稿</Button>
         </div>
       </div>
     </div>

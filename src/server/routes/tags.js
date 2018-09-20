@@ -5,17 +5,17 @@ const db = require('../models');
 
 const router = express.Router();
 
-const {
-  Tag, Item, User, UserTag,
-} = db;
+const { Tag, Item, User, UserTag } = db;
 
 router.get('/', async (req, res) => {
   try {
     const tags = await Tag.findAll({
-      include: [{
-        association: Tag.Followers,
-        attributes: User.customAttributes,
-      }],
+      include: [
+        {
+          association: Tag.Followers,
+          attributes: User.customAttributes,
+        },
+      ],
     });
     res.status(200).send({ tags });
   } catch (err) {
@@ -29,21 +29,28 @@ router.get('/:tagName', async (req, res) => {
     const { tagName } = req.params;
     const tag = await Tag.findOne({
       where: { name: tagName },
-      include: [{
-        association: Tag.Items,
-        include: [{
-          association: Item.User,
+      include: [
+        {
+          association: Tag.Items,
+          include: [
+            {
+              association: Item.User,
+              attributes: User.customAttributes,
+            },
+            {
+              association: Item.Likers,
+              attributes: User.customAttributes,
+            },
+            {
+              association: Item.Tags,
+            },
+          ],
+        },
+        {
+          association: Tag.Followers,
           attributes: User.customAttributes,
-        }, {
-          association: Item.Likers,
-          attributes: User.customAttributes,
-        }, {
-          association: Item.Tags,
-        }],
-      }, {
-        association: Tag.Followers,
-        attributes: User.customAttributes,
-      }],
+        },
+      ],
     });
     if (!tag) {
       res.sendStatus(404);

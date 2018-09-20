@@ -50,17 +50,12 @@ const CommentList = (props: Props) => {
           <Header>
             <Creator>
               <AvatarWrapper>
-                <Avatar
-                  src={c.user.avatarImgSrc}
-                  alt="アバター"
-                >
+                <Avatar src={c.user.avatarImgSrc} alt="アバター">
                   {c.user.username}
                 </Avatar>
               </AvatarWrapper>
               <Username>
-                <Link to={`/${c.user.username}`}>
-                  {c.user.username}
-                </Link>
+                <Link to={`/${c.user.username}`}>{c.user.username}</Link>
               </Username>
             </Creator>
             <Metadata>{c.createdAt}</Metadata>

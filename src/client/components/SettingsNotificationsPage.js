@@ -22,11 +22,10 @@ const SettingsNotificationsPage = (props: Props) => {
       <div>
         <div>
           <div>
-            <Avatar src={viewer.avatarImgSrc}>
-              {viewer.username}
-            </Avatar>
+            <Avatar src={viewer.avatarImgSrc}>{viewer.username}</Avatar>
             <Link to={`/${viewer.username}`}>
-              {viewer.username}アカウント
+              {viewer.username}
+              アカウント
             </Link>
           </div>
           <div>

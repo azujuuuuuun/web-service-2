@@ -37,10 +37,7 @@ const UserPage = (props: Props) => {
       ) : (
         <Grid container justify="center" spacing={16}>
           <Grid item xs={3}>
-            <Img
-              src={user.avatarImgSrc}
-              alt="アバター"
-            />
+            <Img src={user.avatarImgSrc} alt="アバター" />
             <Username>{`@${user.username}`}</Username>
             {isViewer ? (
               <EditProfileLink />

@@ -7,12 +7,18 @@ const userDefaultState = {
   followingTags: [],
 };
 
-export const user = createReducer({
-  [fetchUserSucceeded.getType()]: (state, payload) => payload.user,
-}, userDefaultState);
+export const user = createReducer(
+  {
+    [fetchUserSucceeded.getType()]: (state, payload) => payload.user,
+  },
+  userDefaultState,
+);
 
 const usersDefaultState = [];
 
-export const users = createReducer({
-  [fetchUsersSucceeded.getType()]: (state, payload) => payload.users,
-}, usersDefaultState);
+export const users = createReducer(
+  {
+    [fetchUsersSucceeded.getType()]: (state, payload) => payload.users,
+  },
+  usersDefaultState,
+);

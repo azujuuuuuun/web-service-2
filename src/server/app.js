@@ -28,7 +28,10 @@ app.use(bodyParser.json());
 
 app.use('/dist', express.static(path.resolve(__dirname, '../../dist')));
 app.use('/public', express.static(path.resolve(__dirname, '../../public')));
-app.use('/public/images', express.static(path.resolve(__dirname, '../../uploads')));
+app.use(
+  '/public/images',
+  express.static(path.resolve(__dirname, '../../uploads')),
+);
 
 app.use('/', authRouter);
 app.use('/upload', uploadRouter);
@@ -37,7 +40,7 @@ app.use('/api/items', itemsRouter);
 app.use('/api/tags', tagsRouter);
 app.use('/api/notifications', notificationsRouter);
 
-const renderFullPage = (html, preloadedState) => (
+const renderFullPage = (html, preloadedState) =>
   `
     <!DOCTYPE html>
     <html>
@@ -51,23 +54,22 @@ const renderFullPage = (html, preloadedState) => (
       <body>
         <div id="root">${html}</div>
         <script>
-          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(
+            /</g,
+            '\\u003c',
+          )}
         </script>
         <script src="/dist/client.js"></script>
       </body>
     </html>
-    `
-);
+    `;
 
 const handleRender = (req, res) => {
   const store = createStore(rootReducer);
   const context = {};
   const html = renderToString(
     <Provider store={store}>
-      <StaticRouter
-        location={req.url}
-        context={context}
-      >
+      <StaticRouter location={req.url} context={context}>
         <Auth>
           <Routing />
         </Auth>

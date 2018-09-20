@@ -12,11 +12,7 @@ type Props = {
 };
 
 const SignupPage = (props: Props) => {
-  const {
-    username,
-    password,
-    handleSubmit,
-  } = props;
+  const { username, password, handleSubmit } = props;
   return (
     <div>
       <TextField
@@ -29,11 +25,7 @@ const SignupPage = (props: Props) => {
         onChange={password.input.onChange}
         placeholder="パスワード"
       />
-      <Button
-        onClick={handleSubmit}
-      >
-        サインアップ
-      </Button>
+      <Button onClick={handleSubmit}>サインアップ</Button>
     </div>
   );
 };

@@ -22,9 +22,9 @@ class ProfileImageUploadPageContainer extends React.Component<Props, State> { //
     this.state = { file: undefined };
   }
 
-  handleChangeFile = (e) => {
+  handleChangeFile = e => {
     this.setState({ file: e.target.files[0] });
-  }
+  };
 
   handleClickUploadImage = () => {
     const { uploadImageRequest } = this.props;
@@ -32,7 +32,7 @@ class ProfileImageUploadPageContainer extends React.Component<Props, State> { //
     const formData = new FormData();
     formData.append('avatar', file);
     uploadImageRequest(formData);
-  }
+  };
 
   render() {
     const { viewer } = this.props;

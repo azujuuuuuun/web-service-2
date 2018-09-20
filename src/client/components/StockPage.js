@@ -28,44 +28,46 @@ const StockPage = (props: Props) => {
           </h2>
         </Grid>
         <Grid item xs={7}>
-          {stocks.map(i => (
-            (i.user && i.likers && i.comments) ? (
-              <div key={i.id}>
-                <div>
-                  <Avatar src={i.user.avatarImgSrc} alt="アバター">
-                    {i.user.username}
-                  </Avatar>
-                </div>
-                <div>
+          {stocks.map(
+            i =>
+              i.user && i.likers && i.comments ? (
+                <div key={i.id}>
                   <div>
-                    <span>
-                      <Link to={`/${i.user.username}`}>
-                        {i.user.username}
+                    <Avatar src={i.user.avatarImgSrc} alt="アバター">
+                      {i.user.username}
+                    </Avatar>
+                  </div>
+                  <div>
+                    <div>
+                      <span>
+                        <Link to={`/${i.user.username}`}>
+                          {i.user.username}
+                        </Link>
+                        が{i.createdAt}
+                        に投稿
+                      </span>
+                    </div>
+                    <div>
+                      <Link to={`/${i.user.username}/items/${i.id}`}>
+                        {i.title}
                       </Link>
-                      が{i.createdAt}に投稿
-                    </span>
+                    </div>
                   </div>
                   <div>
-                    <Link to={`/${i.user.username}/items/${i.id}`}>
-                      {i.title}
-                    </Link>
+                    <div>
+                      <ThumbUpIcon />
+                      <span>{i.likers.length}</span>
+                    </div>
+                    <div>
+                      <ChatBubbleOutline />
+                      <span>{i.comments.length}</span>
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <div>
-                    <ThumbUpIcon />
-                    <span>{i.likers.length}</span>
-                  </div>
-                  <div>
-                    <ChatBubbleOutline />
-                    <span>{i.comments.length}</span>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <CircularProgress />
-            )
-          ))}
+              ) : (
+                <CircularProgress />
+              ),
+          )}
         </Grid>
       </Grid>
     </div>

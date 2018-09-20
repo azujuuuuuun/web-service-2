@@ -13,15 +13,20 @@ router.get('/:username', async (req, res) => {
     const user = await User.findOne({
       where: { username },
       attributes: User.customAttributes,
-      include: [{
-        association: User.Items,
-        include: [{
-          association: Item.User,
-          attributes: User.customAttributes,
-        }],
-      }, {
-        association: User.FollowingTags,
-      }],
+      include: [
+        {
+          association: User.Items,
+          include: [
+            {
+              association: Item.User,
+              attributes: User.customAttributes,
+            },
+          ],
+        },
+        {
+          association: User.FollowingTags,
+        },
+      ],
     });
     if (!user) {
       res.sendStatus(404);
@@ -65,9 +70,12 @@ router.put('/password', async (req, res) => {
         res.status(400).send('User was not found');
       } else {
         const { newPassword } = req.body;
-        const result = await User.update({ password: newPassword }, {
-          where: { id: userId },
-        });
+        const result = await User.update(
+          { password: newPassword },
+          {
+            where: { id: userId },
+          },
+        );
         res.status(200).send({ result });
       }
     } catch (err) {
@@ -90,9 +98,12 @@ router.put('/', async (req, res) => {
         res.status(400).send('User was not found');
       } else {
         const { payload } = req.body;
-        const row = await User.update({ ...payload }, {
-          where: { id: userId },
-        });
+        const row = await User.update(
+          { ...payload },
+          {
+            where: { id: userId },
+          },
+        );
         res.status(200).send({ row });
       }
     } catch (err) {

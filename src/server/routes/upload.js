@@ -26,10 +26,7 @@ router.post('/', upload.single('avatar'), async (req, res) => {
       } else {
         const { filename } = req.file;
         const avatarImgSrc = `/public/images/${filename}`;
-        await User.update(
-          { avatarImgSrc },
-          { where: { id: userId } },
-        );
+        await User.update({ avatarImgSrc }, { where: { id: userId } });
         res.status(200).send({ avatarImgSrc });
       }
     } catch (err) {
@@ -38,6 +35,5 @@ router.post('/', upload.single('avatar'), async (req, res) => {
     }
   }
 });
-
 
 module.exports = router;

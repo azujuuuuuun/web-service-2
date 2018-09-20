@@ -19,7 +19,7 @@ const Header = styled.div`
 
 const AvatarWrapper = styled.div`
   display: inline-block;
-  margin-right: 0.5rem; 
+  margin-right: 0.5rem;
 `;
 
 const CommentForm = (props: Props) => {

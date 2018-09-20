@@ -22,10 +22,7 @@ class ItemDetailPageContainer extends React.Component<Props, void> { // eslint-d
   }
 
   render() {
-    const {
-      item,
-      viewer,
-    } = this.props;
+    const { item, viewer } = this.props;
     const hasLiked = viewer.likes.some(i => i.id === item.id);
     const hasStocked = viewer.stocks.some(i => i.id === item.id);
     return (

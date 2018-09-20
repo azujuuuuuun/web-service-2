@@ -10,9 +10,7 @@ type Props = {
 
 const UnfollowButton = (props: Props) => {
   const { unfollowRequest, userId } = props;
-  return (
-    <Button onClick={() => unfollowRequest(userId)}>解除</Button>
-  );
+  return <Button onClick={() => unfollowRequest(userId)}>解除</Button>;
 };
 
 export default UnfollowButton;

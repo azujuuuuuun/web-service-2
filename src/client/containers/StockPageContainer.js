@@ -26,6 +26,4 @@ const mapStateToProps = state => ({
   viewer: state.viewer,
 });
 
-export default connect(
-  mapStateToProps,
-)(StockPageContainer);
+export default connect(mapStateToProps)(StockPageContainer);

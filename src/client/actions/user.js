@@ -16,8 +16,12 @@ export const updateUserRequested = createAction('UPDATE_USER_REQUESTED');
 export const updateUserSucceeded = createAction('UPDATE_USER_SUCCEEDED');
 export const updateUserFailed = createAction('UPDATE_USER_FAILED');
 
-export const updatePasswordRequested = createAction('UPDATE_PASSWORD_REQUESTED');
-export const updatePasswordSucceeded = createAction('UPDATE_PASSWORD_SUCCEEDED');
+export const updatePasswordRequested = createAction(
+  'UPDATE_PASSWORD_REQUESTED',
+);
+export const updatePasswordSucceeded = createAction(
+  'UPDATE_PASSWORD_SUCCEEDED',
+);
 export const updatePasswordFailed = createAction('UPDATE_PASSWORD_FAILED');
 
 export const followRequested = createAction('FOLLOW_REQUESTED');

@@ -89,9 +89,7 @@ const ProfileImageUploadPage = (props: Props) => {
                   新しい画像をアップロードする
                 </UploadButton>
                 <CancelButton>
-                  <StyledLink to="/settings/account">
-                    キャンセル
-                  </StyledLink>
+                  <StyledLink to="/settings/account">キャンセル</StyledLink>
                 </CancelButton>
               </div>
             </div>

@@ -48,12 +48,7 @@ const StyledLink = styled(Link)`
 `;
 
 const ItemDetailPage = (props: Props) => {
-  const {
-    item,
-    hasLiked,
-    hasStocked,
-    viewer,
-  } = props;
+  const { item, hasLiked, hasStocked, viewer } = props;
   return (
     <div>
       <GlobalHeader />
@@ -69,9 +64,7 @@ const ItemDetailPage = (props: Props) => {
                     {item.user.username}
                   </Avatar>
                 </AvatarWrapper>
-                <StyledLink
-                  to={`/${item.user.username}`}
-                >
+                <StyledLink to={`/${item.user.username}`}>
                   {`@${item.user.username}`}
                 </StyledLink>
                 <Date>{item.updatedAt}</Date>

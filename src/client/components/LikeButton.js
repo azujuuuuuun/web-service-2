@@ -14,16 +14,11 @@ type Props = {
 };
 
 const LikeButton = (props: Props) => {
-  const {
-    hasLiked, handleClickLike, item, handleClickUnlike,
-  } = props;
+  const { hasLiked, handleClickLike, item, handleClickUnlike } = props;
   return !hasLiked ? (
     <Tooltip title="いいね">
       <span>
-        <Button
-          onClick={() => handleClickLike(item)}
-          disabled={hasLiked}
-        >
+        <Button onClick={() => handleClickLike(item)} disabled={hasLiked}>
           <ThumbUpIcon />
           <span>{item.likers.length}</span>
         </Button>
@@ -32,10 +27,7 @@ const LikeButton = (props: Props) => {
   ) : (
     <Tooltip title="いいね済み">
       <span>
-        <Button
-          onClick={() => handleClickUnlike(item.id)}
-          disabled={!hasLiked}
-        >
+        <Button onClick={() => handleClickUnlike(item.id)} disabled={!hasLiked}>
           <CheckIcon />
           <span>{item.likers.length}</span>
         </Button>

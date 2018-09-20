@@ -1,24 +1,34 @@
 // @flow
 
 import axios from 'axios';
-import {
-  all,
-  call,
-  fork,
-  put,
-  takeEvery,
-} from 'redux-saga/effects';
+import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import type { Saga } from 'redux-saga';
 
 import {
-  postItemRequested, postItemSucceeded, postItemFailed,
-  fetchItemRequested, fetchItemSucceeded, fetchItemFailed,
-  fetchItemsRequested, fetchItemsSucceeded, fetchItemsFailed,
-  likeRequested, likeSucceeded, likeFailed,
-  unlikeRequested, unlikeSucceeded, unlikeFailed,
-  stockRequested, stockSucceeded, stockFailed,
-  unstockRequested, unstockSucceeded, unstockFailed,
-  postCommentRequested, postCommentSucceeded, postCommentFailed,
+  postItemRequested,
+  postItemSucceeded,
+  postItemFailed,
+  fetchItemRequested,
+  fetchItemSucceeded,
+  fetchItemFailed,
+  fetchItemsRequested,
+  fetchItemsSucceeded,
+  fetchItemsFailed,
+  likeRequested,
+  likeSucceeded,
+  likeFailed,
+  unlikeRequested,
+  unlikeSucceeded,
+  unlikeFailed,
+  stockRequested,
+  stockSucceeded,
+  stockFailed,
+  unstockRequested,
+  unstockSucceeded,
+  unstockFailed,
+  postCommentRequested,
+  postCommentSucceeded,
+  postCommentFailed,
 } from '../actions';
 import history from '../history';
 
@@ -49,7 +59,7 @@ const Api = {
       return { err };
     }
   },
-  fetchItem: async (itemId) => {
+  fetchItem: async itemId => {
     try {
       const res = await axios({
         method: 'get',
@@ -77,7 +87,7 @@ const Api = {
       return { err };
     }
   },
-  like: async (itemId) => {
+  like: async itemId => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };
@@ -97,7 +107,7 @@ const Api = {
       return { err };
     }
   },
-  unlike: async (itemId) => {
+  unlike: async itemId => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };
@@ -116,7 +126,7 @@ const Api = {
       return { err };
     }
   },
-  stock: async (itemId) => {
+  stock: async itemId => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };
@@ -136,7 +146,7 @@ const Api = {
       return { err };
     }
   },
-  unstock: async (itemId) => {
+  unstock: async itemId => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };

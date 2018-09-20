@@ -51,7 +51,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Date = styled.div`
-  color: gray; 
+  color: gray;
   display: inline-block;
 `;
 
@@ -62,15 +62,11 @@ const ItemList = (props: Props) => {
       {items.map(i => (
         <Item key={i.id}>
           <AvatarWrapper>
-            <Avatar src={i.user.avatarImgSrc}>
-              {i.user.username}
-            </Avatar>
+            <Avatar src={i.user.avatarImgSrc}>{i.user.username}</Avatar>
           </AvatarWrapper>
           <Content>
             <div>
-              <Title to={`/${i.user.username}/items/${i.id}`}>
-                {i.title}
-              </Title>
+              <Title to={`/${i.user.username}/items/${i.id}`}>{i.title}</Title>
             </div>
             <div>
               <User>

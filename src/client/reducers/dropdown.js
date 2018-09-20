@@ -9,15 +9,20 @@ const defaultState = {
   isOpen: false,
 };
 
-const dropdown = createReducer({
-  [openDropdown.getType()]: (state, payload) => Object.assign({}, state, {
-    kind: payload.kind,
-    isOpen: true,
-  }),
-  [closeDropdown.getType()]: state => Object.assign({}, state, {
-    kind: '',
-    isOpen: false,
-  }),
-}, defaultState);
+const dropdown = createReducer(
+  {
+    [openDropdown.getType()]: (state, payload) =>
+      Object.assign({}, state, {
+        kind: payload.kind,
+        isOpen: true,
+      }),
+    [closeDropdown.getType()]: state =>
+      Object.assign({}, state, {
+        kind: '',
+        isOpen: false,
+      }),
+  },
+  defaultState,
+);
 
 export default dropdown;

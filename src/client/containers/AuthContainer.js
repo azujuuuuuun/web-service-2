@@ -32,5 +32,8 @@ const mapDispatchToProps = (dispatch: any) => ({
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
 )(AuthContainer);

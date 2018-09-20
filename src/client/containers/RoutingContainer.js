@@ -35,10 +35,16 @@ class RoutingContainer extends React.Component<Props, void> { // eslint-disable-
         <Route path="/users" component={UsersPage} />
         <Route path="/stock" component={StockPage} />
         <Route exact path="/settings/account" component={AccountPage} />
-        <Route path="/settings/account/custom_image" component={ProfileImageUploadPage} />
+        <Route
+          path="/settings/account/custom_image"
+          component={ProfileImageUploadPage}
+        />
         <Route path="/settings/profile" component={SettingsProfilePage} />
         <Route path="/settings/password" component={SettingsPasswordPage} />
-        <Route path="/settings/notifications" component={SettingsNotificationsPage} />
+        <Route
+          path="/settings/notifications"
+          component={SettingsNotificationsPage}
+        />
         <Route path="/drafts/new" component={DraftNewPage} />
         <Route path="/tags" component={TagsPage} />
         <Route path="/tags/:tagName" component={TagPage} />
