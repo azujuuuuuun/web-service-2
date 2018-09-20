@@ -1,21 +1,17 @@
 // @flow
 
 import axios from 'axios';
-import {
-  all,
-  call,
-  fork,
-  put,
-  takeEvery,
-} from 'redux-saga/effects';
+import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import type { Saga } from 'redux-saga';
 
 import {
-  updateNotificationsRequested, updateNotificationsSucceeded, updateNotificationsFailed,
+  updateNotificationsRequested,
+  updateNotificationsSucceeded,
+  updateNotificationsFailed,
 } from '../actions';
 
 const Api = {
-  updateNotifications: async (notificationKinds) => {
+  updateNotifications: async notificationKinds => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };
@@ -43,7 +39,10 @@ const Api = {
 
 function* updateNotifications(action): Saga<void> {
   try {
-    const { err, notifications } = yield call(Api.updateNotifications, action.payload);
+    const { err, notifications } = yield call(
+      Api.updateNotifications,
+      action.payload,
+    );
     if (err) {
       yield put(updateNotificationsFailed({ message: err.message }));
     } else if (notifications) {

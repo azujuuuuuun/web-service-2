@@ -20,13 +20,8 @@ const EmailSetting = (props: Props) => {
         <span>メールアドレス設定</span>
       </div>
       <div>メールアドレス</div>
-      <TextField
-        value={email.input.value}
-        onChange={email.input.onChange}
-      />
-      <Button onClick={handleSubmit}>
-        保存する
-      </Button>
+      <TextField value={email.input.value} onChange={email.input.onChange} />
+      <Button onClick={handleSubmit}>保存する</Button>
     </div>
   );
 };

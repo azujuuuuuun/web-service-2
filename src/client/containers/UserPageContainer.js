@@ -27,11 +27,7 @@ class UserPageContainer extends React.Component<Props, void> { // eslint-disable
     const hasFollowed = viewer.followings.some(f => f.id === user.id);
     return (
       <Loading>
-        <UserPage
-          user={user}
-          isViewer={isViewer}
-          hasFollowed={hasFollowed}
-        />
+        <UserPage user={user} isViewer={isViewer} hasFollowed={hasFollowed} />
       </Loading>
     );
   }

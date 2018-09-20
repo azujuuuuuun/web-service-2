@@ -49,13 +49,12 @@ const TitleSection = (props: Props) => {
     <div>
       <Account>
         <AvatarWrapper>
-          <Avatar src={avatarImgSrc}>
-            {username}
-          </Avatar>
+          <Avatar src={avatarImgSrc}>{username}</Avatar>
         </AvatarWrapper>
         <Username>
           <StyledLink to={`/${username}`}>
-            {username}アカウント
+            {username}
+            アカウント
           </StyledLink>
         </Username>
       </Account>

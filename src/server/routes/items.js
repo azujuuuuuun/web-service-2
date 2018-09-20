@@ -5,9 +5,7 @@ const db = require('../models');
 
 const router = express.Router();
 
-const {
-  sequelize, User, Item, Tag, ItemTag, Comment, Like, Stock,
-} = db;
+const { sequelize, User, Item, Tag, ItemTag, Comment, Like, Stock } = db;
 
 router.post('/', async (req, res) => {
   const { token } = req.headers;
@@ -30,7 +28,7 @@ router.post('/', async (req, res) => {
           { transaction },
         );
         const tags = await Promise.all(
-          tagNames.split(' ').map(async (t) => {
+          tagNames.split(' ').map(async t => {
             const [tag] = await Tag.findOrCreate({
               where: { name: t },
               defaults: { name: t },
@@ -39,12 +37,11 @@ router.post('/', async (req, res) => {
             return tag;
           }),
         );
-        await Promise.all(tags.map(t => (
-          ItemTag.create(
-            { itemId: item.id, tagId: t.id },
-            { transaction },
-          )
-        )));
+        await Promise.all(
+          tags.map(t =>
+            ItemTag.create({ itemId: item.id, tagId: t.id }, { transaction }),
+          ),
+        );
         item.dataValues.user = user;
         item.dataValues.tags = tags;
         await transaction.commit();
@@ -61,10 +58,12 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const items = await Item.findAll({
-      include: [{
-        association: Item.User,
-        attributes: User.customAttributes,
-      }],
+      include: [
+        {
+          association: Item.User,
+          attributes: User.customAttributes,
+        },
+      ],
     });
     res.status(200).send({ items });
   } catch (err) {
@@ -78,21 +77,28 @@ router.get('/:itemId', async (req, res) => {
     const { itemId } = req.params;
     const item = await Item.findOne({
       where: { id: itemId },
-      include: [{
-        association: Item.User,
-        attributes: User.customAttributes,
-      }, {
-        association: Item.Tags,
-      }, {
-        association: Item.Likers,
-        attributes: User.customAttributes,
-      }, {
-        association: Item.Comments,
-        include: [{
-          association: Comment.User,
+      include: [
+        {
+          association: Item.User,
           attributes: User.customAttributes,
-        }],
-      }],
+        },
+        {
+          association: Item.Tags,
+        },
+        {
+          association: Item.Likers,
+          attributes: User.customAttributes,
+        },
+        {
+          association: Item.Comments,
+          include: [
+            {
+              association: Comment.User,
+              attributes: User.customAttributes,
+            },
+          ],
+        },
+      ],
     });
     if (!item) {
       res.sendStatus(404);

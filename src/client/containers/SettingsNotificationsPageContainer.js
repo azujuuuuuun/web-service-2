@@ -25,6 +25,4 @@ const mapStateToProps = state => ({
   viewer: state.viewer,
 });
 
-export default connect(
-  mapStateToProps,
-)(SettingsNotificationsPageContainer);
+export default connect(mapStateToProps)(SettingsNotificationsPageContainer);

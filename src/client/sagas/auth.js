@@ -1,20 +1,22 @@
 // @flow
 
 import axios from 'axios';
-import {
-  all,
-  call,
-  fork,
-  put,
-  takeEvery,
-} from 'redux-saga/effects';
+import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import type { Saga } from 'redux-saga';
 
 import {
-  signupRequested, signupSucceeded, signupFailed,
-  loginRequested, loginSucceeded, loginFailed,
-  logoutRequested, logoutSucceeded, logoutFailed,
-  authenticateRequested, authenticateSucceeded, authenticateFailed,
+  signupRequested,
+  signupSucceeded,
+  signupFailed,
+  loginRequested,
+  loginSucceeded,
+  loginFailed,
+  logoutRequested,
+  logoutSucceeded,
+  logoutFailed,
+  authenticateRequested,
+  authenticateSucceeded,
+  authenticateFailed,
 } from '../actions';
 import history from '../history';
 
@@ -82,7 +84,11 @@ const Api = {
 
 function* signup(action): Saga<void> {
   try {
-    const { err, user } = yield call(Api.signup, action.payload.username, action.payload.password);
+    const { err, user } = yield call(
+      Api.signup,
+      action.payload.username,
+      action.payload.password,
+    );
     if (err) {
       yield put(signupRequested({ message: err.message }));
     } else if (user) {
@@ -96,7 +102,11 @@ function* signup(action): Saga<void> {
 
 function* login(action): Saga<void> {
   try {
-    const { err, user } = yield call(Api.login, action.payload.username, action.payload.password);
+    const { err, user } = yield call(
+      Api.login,
+      action.payload.username,
+      action.payload.password,
+    );
     if (err) {
       yield put(loginFailed({ message: err.message }));
     } else if (user) {

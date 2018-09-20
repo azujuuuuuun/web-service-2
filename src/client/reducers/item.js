@@ -18,26 +18,29 @@ const itemDefaultState = {
 };
 const itemsDefaultState = [];
 
-export const item = createReducer({
-  [postItemSucceeded.getType()]: (state, payload) => payload.item,
-  [fetchItemSucceeded.getType()]: (state, payload) => payload.item,
-  [likeSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
-    likers: [
-      payload.user,
-      ...state.likers,
-    ],
-  }),
-  [unlikeSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
-    likers: state.likers.filter(u => u.id !== payload.userId),
-  }),
-  [postCommentSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
-    comments: [
-      payload.comment,
-      ...state.comments,
-    ],
-  }),
-}, itemDefaultState);
+export const item = createReducer(
+  {
+    [postItemSucceeded.getType()]: (state, payload) => payload.item,
+    [fetchItemSucceeded.getType()]: (state, payload) => payload.item,
+    [likeSucceeded.getType()]: (state, payload) =>
+      Object.assign({}, state, {
+        likers: [payload.user, ...state.likers],
+      }),
+    [unlikeSucceeded.getType()]: (state, payload) =>
+      Object.assign({}, state, {
+        likers: state.likers.filter(u => u.id !== payload.userId),
+      }),
+    [postCommentSucceeded.getType()]: (state, payload) =>
+      Object.assign({}, state, {
+        comments: [payload.comment, ...state.comments],
+      }),
+  },
+  itemDefaultState,
+);
 
-export const items = createReducer({
-  [fetchItemsSucceeded.getType()]: (state, payload) => payload.items,
-}, itemsDefaultState);
+export const items = createReducer(
+  {
+    [fetchItemsSucceeded.getType()]: (state, payload) => payload.items,
+  },
+  itemsDefaultState,
+);

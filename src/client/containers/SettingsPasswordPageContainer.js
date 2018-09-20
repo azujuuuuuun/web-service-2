@@ -22,10 +22,7 @@ class SettingsPasswordContainer extends React.Component<Props, void> { // eslint
     return (
       <Loading>
         <Fields
-          names={[
-            'currentPassword',
-            'newPassword',
-          ]}
+          names={['currentPassword', 'newPassword']}
           component={SettingProfilePage}
           viewer={viewer}
           handleSubmit={handleSubmit}
@@ -43,9 +40,12 @@ const onSubmit = (values, dispatch) => {
   const { currentPassword, newPassword } = values;
   const currentHashDigest = Base64.stringify(sha256(currentPassword));
   const newHashDigest = Base64.stringify(sha256(newPassword));
-  dispatch(updatePasswordRequested({
-    currentPassword: currentHashDigest, newPassword: newHashDigest,
-  }));
+  dispatch(
+    updatePasswordRequested({
+      currentPassword: currentHashDigest,
+      newPassword: newHashDigest,
+    }),
+  );
 };
 
 export default compose(

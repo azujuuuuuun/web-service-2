@@ -10,9 +10,7 @@ type Props = {
 
 const FollowButton = (props: Props) => {
   const { followRequest, user } = props;
-  return (
-    <Button onClick={() => followRequest(user)}>フォロー</Button>
-  );
+  return <Button onClick={() => followRequest(user)}>フォロー</Button>;
 };
 
 export default FollowButton;

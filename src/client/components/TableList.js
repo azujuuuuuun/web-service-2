@@ -16,7 +16,7 @@ const Item = styled.div`
 
 const AvatarWrapper = styled.div`
   display: inline-block;
-  margin-right: 0.5rem; 
+  margin-right: 0.5rem;
 `;
 
 const Body = styled.div`
@@ -47,7 +47,8 @@ const TableList = (props: Props) => {
               <StyledLink to={`/${i.user.username}`}>
                 {i.user.username}
               </StyledLink>
-              が{i.updatedAt}に投稿
+              が{i.updatedAt}
+              に投稿
             </Info>
             <div>
               <StyledLink to={`/${i.user.username}/items/${i.id}`}>

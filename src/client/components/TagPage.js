@@ -17,9 +17,7 @@ type Props = {
 };
 
 const TagPage = (props: Props) => {
-  const {
-    tag, hasFollowed, handleClickFollow, handleClickUnfollow,
-  } = props;
+  const { tag, hasFollowed, handleClickFollow, handleClickUnfollow } = props;
   return (
     <div>
       <GlobalHeader />
@@ -44,19 +42,13 @@ const TagPage = (props: Props) => {
             {hasFollowed ? (
               <div>
                 <Button>フォロー中</Button>
-                <Button
-                  onClick={() => handleClickUnfollow(tag.id)}
-                >
+                <Button onClick={() => handleClickUnfollow(tag.id)}>
                   解除
                 </Button>
               </div>
             ) : (
               <div>
-                <Button
-                  onClick={() => handleClickFollow(tag)}
-                >
-                  フォロー
-                </Button>
+                <Button onClick={() => handleClickFollow(tag)}>フォロー</Button>
               </div>
             )}
           </div>
@@ -67,9 +59,7 @@ const TagPage = (props: Props) => {
                 <div>
                   <div>
                     <span>by</span>
-                    <Link to={`/${i.user.username}`}>
-                      {i.user.username}
-                    </Link>
+                    <Link to={`/${i.user.username}`}>{i.user.username}</Link>
                   </div>
                   <div>
                     <ThumbUpIcon />

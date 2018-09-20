@@ -14,21 +14,26 @@ const tagDefaultState = {
   followers: [],
 };
 
-export const tag = createReducer({
-  [fetchTagSucceeded.getType()]: (state, payload) => payload.tag,
-  [followTagSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
-    followers: [
-      payload.user,
-      ...state.followers,
-    ],
-  }),
-  [unfollowTagSucceeded.getType()]: (state, payload) => Object.assign({}, state, {
-    followers: state.followers.filter(u => u.id !== payload.userId),
-  }),
-}, tagDefaultState);
+export const tag = createReducer(
+  {
+    [fetchTagSucceeded.getType()]: (state, payload) => payload.tag,
+    [followTagSucceeded.getType()]: (state, payload) =>
+      Object.assign({}, state, {
+        followers: [payload.user, ...state.followers],
+      }),
+    [unfollowTagSucceeded.getType()]: (state, payload) =>
+      Object.assign({}, state, {
+        followers: state.followers.filter(u => u.id !== payload.userId),
+      }),
+  },
+  tagDefaultState,
+);
 
 const tagsDefaultState = [];
 
-export const tags = createReducer({
-  [fetchTagsSucceeded.getType()]: (state, payload) => payload.tags,
-}, tagsDefaultState);
+export const tags = createReducer(
+  {
+    [fetchTagsSucceeded.getType()]: (state, payload) => payload.tags,
+  },
+  tagsDefaultState,
+);

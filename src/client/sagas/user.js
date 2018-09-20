@@ -1,28 +1,36 @@
 // @flow
 
 import axios from 'axios';
-import {
-  all,
-  call,
-  fork,
-  put,
-  takeEvery,
-} from 'redux-saga/effects';
+import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import type { Saga } from 'redux-saga';
 
 import {
-  fetchUserRequested, fetchUserSucceeded, fetchUserFailed,
-  fetchUsersRequested, fetchUsersSucceeded, fetchUsersFailed,
-  updateUserRequested, updateUserSucceeded, updateUserFailed,
-  updatePasswordRequested, updatePasswordSucceeded, updatePasswordFailed,
-  followRequested, followSucceeded, followFailed,
-  unfollowRequested, unfollowSucceeded, unfollowFailed,
-  uploadImageRequested, uploadImageSucceeded, uploadImageFailed,
+  fetchUserRequested,
+  fetchUserSucceeded,
+  fetchUserFailed,
+  fetchUsersRequested,
+  fetchUsersSucceeded,
+  fetchUsersFailed,
+  updateUserRequested,
+  updateUserSucceeded,
+  updateUserFailed,
+  updatePasswordRequested,
+  updatePasswordSucceeded,
+  updatePasswordFailed,
+  followRequested,
+  followSucceeded,
+  followFailed,
+  unfollowRequested,
+  unfollowSucceeded,
+  unfollowFailed,
+  uploadImageRequested,
+  uploadImageSucceeded,
+  uploadImageFailed,
 } from '../actions';
 import history from '../history';
 
 const Api = {
-  fetchUser: async (username) => {
+  fetchUser: async username => {
     try {
       const res = await axios({
         method: 'get',
@@ -50,7 +58,7 @@ const Api = {
       return { err };
     }
   },
-  updateUser: async (payload) => {
+  updateUser: async payload => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };
@@ -97,7 +105,7 @@ const Api = {
       return { err };
     }
   },
-  follow: async (followedId) => {
+  follow: async followedId => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };
@@ -117,7 +125,7 @@ const Api = {
       return { err };
     }
   },
-  unfollow: async (followedId) => {
+  unfollow: async followedId => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };
@@ -136,7 +144,7 @@ const Api = {
       return { err };
     }
   },
-  uploadImage: async (image) => {
+  uploadImage: async image => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };
@@ -203,7 +211,11 @@ function* updateUser(action): Saga<void> {
 function* updatePassword(action): Saga<void> {
   try {
     const { currentPassword, newPassword } = action.payload;
-    const { err, data } = yield call(Api.updatePassword, currentPassword, newPassword);
+    const { err, data } = yield call(
+      Api.updatePassword,
+      currentPassword,
+      newPassword,
+    );
     if (err) {
       yield put(updatePasswordFailed({ message: err.message }));
     } else if (data) {
@@ -244,7 +256,10 @@ function* unfollow(action): Saga<void> {
 
 function* unloadImage(action): Saga<void> {
   try {
-    const { err, avatarImgSrc } = yield call(Api.uploadImage, action.payload.image);
+    const { err, avatarImgSrc } = yield call(
+      Api.uploadImage,
+      action.payload.image,
+    );
     if (err) {
       yield put(uploadImageFailed({ message: err.message }));
     } else if (avatarImgSrc) {

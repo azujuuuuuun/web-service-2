@@ -106,9 +106,7 @@ const SettingsProfilePage = (props: Props) => {
               />
             </InputWrapper>
             <div>
-              <Button onClick={handleSubmit}>
-                更新する
-              </Button>
+              <Button onClick={handleSubmit}>更新する</Button>
             </div>
           </div>
         </Grid>

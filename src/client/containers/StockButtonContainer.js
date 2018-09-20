@@ -8,9 +8,7 @@ import { stockRequested, unstockRequested } from '../actions';
 
 class StockButtonContainer extends React.Component<any, void> { // eslint-disable-line
   render() {
-    const {
-      item, stockRequest, unstockRequest, hasStocked,
-    } = this.props;
+    const { item, stockRequest, unstockRequest, hasStocked } = this.props;
     return (
       <StockButton
         item={item}

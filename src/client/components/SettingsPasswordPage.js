@@ -18,12 +18,7 @@ type Props = {
 };
 
 const SettingsProfilePage = (props: Props) => {
-  const {
-    viewer,
-    currentPassword,
-    newPassword,
-    handleSubmit,
-  } = props;
+  const { viewer, currentPassword, newPassword, handleSubmit } = props;
   return (
     <div>
       <GlobalHeader />
@@ -31,11 +26,10 @@ const SettingsProfilePage = (props: Props) => {
       <div>
         <div>
           <div>
-            <Avatar src={viewer.avatarImgSrc}>
-              {viewer.username}
-            </Avatar>
+            <Avatar src={viewer.avatarImgSrc}>{viewer.username}</Avatar>
             <Link to={`/${viewer.username}`}>
-              {viewer.username}アカウント
+              {viewer.username}
+              アカウント
             </Link>
           </div>
           <div>
@@ -57,9 +51,7 @@ const SettingsProfilePage = (props: Props) => {
           />
         </div>
         <div>
-          <Button onClick={handleSubmit}>
-            更新する
-          </Button>
+          <Button onClick={handleSubmit}>更新する</Button>
         </div>
       </div>
     </div>

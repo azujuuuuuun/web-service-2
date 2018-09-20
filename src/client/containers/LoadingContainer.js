@@ -12,11 +12,7 @@ type Props = {
 class LoadingContainer extends React.Component<Props, void> { // eslint-disable-line
   render() {
     const { loading, children } = this.props;
-    return loading ? (
-      <LinearProgress />
-    ) : (
-      children
-    );
+    return loading ? <LinearProgress /> : children;
   }
 }
 
@@ -24,6 +20,4 @@ const mapStateToProps = state => ({
   loading: state.loading,
 });
 
-export default connect(
-  mapStateToProps,
-)(LoadingContainer);
+export default connect(mapStateToProps)(LoadingContainer);

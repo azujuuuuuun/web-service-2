@@ -14,9 +14,7 @@ type Props = {
 };
 
 const StockButton = (props: Props) => {
-  const {
-    hasStocked, handleClickStock, item, handleClickUnstock,
-  } = props;
+  const { hasStocked, handleClickStock, item, handleClickUnstock } = props;
   return !hasStocked ? (
     <Tooltip title="ストック">
       <span>

@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 import Loading from './LoadingContainer';
 import TagPage from '../components/TagPage';
 import {
-  fetchTagRequested, followTagRequested, unfollowTagRequested,
+  fetchTagRequested,
+  followTagRequested,
+  unfollowTagRequested,
 } from '../actions';
 
 type Props = {
@@ -25,15 +27,15 @@ class TagPageContainer extends React.Component<Props, void> { // eslint-disable-
     fetchTagRequest(tagName);
   }
 
-  handleClickFollow = (tag) => {
+  handleClickFollow = tag => {
     const { followTagRequest, viewer } = this.props;
     followTagRequest(tag, viewer);
-  }
+  };
 
-  handleClickUnfollow = (tagId) => {
+  handleClickUnfollow = tagId => {
     const { unfollowTagRequest, viewer } = this.props;
     unfollowTagRequest(tagId, viewer.id);
-  }
+  };
 
   render() {
     const { viewer, tag } = this.props;
@@ -58,12 +60,20 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch: any) => ({
   fetchTagRequest: tagName => dispatch(fetchTagRequested({ tagName })),
-  followTagRequest: (tag, user) => dispatch(followTagRequested({
-    tag, user,
-  })),
-  unfollowTagRequest: (tagId, userId) => dispatch(unfollowTagRequested({
-    tagId, userId,
-  })),
+  followTagRequest: (tag, user) =>
+    dispatch(
+      followTagRequested({
+        tag,
+        user,
+      }),
+    ),
+  unfollowTagRequest: (tagId, userId) =>
+    dispatch(
+      unfollowTagRequested({
+        tagId,
+        userId,
+      }),
+    ),
 });
 
 export default connect(

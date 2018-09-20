@@ -1,24 +1,26 @@
 // @flow
 
 import axios from 'axios';
-import {
-  all,
-  call,
-  fork,
-  put,
-  takeEvery,
-} from 'redux-saga/effects';
+import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import type { Saga } from 'redux-saga';
 
 import {
-  fetchTagRequested, fetchTagSucceeded, fetchTagFailed,
-  fetchTagsRequested, fetchTagsSucceeded, fetchTagsFailed,
-  followTagRequested, followTagSucceeded, followTagFailed,
-  unfollowTagRequested, unfollowTagSucceeded, unfollowTagFailed,
+  fetchTagRequested,
+  fetchTagSucceeded,
+  fetchTagFailed,
+  fetchTagsRequested,
+  fetchTagsSucceeded,
+  fetchTagsFailed,
+  followTagRequested,
+  followTagSucceeded,
+  followTagFailed,
+  unfollowTagRequested,
+  unfollowTagSucceeded,
+  unfollowTagFailed,
 } from '../actions';
 
 const Api = {
-  fetchTag: async (tagName) => {
+  fetchTag: async tagName => {
     try {
       const res = await axios({
         method: 'get',
@@ -46,7 +48,7 @@ const Api = {
       return { err };
     }
   },
-  followTag: async (tagId) => {
+  followTag: async tagId => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };
@@ -66,7 +68,7 @@ const Api = {
       return { err };
     }
   },
-  unfollowTag: async (tagId) => {
+  unfollowTag: async tagId => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };
