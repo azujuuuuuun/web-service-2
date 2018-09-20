@@ -70,6 +70,8 @@
     "flow-bin": "^0.80.0",
     "flow-typed": "^2.5.1",
     "hard-source-webpack-plugin": "^0.12.0",
+    "husky": "^1.0.0-rc.14",
+    "lint-staged": "^7.3.0",
     "nodemon": "^1.18.3",
     "prettier": "^1.14.3",
     "sequelize-cli": "^4.0.0",
