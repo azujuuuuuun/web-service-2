@@ -11,7 +11,9 @@
     "delete-data": "yarn run sequelize db:seed:undo:all",
     "drop-tables": "yarn run sequelize db:migrate:undo:all",
     "reset-data": "yarn run delete-data && yarn run drop-tables && yarn run create-tables && yarn run insert-data",
-    "watch": "./node_modules/.bin/nodemon"
+    "watch": "./node_modules/.bin/nodemon",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@material-ui/core": "^1.5.1",
