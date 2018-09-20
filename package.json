@@ -43,6 +43,7 @@
     "typeface-roboto": "^0.0.54"
   },
   "devDependencies": {
+    "@storybook/cli": "^3.4.11",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
