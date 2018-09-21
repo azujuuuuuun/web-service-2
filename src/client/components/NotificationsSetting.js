@@ -4,9 +4,12 @@ import React from 'react';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
+import { Fields, reduxForm } from 'redux-form';
 import type { FieldProps, FormProps } from 'redux-form';
 
-type Props = {
+import { updateNotificationsRequested } from '../actions';
+
+type PProps = {
   newsMail: FieldProps,
   stockListMail: FieldProps,
   editRequestMail: FieldProps,
@@ -24,7 +27,11 @@ type Props = {
   handleSubmit: FormProps,
 };
 
-const NotificationsSetting = (props: Props) => {
+type CProps = {
+  handleSubmit: any,
+};
+
+const NotificationsSetting = (props: PProps) => {
   const {
     newsMail,
     stockListMail,
@@ -177,4 +184,39 @@ const NotificationsSetting = (props: Props) => {
   );
 };
 
-export default NotificationsSetting;
+class NotificationsSettingContainer extends React.Component<CProps> { // eslint-disable-line
+  render() {
+    const { handleSubmit } = this.props;
+    return (
+      <Fields
+        names={[
+          'newsMail',
+          'stockListMail',
+          'editRequestMail',
+          'editRequestWeb',
+          'commentMail',
+          'commentWeb',
+          'mentionMail',
+          'mentionWeb',
+          'linkWeb',
+          'likeWeb',
+          'stockWeb',
+          'followMail',
+          'followWeb',
+          'twitterWeb',
+        ]}
+        component={NotificationsSetting}
+        handleSubmit={handleSubmit}
+      />
+    );
+  }
+}
+
+const onSubmit = (values, dispatch) => {
+  dispatch(updateNotificationsRequested(values));
+};
+
+export default reduxForm({
+  form: 'email',
+  onSubmit,
+})(NotificationsSettingContainer);
