@@ -22,9 +22,9 @@ router.post('/', async (req, res) => {
       if (!user) {
         res.status(400).send('User was not found');
       } else {
-        const { title, tagNames, body } = req.body;
+        const { title, tagNames, body, status } = req.body;
         const item = await Item.create(
-          { title, body, userId },
+          { title, body, status, userId },
           { transaction },
         );
         const tags = await Promise.all(
