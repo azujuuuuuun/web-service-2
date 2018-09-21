@@ -2,12 +2,15 @@
 
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import { Fields, reduxForm } from 'redux-form';
 import type { FieldProps, FormProps } from 'redux-form';
 
 import GlobalHeader from './GlobalHeader';
 import EditorSubmit from '../containers/EditorSubmitContainer';
+import Loading from './Loading';
+import { postItemRequested } from '../actions';
 
-type Props = {
+type PProps = {
   title: FieldProps,
   tagNames: FieldProps,
   body: FieldProps,
@@ -15,7 +18,11 @@ type Props = {
   handleSubmit: FormProps,
 };
 
-const DraftNewPage = (props: Props) => {
+type CProps = {
+  handleSubmit: any,
+};
+
+const DraftNewPage = (props: PProps) => {
   const { title, tagNames, body, status, handleSubmit } = props;
   return (
     <div>
@@ -53,4 +60,28 @@ const DraftNewPage = (props: Props) => {
   );
 };
 
-export default DraftNewPage;
+class DraftNewPageContainer extends React.Component<CProps, void> { // eslint-disable-line
+  render() {
+    const { handleSubmit } = this.props;
+    return (
+      <Loading>
+        <Fields
+          names={['title', 'tagNames', 'body', 'status']}
+          component={DraftNewPage}
+          handleSubmit={handleSubmit}
+        />
+      </Loading>
+    );
+  }
+}
+
+const onSubmit = (values, dispatch) => {
+  const { title, tagNames, body, status } = values;
+  dispatch(postItemRequested({ title, tagNames, body, status }));
+};
+
+export default reduxForm({
+  form: 'item',
+  initialValues: { status: 'posted' },
+  onSubmit,
+})(DraftNewPageContainer);
