@@ -4,9 +4,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import GlobalHeader from './GlobalHeader';
-import Loading from './Loading';
-import { fetchTagsRequested } from '../actions';
+import GlobalHeader from '../../components/GlobalHeader';
+import Loading from '../../components/Loading';
+import { fetchTagsRequested } from '../../actions';
 
 type PProps = {
   tags: Array<any>,
