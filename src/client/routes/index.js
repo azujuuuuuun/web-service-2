@@ -21,7 +21,7 @@ import TagsPage from '../components/TagsPage';
 import TagPage from '../components/TagPage';
 import IndexPage from './index/index';
 import SignupPage from './signup';
-import LoginPage from '../components/LoginPage';
+import LoginPage from './login';
 
 type Props = {
   isLoggedIn: boolean,
