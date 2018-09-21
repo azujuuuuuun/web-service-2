@@ -33,7 +33,7 @@ import {
 import history from '../history';
 
 const Api = {
-  postItem: async (title, tagNames, body) => {
+  postItem: async (title, tagNames, body, status) => {
     const token = localStorage.getItem('token');
     if (!token) {
       return { err: 'Token was not found.' };
@@ -49,6 +49,7 @@ const Api = {
           title,
           tagNames,
           body,
+          status,
         },
       });
       const { data } = res;
@@ -193,8 +194,14 @@ const Api = {
 
 function* postItem(action): Saga<void> {
   try {
-    const { title, tagNames, body } = action.payload;
-    const { err, item } = yield call(Api.postItem, title, tagNames, body);
+    const { title, tagNames, body, status } = action.payload;
+    const { err, item } = yield call(
+      Api.postItem,
+      title,
+      tagNames,
+      body,
+      status,
+    );
     if (err) {
       yield put(postItemFailed({ message: err.message }));
     } else if (item) {
