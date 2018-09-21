@@ -17,7 +17,7 @@ class DraftNewPageContainer extends React.Component<Props, void> { // eslint-dis
     return (
       <Loading>
         <Fields
-          names={['title', 'tagNames', 'body']}
+          names={['title', 'tagNames', 'body', 'status']}
           component={DraftNewPage}
           handleSubmit={handleSubmit}
         />
@@ -27,11 +27,12 @@ class DraftNewPageContainer extends React.Component<Props, void> { // eslint-dis
 }
 
 const onSubmit = (values, dispatch) => {
-  const { title, tagNames, body } = values;
-  dispatch(postItemRequested({ title, tagNames, body }));
+  const { title, tagNames, body, status } = values;
+  dispatch(postItemRequested({ title, tagNames, body, status }));
 };
 
 export default reduxForm({
   form: 'item',
+  initialValues: { status: 'posted' },
   onSubmit,
 })(DraftNewPageContainer);

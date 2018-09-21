@@ -2,20 +2,21 @@
 
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import type { FieldProps, FormProps } from 'redux-form';
 
 import GlobalHeader from '../containers/GlobalHeaderContainer';
+import EditorSubmit from '../containers/EditorSubmitContainer';
 
 type Props = {
   title: FieldProps,
   tagNames: FieldProps,
   body: FieldProps,
+  status: FieldProps,
   handleSubmit: FormProps,
 };
 
 const DraftNewPage = (props: Props) => {
-  const { title, tagNames, body, handleSubmit } = props;
+  const { title, tagNames, body, status, handleSubmit } = props;
   return (
     <div>
       <GlobalHeader />
@@ -46,9 +47,7 @@ const DraftNewPage = (props: Props) => {
             fullWidth
           />
         </div>
-        <div>
-          <Button onClick={handleSubmit}>Qiitaに投稿</Button>
-        </div>
+        <EditorSubmit status={status} handleSubmit={handleSubmit} />
       </div>
     </div>
   );
