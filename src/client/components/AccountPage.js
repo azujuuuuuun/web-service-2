@@ -4,7 +4,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import Loading from './Loading';
 import GlobalHeader from './GlobalHeader';
 import SettingsMenu from './SettingsMenu';
 import TitleSection from './TitleSection';
@@ -29,31 +31,37 @@ const StyledLink = styled(Link)`
 const AccountPage = (props: Props) => {
   const { viewer } = props;
   return (
-    <div>
-      <GlobalHeader />
-      <Grid container justify="center" spacing={16}>
-        <Grid item xs={3}>
-          <SettingsMenu />
-        </Grid>
-        <Grid item xs={7}>
-          <div>
-            <TitleSection
-              avatarImgSrc={viewer.avatarImgSrc}
-              username={viewer.username}
-              title="アカウント"
-            />
+    <Loading>
+      <div>
+        <GlobalHeader />
+        <Grid container justify="center" spacing={16}>
+          <Grid item xs={3}>
+            <SettingsMenu />
+          </Grid>
+          <Grid item xs={7}>
             <div>
-              <div>アイコン</div>
-              <Img src={viewer.avatarImgSrc} alt="アバター" />
-              <StyledLink to="/settings/account/custom_image">
-                画像アップロード
-              </StyledLink>
+              <TitleSection
+                avatarImgSrc={viewer.avatarImgSrc}
+                username={viewer.username}
+                title="アカウント"
+              />
+              <div>
+                <div>アイコン</div>
+                <Img src={viewer.avatarImgSrc} alt="アバター" />
+                <StyledLink to="/settings/account/custom_image">
+                  画像アップロード
+                </StyledLink>
+              </div>
             </div>
-          </div>
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
+      </div>
+    </Loading>
   );
 };
 
-export default AccountPage;
+const mapStateToProps = state => ({
+  viewer: state.viewer,
+});
+
+export default connect(mapStateToProps)(AccountPage);
