@@ -6,10 +6,10 @@ import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Loading from './Loading';
-import GlobalHeader from './GlobalHeader';
-import SettingsMenu from './SettingsMenu';
-import TitleSection from './TitleSection';
+import Loading from '../../components/Loading';
+import GlobalHeader from '../../components/GlobalHeader';
+import SettingsMenu from '../../components/SettingsMenu';
+import TitleSection from '../../components/TitleSection';
 
 type Props = {
   viewer: any,

@@ -9,7 +9,7 @@ import AppPage from './app';
 import UserPage from '../components/UserPage';
 import UsersPage from './users';
 import StockPage from './stock';
-import AccountPage from '../components/AccountPage';
+import AccountPage from './settings-account';
 import ProfileImageUploadPage from '../components/ProfileImageUploadPage';
 import SettingsProfilePage from '../components/SettingsProfilePage';
 import SettingsPasswordPage from '../components/SettingsPasswordPage';
