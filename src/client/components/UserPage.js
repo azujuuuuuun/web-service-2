@@ -3,6 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
 
 import GlobalHeader from './GlobalHeader';
 import NotFound from './NotFound';
@@ -11,11 +12,20 @@ import UnfollowButton from '../containers/UnfollowButtonContainer';
 import EditProfileLink from './EditProfileLink';
 import FollowingTags from './FollowingTags';
 import TableList from './TableList';
+import Loading from './Loading';
+import { fetchUserRequested } from '../actions';
 
-type Props = {
+type PProps = {
   user: any,
   isViewer: boolean,
   hasFollowed: boolean,
+};
+
+type CProps = {
+  match: any,
+  viewer: any,
+  user: any,
+  fetchUserRequest: any,
 };
 
 const Img = styled.img`
@@ -27,7 +37,7 @@ const Username = styled.h3`
   margin: 0;
 `;
 
-const UserPage = (props: Props) => {
+const UserPage = (props: PProps) => {
   const { user, isViewer, hasFollowed } = props;
   return (
     <div>
@@ -61,4 +71,35 @@ const UserPage = (props: Props) => {
   );
 };
 
-export default UserPage;
+class UserPageContainer extends React.Component<CProps> { // eslint-disable-line
+  componentDidMount() {
+    const { match, fetchUserRequest } = this.props;
+    const { username } = match.params;
+    fetchUserRequest(username);
+  }
+
+  render() {
+    const { viewer, user } = this.props;
+    const isViewer = viewer.id === user.id;
+    const hasFollowed = viewer.followings.some(f => f.id === user.id);
+    return (
+      <Loading>
+        <UserPage user={user} isViewer={isViewer} hasFollowed={hasFollowed} />
+      </Loading>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  viewer: state.viewer,
+  user: state.user,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchUserRequest: username => dispatch(fetchUserRequested({ username })),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserPageContainer);
