@@ -16,7 +16,7 @@ import SettingsPasswordPage from './SettingsPasswordPageContainer';
 import SettingsNotificationsPage from './SettingsNotificationsPageContainer';
 import DraftNewPage from '../components/DraftNewPage';
 import DraftsPage from '../components/DraftsPage';
-import ItemDetailPage from './ItemDetailPageContainer';
+import ItemDetailPage from '../components/ItemDetailPage';
 import TagsPage from './TagsPageContainer';
 import TagPage from './TagPageContainer';
 import IndexPage from '../components/IndexPage';
