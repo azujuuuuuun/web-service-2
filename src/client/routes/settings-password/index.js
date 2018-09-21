@@ -12,10 +12,10 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import type { FieldProps, FormProps } from 'redux-form';
 
-import GlobalHeader from './GlobalHeader';
-import SettingsMenu from './SettingsMenu';
-import Loading from './Loading';
-import { updatePasswordRequested } from '../actions';
+import GlobalHeader from '../../components/GlobalHeader';
+import SettingsMenu from '../../components/SettingsMenu';
+import Loading from '../../components/Loading';
+import { updatePasswordRequested } from '../../actions';
 
 type PProps = {
   viewer: any,

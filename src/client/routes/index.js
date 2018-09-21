@@ -12,7 +12,7 @@ import StockPage from './stock';
 import AccountPage from './settings-account';
 import ProfileImageUploadPage from '../components/ProfileImageUploadPage';
 import SettingsProfilePage from './settings-profile';
-import SettingsPasswordPage from '../components/SettingsPasswordPage';
+import SettingsPasswordPage from './settings-password';
 import SettingsNotificationsPage from '../components/SettingsNotificationsPage';
 import DraftNewPage from '../components/DraftNewPage';
 import DraftsPage from './drafts';
