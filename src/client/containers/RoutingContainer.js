@@ -13,7 +13,7 @@ import AccountPage from '../components/AccountPage';
 import ProfileImageUploadPage from '../components/ProfileImageUploadPage';
 import SettingsProfilePage from './SettingsProfilePageContainer';
 import SettingsPasswordPage from './SettingsPasswordPageContainer';
-import SettingsNotificationsPage from './SettingsNotificationsPageContainer';
+import SettingsNotificationsPage from '../components/SettingsNotificationsPage';
 import DraftNewPage from '../components/DraftNewPage';
 import DraftsPage from '../components/DraftsPage';
 import ItemDetailPage from '../components/ItemDetailPage';
