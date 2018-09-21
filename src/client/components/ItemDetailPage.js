@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import GlobalHeader from './GlobalHeader';
 import NotFound from './NotFound';
@@ -13,12 +14,21 @@ import LikeButton from '../containers/LikeButtonContainer';
 import StockButton from '../containers/StockButtonContainer';
 import CommentList from './CommentList';
 import CommentForm from '../containers/CommentFormContainer';
+import Loading from './Loading';
+import { fetchItemRequested } from '../actions';
 
-type Props = {
+type PProps = {
   item: any,
   hasLiked: boolean,
   hasStocked: boolean,
   viewer: any,
+};
+
+type CProps = {
+  item: any,
+  viewer: any,
+  fetchItemRequest: any,
+  match: any,
 };
 
 const Item = styled.div`
@@ -47,7 +57,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const ItemDetailPage = (props: Props) => {
+const ItemDetailPage = (props: PProps) => {
   const { item, hasLiked, hasStocked, viewer } = props;
   return (
     <div>
@@ -86,4 +96,40 @@ const ItemDetailPage = (props: Props) => {
   );
 };
 
-export default ItemDetailPage;
+class ItemDetailPageContainer extends React.Component<CProps, void> { // eslint-disable-line
+  componentDidMount() {
+    const { match, fetchItemRequest } = this.props;
+    const { itemId } = match.params;
+    fetchItemRequest(itemId);
+  }
+
+  render() {
+    const { item, viewer } = this.props;
+    const hasLiked = viewer.likes.some(i => i.id === item.id);
+    const hasStocked = viewer.stocks.some(i => i.id === item.id);
+    return (
+      <Loading>
+        <ItemDetailPage
+          item={item}
+          hasLiked={hasLiked}
+          hasStocked={hasStocked}
+          viewer={viewer}
+        />
+      </Loading>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  item: state.item,
+  viewer: state.viewer,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchItemRequest: itemId => dispatch(fetchItemRequested({ itemId })),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ItemDetailPageContainer);
