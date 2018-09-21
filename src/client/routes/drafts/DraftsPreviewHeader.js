@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
 
-import { deleteItemRequested } from '../actions';
+import { deleteItemRequested } from '../../actions';
 
 type Props = {
   itemId: string,
