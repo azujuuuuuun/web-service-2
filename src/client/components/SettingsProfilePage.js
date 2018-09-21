@@ -5,13 +5,18 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { Fields, reduxForm } from 'redux-form';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import type { FieldProps, FormProps } from 'redux-form';
 
 import GlobalHeader from './GlobalHeader';
 import SettingsMenu from './SettingsMenu';
 import TitleSection from './TitleSection';
+import Loading from './Loading';
+import { updateUserRequested } from '../actions';
 
-type Props = {
+type PProps = {
   viewer: any,
   firstName: FieldProps,
   lastName: FieldProps,
@@ -20,6 +25,11 @@ type Props = {
   location: FieldProps,
   description: FieldProps,
   handleSubmit: FormProps,
+};
+
+type CProps = {
+  viewer: any,
+  handleSubmit: any,
 };
 
 const InputWrapper = styled.div`
@@ -31,7 +41,7 @@ const FirstName = styled.div`
   margin-right: 1rem;
 `;
 
-const SettingsProfilePage = (props: Props) => {
+const SettingsProfilePage = (props: PProps) => {
   const {
     viewer,
     firstName,
@@ -115,4 +125,41 @@ const SettingsProfilePage = (props: Props) => {
   );
 };
 
-export default SettingsProfilePage;
+class SettingsProfileContainer extends React.Component<CProps, void> { // eslint-disable-line
+  render() {
+    const { viewer, handleSubmit } = this.props;
+    return (
+      <Loading>
+        <Fields
+          names={[
+            'firstName',
+            'lastName',
+            'web',
+            'organization',
+            'location',
+            'description',
+          ]}
+          component={SettingsProfilePage}
+          viewer={viewer}
+          handleSubmit={handleSubmit}
+        />
+      </Loading>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  viewer: state.viewer,
+});
+
+const onSubmit = (values, dispatch) => {
+  dispatch(updateUserRequested(values));
+};
+
+export default compose(
+  connect(mapStateToProps),
+  reduxForm({
+    form: 'profile',
+    onSubmit,
+  }),
+)(SettingsProfileContainer);
