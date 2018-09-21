@@ -10,7 +10,11 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import { connect } from 'react-redux';
+import { change } from 'redux-form';
 import type { FieldProps, FormProps } from 'redux-form';
+
+import { openDropdown, closeDropdown } from '../actions';
 
 type Props = {
   status: FieldProps,
@@ -70,4 +74,18 @@ const EditorSubmit = (props: Props) => {
   );
 };
 
-export default EditorSubmit;
+const mapStateToProps = state => ({
+  dropdown: state.dropdown,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  openEditorSubmitDropdown: () =>
+    dispatch(openDropdown({ kind: 'editorSubmit' })),
+  closeEditorSubmitDropdown: () => dispatch(closeDropdown()),
+  changeStatus: (status: string) => dispatch(change('item', 'status', status)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(EditorSubmit);
