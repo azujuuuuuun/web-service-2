@@ -55,6 +55,10 @@ router.post('/auth', async (req, res) => {
         attributes: { exclude: ['email', 'password'] },
         include: [
           {
+            association: User.Items,
+            include: [Item.Tags],
+          },
+          {
             association: User.Likes,
           },
           {
