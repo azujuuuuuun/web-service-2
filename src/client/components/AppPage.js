@@ -2,15 +2,23 @@
 
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
 
 import GlobalHeader from './GlobalHeader';
 import ItemList from './ItemList';
+import Loading from './Loading';
+import { fetchItemsRequested } from '../actions';
 
-type Props = {
+type PProps = {
   items: Array<any>,
 };
 
-const AppPage = (props: Props) => {
+type CProps = {
+  fetchItemsRequest: any,
+  items: Array<any>,
+};
+
+const AppPage = (props: PProps) => {
   const { items } = props;
   return (
     <div>
@@ -24,4 +32,31 @@ const AppPage = (props: Props) => {
   );
 };
 
-export default AppPage;
+class AppPageContainer extends React.Component<CProps, void> { // eslint-disable-line
+  componentDidMount() {
+    const { fetchItemsRequest } = this.props;
+    fetchItemsRequest();
+  }
+
+  render() {
+    const { items } = this.props;
+    return (
+      <Loading>
+        <AppPage items={items} />
+      </Loading>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  items: state.items,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchItemsRequest: () => dispatch(fetchItemsRequested()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AppPageContainer);
