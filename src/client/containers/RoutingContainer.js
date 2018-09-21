@@ -6,7 +6,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import AppPage from '../components/AppPage';
-import UserPage from './UserPageContainer';
+import UserPage from '../components/UserPage';
 import UsersPage from './UsersPageContainer';
 import StockPage from '../components/StockPage';
 import AccountPage from '../components/AccountPage';
