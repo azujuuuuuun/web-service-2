@@ -5,10 +5,10 @@ import TextField from '@material-ui/core/TextField';
 import { Fields, reduxForm } from 'redux-form';
 import type { FieldProps, FormProps } from 'redux-form';
 
-import GlobalHeader from './GlobalHeader';
+import GlobalHeader from '../../components/GlobalHeader';
 import EditorSubmit from './EditorSubmit';
-import Loading from './Loading';
-import { postItemRequested } from '../actions';
+import Loading from '../../components/Loading';
+import { postItemRequested } from '../../actions';
 
 type PProps = {
   title: FieldProps,

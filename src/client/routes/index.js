@@ -14,7 +14,7 @@ import ProfileImageUploadPage from '../components/ProfileImageUploadPage';
 import SettingsProfilePage from './settings-profile';
 import SettingsPasswordPage from './settings-password';
 import SettingsNotificationsPage from './settings-notifications';
-import DraftNewPage from '../components/DraftNewPage';
+import DraftNewPage from './draft-new';
 import DraftsPage from './drafts';
 import ItemDetailPage from '../components/ItemDetailPage';
 import TagsPage from '../components/TagsPage';

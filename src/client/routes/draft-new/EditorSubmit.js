@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import { change } from 'redux-form';
 import type { FieldProps, FormProps } from 'redux-form';
 
-import { openDropdown, closeDropdown } from '../actions';
+import { openDropdown, closeDropdown } from '../../actions';
 
 type Props = {
   status: FieldProps,
