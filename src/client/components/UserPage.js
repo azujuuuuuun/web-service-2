@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 import GlobalHeader from './GlobalHeader';
 import NotFound from './NotFound';
-import FollowButton from '../containers/FollowButtonContainer';
+import FollowButton from './FollowButton';
 import UnfollowButton from '../containers/UnfollowButtonContainer';
 import EditProfileLink from './EditProfileLink';
 import FollowingTags from './FollowingTags';
