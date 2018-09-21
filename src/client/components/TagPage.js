@@ -5,18 +5,34 @@ import Button from '@material-ui/core/Button';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import LabelIcon from '@material-ui/icons/Label';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import GlobalHeader from './GlobalHeader';
 import NotFound from './NotFound';
+import Loading from './Loading';
+import {
+  fetchTagRequested,
+  followTagRequested,
+  unfollowTagRequested,
+} from '../actions';
 
-type Props = {
+type PProps = {
   tag: any,
   hasFollowed: boolean,
   handleClickFollow: any,
   handleClickUnfollow: any,
 };
 
-const TagPage = (props: Props) => {
+type CProps = {
+  viewer: any,
+  tag: any,
+  match: any,
+  fetchTagRequest: any,
+  followTagRequest: any,
+  unfollowTagRequest: any,
+};
+
+const TagPage = (props: PProps) => {
   const { tag, hasFollowed, handleClickFollow, handleClickUnfollow } = props;
   return (
     <div>
@@ -83,4 +99,63 @@ const TagPage = (props: Props) => {
   );
 };
 
-export default TagPage;
+class TagPageContainer extends React.Component<CProps, void> { // eslint-disable-line
+  componentDidMount() {
+    const { match, fetchTagRequest } = this.props;
+    const { tagName } = match.params;
+    fetchTagRequest(tagName);
+  }
+
+  handleClickFollow = tag => {
+    const { followTagRequest, viewer } = this.props;
+    followTagRequest(tag, viewer);
+  };
+
+  handleClickUnfollow = tagId => {
+    const { unfollowTagRequest, viewer } = this.props;
+    unfollowTagRequest(tagId, viewer.id);
+  };
+
+  render() {
+    const { viewer, tag } = this.props;
+    const hasFollowed = viewer.followingTags.some(t => t.id === tag.id);
+    return (
+      <Loading>
+        <TagPage
+          tag={tag}
+          hasFollowed={hasFollowed}
+          handleClickFollow={this.handleClickFollow}
+          handleClickUnfollow={this.handleClickUnfollow}
+        />
+      </Loading>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  viewer: state.viewer,
+  tag: state.tag,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchTagRequest: tagName => dispatch(fetchTagRequested({ tagName })),
+  followTagRequest: (tag, user) =>
+    dispatch(
+      followTagRequested({
+        tag,
+        user,
+      }),
+    ),
+  unfollowTagRequest: (tagId, userId) =>
+    dispatch(
+      unfollowTagRequested({
+        tagId,
+        userId,
+      }),
+    ),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(TagPageContainer);
