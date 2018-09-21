@@ -5,11 +5,11 @@ import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import GlobalHeader from './GlobalHeader';
-import SettingsMenu from './SettingsMenu';
+import GlobalHeader from '../../components/GlobalHeader';
+import SettingsMenu from '../../components/SettingsMenu';
 import EmailSetting from './EmailSetting';
 import NotificationsSetting from './NotificationsSetting';
-import Loading from './Loading';
+import Loading from '../../components/Loading';
 
 type Props = {
   viewer: any,

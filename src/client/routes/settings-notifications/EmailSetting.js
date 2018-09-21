@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import { Fields, reduxForm } from 'redux-form';
 import type { FieldProps, FormProps } from 'redux-form';
 
-import { updateUserRequested } from '../actions';
+import { updateUserRequested } from '../../actions';
 
 type PProps = {
   email: FieldProps,
