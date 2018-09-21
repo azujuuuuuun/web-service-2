@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import GlobalHeader from './GlobalHeader';
 import SettingsMenu from './SettingsMenu';
 import EmailSetting from './EmailSetting';
-import NotificationsSetting from '../containers/NotificationsSettingContainer';
+import NotificationsSetting from './NotificationsSetting';
 import Loading from './Loading';
 
 type Props = {
