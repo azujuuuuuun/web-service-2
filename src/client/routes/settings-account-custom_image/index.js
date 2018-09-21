@@ -8,11 +8,11 @@ import ImageIcon from '@material-ui/icons/Image';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 
-import GlobalHeader from './GlobalHeader';
-import SettingsMenu from './SettingsMenu';
-import TitleSection from './TitleSection';
-import Loading from './Loading';
-import { uploadImageRequested } from '../actions';
+import GlobalHeader from '../../components/GlobalHeader';
+import SettingsMenu from '../../components/SettingsMenu';
+import TitleSection from '../../components/TitleSection';
+import Loading from '../../components/Loading';
+import { uploadImageRequested } from '../../actions';
 
 type PProps = {
   viewer: any,

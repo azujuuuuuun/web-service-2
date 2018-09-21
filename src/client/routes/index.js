@@ -10,7 +10,7 @@ import UserPage from '../components/UserPage';
 import UsersPage from './users';
 import StockPage from './stock';
 import AccountPage from './settings-account';
-import ProfileImageUploadPage from '../components/ProfileImageUploadPage';
+import ProfileImageUploadPage from './settings-account-custom_image';
 import SettingsProfilePage from './settings-profile';
 import SettingsPasswordPage from './settings-password';
 import SettingsNotificationsPage from './settings-notifications';
