@@ -20,7 +20,7 @@ import ItemDetailPage from '../components/ItemDetailPage';
 import TagsPage from './TagsPageContainer';
 import TagPage from './TagPageContainer';
 import IndexPage from '../components/IndexPage';
-import SignupPage from './SignupPageContainer';
+import SignupPage from '../components/SignupPage';
 import LoginPage from '../components/LoginPage';
 
 type Props = {
