@@ -12,6 +12,10 @@ export const fetchItemRequested = createAction('FETCH_ITEM_REQUESTED');
 export const fetchItemSucceeded = createAction('FETCH_ITEM_SUCCEEDED');
 export const fetchItemFailed = createAction('FETCH_ITEM_FAILED');
 
+export const deleteItemRequested = createAction('DELETE_ITEM_REQUESTED');
+export const deleteItemSucceeded = createAction('DELETE_ITEM_SUCCEEDED');
+export const deleteItemFailed = createAction('DELETE_ITEM_FAILED');
+
 export const fetchItemsRequested = createAction('FETCH_ITEMS_REQUESTED');
 export const fetchItemsSucceeded = createAction('FETCH_ITEMS_SUCCEEDED');
 export const fetchItemsFailed = createAction('FETCH_ITEMS_FAILED');
