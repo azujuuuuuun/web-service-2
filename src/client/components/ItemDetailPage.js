@@ -11,7 +11,7 @@ import GlobalHeader from './GlobalHeader';
 import NotFound from './NotFound';
 import Tags from './Tags';
 import LikeButton from './LikeButton';
-import StockButton from '../containers/StockButtonContainer';
+import StockButton from './StockButton';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 import Loading from './Loading';
