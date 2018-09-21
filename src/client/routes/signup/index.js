@@ -8,8 +8,8 @@ import sha256 from 'crypto-js/sha256';
 import Base64 from 'crypto-js/enc-base64';
 import type { FieldProps, FormProps } from 'redux-form';
 
-import Loading from './Loading';
-import { signupRequested } from '../actions';
+import Loading from '../../components/Loading';
+import { signupRequested } from '../../actions';
 
 type PProps = {
   username: FieldProps,
