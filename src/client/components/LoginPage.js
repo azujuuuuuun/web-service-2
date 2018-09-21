@@ -3,15 +3,25 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { Fields, reduxForm } from 'redux-form';
+import sha256 from 'crypto-js/sha256';
+import Base64 from 'crypto-js/enc-base64';
 import type { FieldProps, FormProps } from 'redux-form';
 
-type Props = {
+import Loading from './Loading';
+import { loginRequested } from '../actions';
+
+type PProps = {
   username: FieldProps,
   password: FieldProps,
   handleSubmit: FormProps,
 };
 
-const LoginPage = (props: Props) => {
+type CProps = {
+  handleSubmit: any,
+};
+
+const LoginPage = (props: PProps) => {
   const { username, password, handleSubmit } = props;
   return (
     <div>
@@ -30,4 +40,28 @@ const LoginPage = (props: Props) => {
   );
 };
 
-export default LoginPage;
+class LoginPageContainer extends React.Component<CProps> { // eslint-disable-line
+  render() {
+    const { handleSubmit } = this.props;
+    return (
+      <Loading>
+        <Fields
+          names={['username', 'password']}
+          component={LoginPage}
+          handleSubmit={handleSubmit}
+        />
+      </Loading>
+    );
+  }
+}
+
+const onSubmit = (values, dispatch) => {
+  const { username, password } = values;
+  const hashDigest = Base64.stringify(sha256(password));
+  dispatch(loginRequested({ username, password: hashDigest }));
+};
+
+export default reduxForm({
+  form: 'login',
+  onSubmit,
+})(LoginPageContainer);
