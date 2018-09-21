@@ -13,7 +13,7 @@ import Tags from './Tags';
 import LikeButton from '../containers/LikeButtonContainer';
 import StockButton from '../containers/StockButtonContainer';
 import CommentList from './CommentList';
-import CommentForm from '../containers/CommentFormContainer';
+import CommentForm from './CommentForm';
 import Loading from './Loading';
 import { fetchItemRequested } from '../actions';
 
