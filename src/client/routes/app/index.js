@@ -4,10 +4,10 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 
-import GlobalHeader from './GlobalHeader';
+import GlobalHeader from '../../components/GlobalHeader';
 import ItemList from './ItemList';
-import Loading from './Loading';
-import { fetchItemsRequested } from '../actions';
+import Loading from '../../components/Loading';
+import { fetchItemsRequested } from '../../actions';
 
 type PProps = {
   items: Array<any>,
