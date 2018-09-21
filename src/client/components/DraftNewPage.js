@@ -6,7 +6,7 @@ import { Fields, reduxForm } from 'redux-form';
 import type { FieldProps, FormProps } from 'redux-form';
 
 import GlobalHeader from './GlobalHeader';
-import EditorSubmit from '../containers/EditorSubmitContainer';
+import EditorSubmit from './EditorSubmit';
 import Loading from './Loading';
 import { postItemRequested } from '../actions';
 
