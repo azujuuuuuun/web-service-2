@@ -12,6 +12,9 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import PeopleIcon from '@material-ui/icons/People';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { connect } from 'react-redux';
+
+import { openDropdown, closeDropdown as closeDropdownAction } from '../actions';
 
 type Props = {
   viewer: any,
@@ -96,4 +99,25 @@ const GlobalHeader = (props: Props) => {
   );
 };
 
-export default GlobalHeader;
+const mapStateToProps = state => {
+  const { viewer, dropdown } = state;
+  const { items } = viewer || {};
+  const draftItems = items && items.filter(i => i.status === 'draft');
+  const draftItemId = draftItems.length === 0 ? '' : draftItems[0].id;
+  return {
+    viewer,
+    dropdown,
+    draftItemId,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => ({
+  openCommunityDropdown: () => dispatch(openDropdown({ kind: 'community' })),
+  openViewerDropdown: () => dispatch(openDropdown({ kind: 'viewer' })),
+  closeDropdown: () => dispatch(closeDropdownAction()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(GlobalHeader);

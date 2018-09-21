@@ -8,7 +8,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './reducers';
 import mySaga from './sagas';
-import Root from './components/Root';
+import Root from './Root';
 
 const logger = createLogger({
   collapsed: true,
