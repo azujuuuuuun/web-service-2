@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import DraftsPreviewHeader from '../containers/DraftsPreviewHeaderContainer';
+import DraftsPreviewHeader from './DraftsPreviewHeader';
 import DraftsPreviewContent from './DraftsPreviewContent';
 
 type Props = {
