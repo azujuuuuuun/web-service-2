@@ -4,9 +4,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
-import history from '../history';
-import Auth from '../containers/AuthContainer';
-import Routing from '../containers/RoutingContainer';
+import history from './history';
+import Auth from './Auth';
+import Routing from './routes';
 
 type Props = {
   store: any,
