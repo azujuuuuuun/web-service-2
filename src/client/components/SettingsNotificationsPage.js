@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 import GlobalHeader from './GlobalHeader';
 import SettingsMenu from './SettingsMenu';
-import EmailSetting from '../containers/EmailSettingContainer';
+import EmailSetting from './EmailSetting';
 import NotificationsSetting from '../containers/NotificationsSettingContainer';
 import Loading from './Loading';
 
