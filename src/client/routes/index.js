@@ -18,7 +18,7 @@ import DraftNewPage from './draft-new';
 import DraftsPage from './drafts';
 import ItemDetailPage from './item';
 import TagsPage from './tags';
-import TagPage from '../components/TagPage';
+import TagPage from './tag';
 import IndexPage from './index/index';
 import SignupPage from './signup';
 import LoginPage from './login';

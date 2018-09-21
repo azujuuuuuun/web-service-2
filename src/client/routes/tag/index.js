@@ -7,14 +7,14 @@ import LabelIcon from '@material-ui/icons/Label';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import GlobalHeader from './GlobalHeader';
-import NotFound from './NotFound';
-import Loading from './Loading';
+import GlobalHeader from '../../components/GlobalHeader';
+import NotFound from '../../components/NotFound';
+import Loading from '../../components/Loading';
 import {
   fetchTagRequested,
   followTagRequested,
   unfollowTagRequested,
-} from '../actions';
+} from '../../actions';
 
 type PProps = {
   tag: any,
