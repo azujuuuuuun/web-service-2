@@ -4,7 +4,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 
-import { followRequested } from '../actions';
+import { followRequested } from '../../actions';
 
 type Props = {
   followRequest: any,

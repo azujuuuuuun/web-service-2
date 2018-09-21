@@ -5,15 +5,15 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 
-import GlobalHeader from './GlobalHeader';
+import GlobalHeader from '../../components/GlobalHeader';
 import NotFound from './NotFound';
 import FollowButton from './FollowButton';
 import UnfollowButton from './UnfollowButton';
 import EditProfileLink from './EditProfileLink';
 import FollowingTags from './FollowingTags';
 import TableList from './TableList';
-import Loading from './Loading';
-import { fetchUserRequested } from '../actions';
+import Loading from '../../components/Loading';
+import { fetchUserRequested } from '../../actions';
 
 type PProps = {
   user: any,

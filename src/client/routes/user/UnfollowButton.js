@@ -4,7 +4,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 
-import { unfollowRequested } from '../actions';
+import { unfollowRequested } from '../../actions';
 
 type Props = {
   unfollowRequest: any,
