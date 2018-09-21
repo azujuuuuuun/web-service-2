@@ -2,10 +2,14 @@
 
 import React from 'react';
 
+import Loading from './Loading';
+
 const IndexPage = () => (
-  <div>
-    <h1>Index Page</h1>
-  </div>
+  <Loading>
+    <div>
+      <h1>Index Page</h1>
+    </div>
+  </Loading>
 );
 
 export default IndexPage;
