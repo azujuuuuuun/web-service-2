@@ -6,15 +6,27 @@ import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
 import ImageIcon from '@material-ui/icons/Image';
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
 
 import GlobalHeader from './GlobalHeader';
 import SettingsMenu from './SettingsMenu';
 import TitleSection from './TitleSection';
+import Loading from './Loading';
+import { uploadImageRequested } from '../actions';
 
-type Props = {
+type PProps = {
   viewer: any,
   handleChangeFile: any,
   handleClickUploadImage: any,
+};
+
+type CProps = {
+  viewer: any,
+  uploadImageRequest: any,
+};
+
+type State = {
+  file: any,
 };
 
 const Img = styled.img`
@@ -52,7 +64,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const ProfileImageUploadPage = (props: Props) => {
+const ProfileImageUploadPage = (props: PProps) => {
   const { viewer, handleChangeFile, handleClickUploadImage } = props;
   return (
     <div>
@@ -100,4 +112,47 @@ const ProfileImageUploadPage = (props: Props) => {
   );
 };
 
-export default ProfileImageUploadPage;
+class ProfileImageUploadPageContainer extends React.Component<CProps, State> { // eslint-disable-line
+  constructor(props) {
+    super(props);
+    this.state = { file: undefined };
+  }
+
+  handleChangeFile = e => {
+    this.setState({ file: e.target.files[0] });
+  };
+
+  handleClickUploadImage = () => {
+    const { uploadImageRequest } = this.props;
+    const { file } = this.state;
+    const formData = new FormData();
+    formData.append('avatar', file);
+    uploadImageRequest(formData);
+  };
+
+  render() {
+    const { viewer } = this.props;
+    return (
+      <Loading>
+        <ProfileImageUploadPage
+          viewer={viewer}
+          handleChangeFile={this.handleChangeFile}
+          handleClickUploadImage={this.handleClickUploadImage}
+        />
+      </Loading>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  viewer: state.viewer,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  uploadImageRequest: image => dispatch(uploadImageRequested({ image })),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ProfileImageUploadPageContainer);
