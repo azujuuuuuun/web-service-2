@@ -7,9 +7,9 @@ import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import GlobalHeader from './GlobalHeader';
-import Loading from './Loading';
-import { fetchUsersRequested } from '../actions';
+import GlobalHeader from '../../components/GlobalHeader';
+import Loading from '../../components/Loading';
+import { fetchUsersRequested } from '../../actions';
 
 type PProps = {
   users: Array<any>,

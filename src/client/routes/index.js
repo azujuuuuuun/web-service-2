@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 import AppPage from './app';
 import UserPage from '../components/UserPage';
-import UsersPage from '../components/UsersPage';
+import UsersPage from './users';
 import StockPage from '../components/StockPage';
 import AccountPage from '../components/AccountPage';
 import ProfileImageUploadPage from '../components/ProfileImageUploadPage';
