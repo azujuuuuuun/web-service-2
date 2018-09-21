@@ -5,14 +5,22 @@ import Grid from '@material-ui/core/Grid';
 import PeopleIcon from '@material-ui/icons/People';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import GlobalHeader from './GlobalHeader';
+import Loading from './Loading';
+import { fetchUsersRequested } from '../actions';
 
-type Props = {
+type PProps = {
   users: Array<any>,
 };
 
-const UsersPage = (props: Props) => {
+type CProps = {
+  users: Array<any>,
+  fetchUsersRequest: any,
+};
+
+const UsersPage = (props: PProps) => {
   const { users } = props;
   return (
     <div>
@@ -46,4 +54,31 @@ const UsersPage = (props: Props) => {
   );
 };
 
-export default UsersPage;
+class UsersPageContainer extends React.Component<CProps> { // eslint-disable-line
+  componentDidMount() {
+    const { fetchUsersRequest } = this.props;
+    fetchUsersRequest();
+  }
+
+  render() {
+    const { users } = this.props;
+    return (
+      <Loading>
+        <UsersPage users={users} />
+      </Loading>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  users: state.users,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchUsersRequest: () => dispatch(fetchUsersRequested()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UsersPageContainer);
