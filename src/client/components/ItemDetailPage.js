@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import GlobalHeader from './GlobalHeader';
 import NotFound from './NotFound';
 import Tags from './Tags';
-import LikeButton from '../containers/LikeButtonContainer';
+import LikeButton from './LikeButton';
 import StockButton from '../containers/StockButtonContainer';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
