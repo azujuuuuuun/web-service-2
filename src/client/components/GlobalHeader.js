@@ -22,6 +22,7 @@ type Props = {
   openCommunityDropdown: () => void,
   openViewerDropdown: () => void,
   closeDropdown: () => void,
+  draftItemId: string,
 };
 
 const Header = styled.div`
@@ -35,6 +36,7 @@ const GlobalHeader = (props: Props) => {
     openCommunityDropdown,
     openViewerDropdown,
     closeDropdown,
+    draftItemId,
   } = props;
   return (
     <Header>
@@ -75,6 +77,17 @@ const GlobalHeader = (props: Props) => {
               <Link to={`/${viewer.username}`} onClick={closeDropdown}>
                 マイページ
               </Link>
+            </MenuItem>
+            <MenuItem>
+              {draftItemId ? (
+                <Link to={`/drafts/${draftItemId}`} onClick={closeDropdown}>
+                  下書き一覧
+                </Link>
+              ) : (
+                <Link to="/drafts" onClick={closeDropdown}>
+                  下書き一覧
+                </Link>
+              )}
             </MenuItem>
           </Menu>
         </Toolbar>
