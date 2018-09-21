@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { authenticateRequested } from '../actions';
+import { authenticateRequested } from './actions';
 
 type Props = {
   authenticateRequest: any,
