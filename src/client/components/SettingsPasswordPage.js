@@ -5,19 +5,31 @@ import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { Fields, reduxForm } from 'redux-form';
+import sha256 from 'crypto-js/sha256';
+import Base64 from 'crypto-js/enc-base64';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import type { FieldProps, FormProps } from 'redux-form';
 
 import GlobalHeader from './GlobalHeader';
 import SettingsMenu from './SettingsMenu';
+import Loading from './Loading';
+import { updatePasswordRequested } from '../actions';
 
-type Props = {
+type PProps = {
   viewer: any,
   currentPassword: FieldProps,
   newPassword: FieldProps,
   handleSubmit: FormProps,
 };
 
-const SettingsProfilePage = (props: Props) => {
+type CProps = {
+  viewer: any,
+  handleSubmit: any,
+};
+
+const SettingsPasswordPage = (props: PProps) => {
   const { viewer, currentPassword, newPassword, handleSubmit } = props;
   return (
     <div>
@@ -58,4 +70,42 @@ const SettingsProfilePage = (props: Props) => {
   );
 };
 
-export default SettingsProfilePage;
+class SettingsPasswordContainer extends React.Component<CProps, void> { // eslint-disable-line
+  render() {
+    const { viewer, handleSubmit } = this.props;
+    return (
+      <Loading>
+        <Fields
+          names={['currentPassword', 'newPassword']}
+          component={SettingsPasswordPage}
+          viewer={viewer}
+          handleSubmit={handleSubmit}
+        />
+      </Loading>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  viewer: state.viewer,
+});
+
+const onSubmit = (values, dispatch) => {
+  const { currentPassword, newPassword } = values;
+  const currentHashDigest = Base64.stringify(sha256(currentPassword));
+  const newHashDigest = Base64.stringify(sha256(newPassword));
+  dispatch(
+    updatePasswordRequested({
+      currentPassword: currentHashDigest,
+      newPassword: newHashDigest,
+    }),
+  );
+};
+
+export default compose(
+  connect(mapStateToProps),
+  reduxForm({
+    form: 'password',
+    onSubmit,
+  }),
+)(SettingsPasswordContainer);
