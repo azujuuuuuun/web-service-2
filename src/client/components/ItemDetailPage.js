@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 
-import GlobalHeader from '../containers/GlobalHeaderContainer';
+import GlobalHeader from './GlobalHeader';
 import NotFound from './NotFound';
 import Tags from './Tags';
 import LikeButton from '../containers/LikeButtonContainer';

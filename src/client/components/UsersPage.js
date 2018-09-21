@@ -6,7 +6,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 
-import GlobalHeader from '../containers/GlobalHeaderContainer';
+import GlobalHeader from './GlobalHeader';
 
 type Props = {
   users: Array<any>,

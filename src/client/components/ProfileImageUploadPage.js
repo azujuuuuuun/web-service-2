@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import ImageIcon from '@material-ui/icons/Image';
 import Button from '@material-ui/core/Button';
 
-import GlobalHeader from '../containers/GlobalHeaderContainer';
+import GlobalHeader from './GlobalHeader';
 import SettingsMenu from './SettingsMenu';
 import TitleSection from './TitleSection';
 

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
 
-import GlobalHeader from '../containers/GlobalHeaderContainer';
+import GlobalHeader from './GlobalHeader';
 import SettingsMenu from './SettingsMenu';
 import TitleSection from './TitleSection';
 

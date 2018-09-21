@@ -6,7 +6,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import LabelIcon from '@material-ui/icons/Label';
 import { Link } from 'react-router-dom';
 
-import GlobalHeader from '../containers/GlobalHeaderContainer';
+import GlobalHeader from './GlobalHeader';
 import NotFound from './NotFound';
 
 type Props = {

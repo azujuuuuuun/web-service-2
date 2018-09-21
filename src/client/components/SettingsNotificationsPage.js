@@ -4,7 +4,7 @@ import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 
-import GlobalHeader from '../containers/GlobalHeaderContainer';
+import GlobalHeader from './GlobalHeader';
 import SettingsMenu from './SettingsMenu';
 import EmailSetting from '../containers/EmailSettingContainer';
 import NotificationsSetting from '../containers/NotificationsSettingContainer';

@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 
-import GlobalHeader from '../containers/GlobalHeaderContainer';
+import GlobalHeader from './GlobalHeader';
 import NotFound from './NotFound';
 import FollowButton from '../containers/FollowButtonContainer';
 import UnfollowButton from '../containers/UnfollowButtonContainer';

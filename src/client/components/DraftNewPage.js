@@ -4,7 +4,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import type { FieldProps, FormProps } from 'redux-form';
 
-import GlobalHeader from '../containers/GlobalHeaderContainer';
+import GlobalHeader from './GlobalHeader';
 import EditorSubmit from '../containers/EditorSubmitContainer';
 
 type Props = {

@@ -3,7 +3,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
-import GlobalHeader from '../containers/GlobalHeaderContainer';
+import GlobalHeader from './GlobalHeader';
 import ItemList from './ItemList';
 
 type Props = {

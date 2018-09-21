@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ChatBubbleOutline from '@material-ui/icons/ChatBubbleOutline';
 
-import GlobalHeader from '../containers/GlobalHeaderContainer';
+import GlobalHeader from './GlobalHeader';
 
 type Props = {
   stocks: Array<any>,
