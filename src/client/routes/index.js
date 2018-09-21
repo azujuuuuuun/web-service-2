@@ -27,7 +27,7 @@ type Props = {
   isLoggedIn: boolean,
 };
 
-class RoutingContainer extends React.Component<Props, void> { // eslint-disable-line
+class Routing extends React.Component<Props, void> { // eslint-disable-line
   render() {
     const { isLoggedIn } = this.props;
     return isLoggedIn ? (
@@ -71,4 +71,4 @@ const mapStateToProps = state => ({
 export default compose(
   withRouter,
   connect(mapStateToProps),
-)(RoutingContainer);
+)(Routing);
