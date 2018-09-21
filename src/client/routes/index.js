@@ -11,7 +11,7 @@ import UsersPage from './users';
 import StockPage from './stock';
 import AccountPage from './settings-account';
 import ProfileImageUploadPage from '../components/ProfileImageUploadPage';
-import SettingsProfilePage from '../components/SettingsProfilePage';
+import SettingsProfilePage from './settings-profile';
 import SettingsPasswordPage from '../components/SettingsPasswordPage';
 import SettingsNotificationsPage from '../components/SettingsNotificationsPage';
 import DraftNewPage from '../components/DraftNewPage';

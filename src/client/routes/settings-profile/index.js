@@ -10,11 +10,11 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import type { FieldProps, FormProps } from 'redux-form';
 
-import GlobalHeader from './GlobalHeader';
-import SettingsMenu from './SettingsMenu';
-import TitleSection from './TitleSection';
-import Loading from './Loading';
-import { updateUserRequested } from '../actions';
+import GlobalHeader from '../../components/GlobalHeader';
+import SettingsMenu from '../../components/SettingsMenu';
+import TitleSection from '../../components/TitleSection';
+import Loading from '../../components/Loading';
+import { updateUserRequested } from '../../actions';
 
 type PProps = {
   viewer: any,
