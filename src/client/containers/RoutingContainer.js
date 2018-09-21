@@ -5,7 +5,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
-import AppPage from './AppPageContainer';
+import AppPage from '../components/AppPage';
 import UserPage from './UserPageContainer';
 import UsersPage from './UsersPageContainer';
 import StockPage from './StockPageContainer';
