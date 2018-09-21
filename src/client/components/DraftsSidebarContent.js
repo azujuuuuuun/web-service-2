@@ -5,11 +5,18 @@ import styled from 'styled-components';
 
 import DraftsSidebarItems from './DraftsSidebarItems';
 
-type Props = {
+type PProps = {
   draftItemsCount: number,
   items: Array<any>,
   handleSelect: (status: string) => void,
 };
+
+type CProps = {
+  draftItems: Array<any>,
+  postedItems: Array<any>,
+};
+
+type State = { isDraftSelected: boolean };
 
 const TabList = styled.ul`
   list-style: none;
@@ -23,7 +30,7 @@ const Tab = styled.li`
   padding: 0.25rem 0.5rem;
 `;
 
-const DraftsSidebarContent = (props: Props) => {
+const DraftsSidebarContent = (props: PProps) => {
   const { draftItemsCount, items, handleSelect } = props;
   return (
     <div>
@@ -38,4 +45,31 @@ const DraftsSidebarContent = (props: Props) => {
   );
 };
 
-export default DraftsSidebarContent;
+class DraftsSidebarContentContainer extends React.Component<CProps, State> {
+  constructor(props: CProps) {
+    super(props);
+    this.state = {
+      isDraftSelected: true,
+    };
+  }
+
+  handleSelect = (status: string) => {
+    this.setState({ isDraftSelected: status === 'draft' });
+  };
+
+  render() {
+    const { isDraftSelected } = this.state;
+    const { draftItems, postedItems } = this.props;
+    const draftItemsCount = draftItems.length;
+    const items = isDraftSelected ? draftItems : postedItems;
+    return (
+      <DraftsSidebarContent
+        draftItemsCount={draftItemsCount}
+        items={items}
+        handleSelect={this.handleSelect}
+      />
+    );
+  }
+}
+
+export default DraftsSidebarContentContainer;
