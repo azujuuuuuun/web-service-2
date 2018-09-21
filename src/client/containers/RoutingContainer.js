@@ -15,6 +15,7 @@ import SettingsProfilePage from './SettingsProfilePageContainer';
 import SettingsPasswordPage from './SettingsPasswordPageContainer';
 import SettingsNotificationsPage from './SettingsNotificationsPageContainer';
 import DraftNewPage from './DraftNewPageContainer';
+import DraftsPage from './DraftsPageContainer';
 import ItemDetailPage from './ItemDetailPageContainer';
 import TagsPage from './TagsPageContainer';
 import TagPage from './TagPageContainer';
@@ -46,6 +47,8 @@ class RoutingContainer extends React.Component<Props, void> { // eslint-disable-
           component={SettingsNotificationsPage}
         />
         <Route path="/drafts/new" component={DraftNewPage} />
+        <Route path="/drafts/:itemId" component={DraftsPage} />
+        <Route path="/drafts" component={DraftsPage} />
         <Route path="/tags" component={TagsPage} />
         <Route path="/tags/:tagName" component={TagPage} />
         <Route path="/:username/items/:itemId" component={ItemDetailPage} />

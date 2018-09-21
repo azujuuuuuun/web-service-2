@@ -15,6 +15,7 @@ type Props = {
   openCommunityDropdown: any,
   openViewerDropdown: any,
   _closeDropdown: any,
+  draftItemId: string,
 };
 
 class GlobalHeaderContainer extends React.Component<Props, void> { // eslint-disable-line
@@ -25,6 +26,7 @@ class GlobalHeaderContainer extends React.Component<Props, void> { // eslint-dis
       openCommunityDropdown,
       openViewerDropdown,
       _closeDropdown,
+      draftItemId,
     } = this.props;
     return (
       <GlobalHeader
@@ -33,15 +35,23 @@ class GlobalHeaderContainer extends React.Component<Props, void> { // eslint-dis
         openCommunityDropdown={openCommunityDropdown}
         openViewerDropdown={openViewerDropdown}
         closeDropdown={_closeDropdown}
+        draftItemId={draftItemId}
       />
     );
   }
 }
 
-const mapStateToProps = state => ({
-  viewer: state.viewer,
-  dropdown: state.dropdown,
-});
+const mapStateToProps = state => {
+  const { viewer, dropdown } = state;
+  const { items } = viewer || {};
+  const draftItems = items && items.filter(i => i.status === 'draft');
+  const draftItemId = draftItems.length === 0 ? '' : draftItems[0].id;
+  return {
+    viewer,
+    dropdown,
+    draftItemId,
+  };
+};
 
 const mapDispatchToProps = (dispatch: any) => ({
   openCommunityDropdown: () => dispatch(openDropdown({ kind: 'community' })),
