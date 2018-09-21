@@ -10,8 +10,8 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ChatBubbleOutline from '@material-ui/icons/ChatBubbleOutline';
 import { connect } from 'react-redux';
 
-import Loading from './Loading';
-import GlobalHeader from './GlobalHeader';
+import Loading from '../../components/Loading';
+import GlobalHeader from '../../components/GlobalHeader';
 
 type Props = {
   stocks: Array<any>,
