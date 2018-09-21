@@ -7,7 +7,7 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import { connect } from 'react-redux';
 
-import { stockRequested, unstockRequested } from '../actions';
+import { stockRequested, unstockRequested } from '../../actions';
 
 type Props = {
   hasStocked: boolean,

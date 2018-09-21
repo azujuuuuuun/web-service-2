@@ -7,7 +7,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import CheckIcon from '@material-ui/icons/Check';
 import { connect } from 'react-redux';
 
-import { likeRequested, unlikeRequested } from '../actions';
+import { likeRequested, unlikeRequested } from '../../actions';
 
 type PProps = {
   hasLiked: boolean,

@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import { Fields, reduxForm } from 'redux-form';
 import type { FieldProps, FormProps } from 'redux-form';
 
-import { postCommentRequested } from '../actions';
+import { postCommentRequested } from '../../actions';
 
 type PProps = {
   viewer: any,

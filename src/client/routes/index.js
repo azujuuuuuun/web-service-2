@@ -16,7 +16,7 @@ import SettingsPasswordPage from './settings-password';
 import SettingsNotificationsPage from './settings-notifications';
 import DraftNewPage from './draft-new';
 import DraftsPage from './drafts';
-import ItemDetailPage from '../components/ItemDetailPage';
+import ItemDetailPage from './item';
 import TagsPage from './tags';
 import TagPage from '../components/TagPage';
 import IndexPage from './index/index';

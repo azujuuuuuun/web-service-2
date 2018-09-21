@@ -7,15 +7,15 @@ import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import GlobalHeader from './GlobalHeader';
-import NotFound from './NotFound';
+import GlobalHeader from '../../components/GlobalHeader';
+import NotFound from '../../components/NotFound';
 import Tags from './Tags';
 import LikeButton from './LikeButton';
 import StockButton from './StockButton';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
-import Loading from './Loading';
-import { fetchItemRequested } from '../actions';
+import Loading from '../../components/Loading';
+import { fetchItemRequested } from '../../actions';
 
 type PProps = {
   item: any,
