@@ -5,15 +5,26 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import CheckIcon from '@material-ui/icons/Check';
+import { connect } from 'react-redux';
 
-type Props = {
+import { likeRequested, unlikeRequested } from '../actions';
+
+type PProps = {
   hasLiked: boolean,
   handleClickLike: any,
   item: any,
   handleClickUnlike: any,
 };
 
-const LikeButton = (props: Props) => {
+type CProps = {
+  viewer: any,
+  likeRequest: (item: any, user: any) => void,
+  unlikeRequest: (itemId: string, userId: string) => void,
+  hasLiked: boolean,
+  item: any,
+};
+
+const LikeButton = (props: PProps) => {
   const { hasLiked, handleClickLike, item, handleClickUnlike } = props;
   return !hasLiked ? (
     <Tooltip title="いいね">
@@ -36,4 +47,50 @@ const LikeButton = (props: Props) => {
   );
 };
 
-export default LikeButton;
+class LikeButtonContainer extends React.Component<CProps> { // eslint-disable-line
+  handleClickLike = item => {
+    const { likeRequest, viewer } = this.props;
+    likeRequest(item, viewer);
+  };
+
+  handleClickUnlike = itemId => {
+    const { unlikeRequest, viewer } = this.props;
+    unlikeRequest(itemId, viewer.id);
+  };
+
+  render() {
+    const { item, hasLiked } = this.props;
+    return (
+      <LikeButton
+        item={item}
+        handleClickLike={this.handleClickLike}
+        handleClickUnlike={this.handleClickUnlike}
+        hasLiked={hasLiked}
+      />
+    );
+  }
+}
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  likeRequest: (item, user) =>
+    dispatch(
+      likeRequested({
+        item,
+        user,
+      }),
+    ),
+  unlikeRequest: (itemId, userId) =>
+    dispatch(
+      unlikeRequested({
+        itemId,
+        userId,
+      }),
+    ),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LikeButtonContainer);
