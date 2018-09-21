@@ -5,6 +5,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
+import { connect } from 'react-redux';
+
+import { stockRequested, unstockRequested } from '../actions';
 
 type Props = {
   hasStocked: boolean,
@@ -40,4 +43,14 @@ const StockButton = (props: Props) => {
   );
 };
 
-export default StockButton;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  handleClickStock: item => dispatch(stockRequested({ item })),
+  handleClickUnstock: itemId => dispatch(unstockRequested({ itemId })),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(StockButton);
