@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 
 import rootReducer from '../client/reducers';
-import Auth from '../client/containers/AuthContainer';
-import Routing from '../client/containers/RoutingContainer';
+import Auth from '../client/Auth';
+import Routing from '../client/routes';
 
 const express = require('express');
 const morgan = require('morgan');
