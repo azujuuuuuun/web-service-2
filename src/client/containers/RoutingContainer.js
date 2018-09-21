@@ -19,7 +19,7 @@ import DraftsPage from '../components/DraftsPage';
 import ItemDetailPage from './ItemDetailPageContainer';
 import TagsPage from './TagsPageContainer';
 import TagPage from './TagPageContainer';
-import IndexPage from './IndexPageContainer';
+import IndexPage from '../components/IndexPage';
 import SignupPage from './SignupPageContainer';
 import LoginPage from './LoginPageContainer';
 
