@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
-import NotFound from './NotFound';
+import NotFound from '../../components/NotFound';
 import FollowButton from './FollowButton';
 import UnfollowButton from './UnfollowButton';
 import EditProfileLink from './EditProfileLink';
