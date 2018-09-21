@@ -3,7 +3,7 @@
 import React from 'react';
 
 import DraftsSidebarHeader from './DraftsSidebarHeader';
-import DraftsSidebarContent from '../containers/DraftsSidebarContentContainer';
+import DraftsSidebarContent from './DraftsSidebarContent';
 
 type Props = {
   draftItems: Array<any>,
