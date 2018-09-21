@@ -21,6 +21,7 @@ import {
 
 const defaultState = {
   isLoggedIn: false,
+  items: [],
   followings: [],
   likes: [],
   stocks: [],
