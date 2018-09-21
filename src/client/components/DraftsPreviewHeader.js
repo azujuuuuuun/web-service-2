@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import CreateIcon from '@material-ui/icons/Create';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { connect } from 'react-redux';
+
+import { deleteItemRequested } from '../actions';
 
 type Props = {
   itemId: string,
@@ -39,4 +42,14 @@ const DraftsPreviewHeader = (props: Props) => {
   );
 };
 
-export default DraftsPreviewHeader;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  handleClickDelete: (itemId: string) =>
+    dispatch(deleteItemRequested({ itemId })),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DraftsPreviewHeader);
