@@ -2,14 +2,22 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import GlobalHeader from './GlobalHeader';
+import Loading from './Loading';
+import { fetchTagsRequested } from '../actions';
 
-type Props = {
+type PProps = {
   tags: Array<any>,
 };
 
-const TagsPage = (props: Props) => {
+type CProps = {
+  tags: Array<any>,
+  fetchTagsRequest: any,
+};
+
+const TagsPage = (props: PProps) => {
   const { tags } = props;
   return (
     <div>
@@ -31,4 +39,31 @@ const TagsPage = (props: Props) => {
   );
 };
 
-export default TagsPage;
+class TagPageContainer extends React.Component<CProps> { // eslint-disable-line
+  componentDidMount() {
+    const { fetchTagsRequest } = this.props;
+    fetchTagsRequest();
+  }
+
+  render() {
+    const { tags } = this.props;
+    return (
+      <Loading>
+        <TagsPage tags={tags} />
+      </Loading>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  tags: state.tags,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchTagsRequest: () => dispatch(fetchTagsRequested()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(TagPageContainer);
