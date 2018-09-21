@@ -9,7 +9,7 @@ import AppPage from './AppPageContainer';
 import UserPage from './UserPageContainer';
 import UsersPage from './UsersPageContainer';
 import StockPage from './StockPageContainer';
-import AccountPage from './AccountPageContainer';
+import AccountPage from '../components/AccountPage';
 import ProfileImageUploadPage from './ProfileImageUploadPageContainer';
 import SettingsProfilePage from './SettingsProfilePageContainer';
 import SettingsPasswordPage from './SettingsPasswordPageContainer';
