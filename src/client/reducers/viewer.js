@@ -18,6 +18,30 @@ import {
   updateNotificationsSucceeded,
   uploadImageSucceeded,
 } from '../actions';
+import type { User, Item, Tag, Comment } from '../types';
+
+export type Viewer = {
+  isLoggedIn: boolean,
+  id?: string,
+  username?: string,
+  firstName?: string,
+  lastName?: string,
+  web?: string,
+  organization?: string,
+  location?: string,
+  desctiption?: string,
+  avatarImgSrc?: string,
+  createdAt?: Date,
+  updatedAt?: Date,
+  items: Array<Item>,
+  likes: Array<Item>,
+  stocks: Array<Item>,
+  comments?: Array<Comment>,
+  followings: Array<User>,
+  followers?: Array<User>,
+  followingTags: Array<Tag>,
+  notifications: Array<any>,
+};
 
 const defaultState = {
   isLoggedIn: false,
