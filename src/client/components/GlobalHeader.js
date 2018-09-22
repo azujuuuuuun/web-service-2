@@ -16,13 +16,11 @@ import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
 import { openDropdown, closeDropdown as closeDropdownAction } from '../actions';
+import type { Dropdown } from '../reducers/dropdown';
 
 type Props = {
   viewer: any,
-  dropdown: {
-    kind: string,
-    isOpen: boolean,
-  },
+  dropdown: Dropdown,
   openCommunityDropdown: () => void,
   openViewerDropdown: () => void,
   closeDropdown: () => void,

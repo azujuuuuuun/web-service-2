@@ -16,15 +16,13 @@ import type { FieldProps, FormProps } from 'redux-form';
 import type { Dispatch } from 'redux';
 
 import { openDropdown, closeDropdown } from '../../actions';
+import type { Dropdown } from '../../reducers/dropdown';
 
 type Props = {
   status: FieldProps,
   handleSubmit: FormProps,
   openEditorSubmitDropdown: any,
-  dropdown: {
-    kind: string,
-    isOpen: boolean,
-  },
+  dropdown: Dropdown,
   closeEditorSubmitDropdown: any,
   changeStatus: (status: string) => void,
 };
