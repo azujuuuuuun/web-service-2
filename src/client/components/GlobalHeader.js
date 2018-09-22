@@ -16,10 +16,11 @@ import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
 import { openDropdown, closeDropdown as closeDropdownAction } from '../actions';
+import type { Viewer } from '../reducers/viewer';
 import type { Dropdown } from '../reducers/dropdown';
 
 type Props = {
-  viewer: any,
+  viewer: Viewer,
   dropdown: Dropdown,
   openCommunityDropdown: () => void,
   openViewerDropdown: () => void,
@@ -76,9 +77,11 @@ const GlobalHeader = (props: Props) => {
             onClose={closeDropdown}
           >
             <MenuItem>
-              <Link to={`/${viewer.username}`} onClick={closeDropdown}>
-                マイページ
-              </Link>
+              {viewer.username && (
+                <Link to={`/${viewer.username}`} onClick={closeDropdown}>
+                  マイページ
+                </Link>
+              )}
             </MenuItem>
             <MenuItem>
               {draftItemId ? (

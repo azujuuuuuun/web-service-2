@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
 import { likeRequested, unlikeRequested } from '../../actions';
+import type { Viewer } from '../../reducers/viewer';
 
 type PProps = {
   hasLiked: boolean,
@@ -18,7 +19,7 @@ type PProps = {
 };
 
 type CProps = {
-  viewer: any,
+  viewer: Viewer,
   likeRequest: (item: any, user: any) => void,
   unlikeRequest: (itemId: string, userId: string) => void,
   hasLiked: boolean,
@@ -56,7 +57,9 @@ class LikeButtonContainer extends React.Component<CProps> { // eslint-disable-li
 
   handleClickUnlike = itemId => {
     const { unlikeRequest, viewer } = this.props;
-    unlikeRequest(itemId, viewer.id);
+    if (viewer.id) {
+      unlikeRequest(itemId, viewer.id);
+    }
   };
 
   render() {

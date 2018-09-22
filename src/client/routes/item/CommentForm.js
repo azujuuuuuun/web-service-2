@@ -9,15 +9,16 @@ import { Fields, reduxForm } from 'redux-form';
 import type { FieldProps, FormProps } from 'redux-form';
 
 import { postCommentRequested } from '../../actions';
+import type { Viewer } from '../../reducers/viewer';
 
 type PProps = {
-  viewer: any,
+  viewer: Viewer,
   text: FieldProps,
   handleSubmit: FormProps,
 };
 
 type CProps = {
-  viewer: any,
+  viewer: Viewer,
   handleSubmit: FormProps,
 };
 
