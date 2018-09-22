@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import ImageIcon from '@material-ui/icons/Image';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import SettingsMenu from '../../components/SettingsMenu';
@@ -148,7 +149,7 @@ const mapStateToProps = state => ({
   viewer: state.viewer,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   uploadImageRequest: image => dispatch(uploadImageRequested({ image })),
 });
 

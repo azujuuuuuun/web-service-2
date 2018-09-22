@@ -6,6 +6,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import LabelIcon from '@material-ui/icons/Label';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import NotFound from '../../components/NotFound';
@@ -137,7 +138,7 @@ const mapStateToProps = state => ({
   tag: state.tag,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   fetchTagRequest: tagName => dispatch(fetchTagRequested({ tagName })),
   followTagRequest: (tag, user) =>
     dispatch(

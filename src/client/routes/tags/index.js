@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import Loading from '../../components/Loading';
@@ -59,7 +60,7 @@ const mapStateToProps = state => ({
   tags: state.tags,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   fetchTagsRequest: () => dispatch(fetchTagsRequested()),
 });
 

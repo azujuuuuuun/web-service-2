@@ -13,6 +13,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import { openDropdown, closeDropdown as closeDropdownAction } from '../actions';
 
@@ -111,7 +112,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   openCommunityDropdown: () => dispatch(openDropdown({ kind: 'community' })),
   openViewerDropdown: () => dispatch(openDropdown({ kind: 'viewer' })),
   closeDropdown: () => dispatch(closeDropdownAction()),

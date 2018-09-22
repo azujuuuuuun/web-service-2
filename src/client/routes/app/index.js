@@ -3,6 +3,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import ItemList from './ItemList';
@@ -52,7 +53,7 @@ const mapStateToProps = state => ({
   items: state.items,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   fetchItemsRequest: () => dispatch(fetchItemsRequested()),
 });
 

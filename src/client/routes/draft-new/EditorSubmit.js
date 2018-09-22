@@ -13,6 +13,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { connect } from 'react-redux';
 import { change } from 'redux-form';
 import type { FieldProps, FormProps } from 'redux-form';
+import type { Dispatch } from 'redux';
 
 import { openDropdown, closeDropdown } from '../../actions';
 
@@ -78,7 +79,7 @@ const mapStateToProps = state => ({
   dropdown: state.dropdown,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   openEditorSubmitDropdown: () =>
     dispatch(openDropdown({ kind: 'editorSubmit' })),
   closeEditorSubmitDropdown: () => dispatch(closeDropdown()),

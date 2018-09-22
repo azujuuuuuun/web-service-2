@@ -3,6 +3,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import { followRequested } from '../../actions';
 
@@ -18,7 +19,7 @@ const FollowButton = (props: Props) => {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   followRequest: user => dispatch(followRequested({ user })),
 });
 

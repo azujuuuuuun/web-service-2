@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import NotFound from '../../components/NotFound';
@@ -125,7 +126,7 @@ const mapStateToProps = state => ({
   viewer: state.viewer,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   fetchItemRequest: itemId => dispatch(fetchItemRequested({ itemId })),
 });
 
