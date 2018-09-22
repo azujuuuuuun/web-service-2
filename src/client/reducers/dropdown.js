@@ -4,6 +4,11 @@ import { createReducer } from 'redux-act';
 
 import { closeDropdown, openDropdown } from '../actions';
 
+export type Dropdown = {
+  kind: string,
+  isOpen: boolean,
+};
+
 const defaultState = {
   kind: '',
   isOpen: false,
