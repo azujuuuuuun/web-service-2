@@ -5,8 +5,10 @@ import styled from 'styled-components';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 
+import type { Comment as CommentType } from '../../types';
+
 type Props = {
-  comments: Array<any>,
+  comments: Array<CommentType>,
 };
 
 const Comment = styled.div`
@@ -48,16 +50,18 @@ const CommentList = (props: Props) => {
       {comments.map(c => (
         <Comment key={c.id}>
           <Header>
-            <Creator>
-              <AvatarWrapper>
-                <Avatar src={c.user.avatarImgSrc} alt="アバター">
-                  {c.user.username}
-                </Avatar>
-              </AvatarWrapper>
-              <Username>
-                <Link to={`/${c.user.username}`}>{c.user.username}</Link>
-              </Username>
-            </Creator>
+            {c.user && (
+              <Creator>
+                <AvatarWrapper>
+                  <Avatar src={c.user.avatarImgSrc} alt="アバター">
+                    {c.user.username}
+                  </Avatar>
+                </AvatarWrapper>
+                <Username>
+                  <Link to={`/${c.user.username}`}>{c.user.username}</Link>
+                </Username>
+              </Creator>
+            )}
             <Metadata>{c.createdAt}</Metadata>
           </Header>
           <Text>{c.text}</Text>
