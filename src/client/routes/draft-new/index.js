@@ -19,7 +19,7 @@ type PProps = {
 };
 
 type CProps = {
-  handleSubmit: any,
+  handleSubmit: FormProps,
 };
 
 const DraftNewPage = (props: PProps) => {
