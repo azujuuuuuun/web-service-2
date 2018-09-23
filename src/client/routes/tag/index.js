@@ -18,6 +18,7 @@ import {
 } from '../../actions';
 import type { Viewer } from '../../reducers/viewer';
 import type { Tag } from '../../reducers/tag';
+import type { Match } from '../../types';
 
 type PProps = {
   tag: Tag,
@@ -29,7 +30,7 @@ type PProps = {
 type CProps = {
   viewer: Viewer,
   tag: Tag,
-  match: any,
+  match: Match,
   fetchTagRequest: any,
   followTagRequest: any,
   unfollowTagRequest: any,
