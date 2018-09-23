@@ -32,6 +32,7 @@ router.get('/:tagName', async (req, res) => {
       include: [
         {
           association: Tag.Items,
+          where: { status: 'posted' },
           include: [
             {
               association: Item.User,

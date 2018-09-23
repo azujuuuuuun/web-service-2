@@ -16,6 +16,7 @@ router.get('/:username', async (req, res) => {
       include: [
         {
           association: User.Items,
+          where: { status: 'posted' },
           include: [
             {
               association: Item.User,
