@@ -18,7 +18,7 @@ type PProps = {
 };
 
 type CProps = {
-  handleSubmit: any,
+  handleSubmit: FormProps,
 };
 
 const SignupPage = (props: PProps) => {
