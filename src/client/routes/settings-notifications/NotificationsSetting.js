@@ -28,7 +28,7 @@ type PProps = {
 };
 
 type CProps = {
-  handleSubmit: any,
+  handleSubmit: FormProps,
 };
 
 const NotificationsSetting = (props: PProps) => {
