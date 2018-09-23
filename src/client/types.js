@@ -55,3 +55,11 @@ export type Comment = {
   user?: User,
   item?: Item,
 };
+
+export type Notification = {
+  id: string,
+  userId: string,
+  kind: string,
+  createdAt: Date,
+  updatedAt: Date,
+};
