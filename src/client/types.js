@@ -63,3 +63,10 @@ export type Notification = {
   createdAt: Date,
   updatedAt: Date,
 };
+
+export type Match = {
+  params: Object,
+  isExact: boolean,
+  path: string,
+  url: string,
+};
