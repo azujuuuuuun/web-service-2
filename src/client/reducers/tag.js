@@ -8,7 +8,7 @@ import {
   followTagSucceeded,
   unfollowTagSucceeded,
 } from '../actions';
-import type { Item, User } from '../types';
+import type { Item, User, Tag as TagType } from '../types';
 
 export type Tag = {
   id?: string,
@@ -18,6 +18,8 @@ export type Tag = {
   items: Array<Item>,
   followers: Array<User>,
 };
+
+export type Tags = Array<TagType>;
 
 const tagDefaultState = {
   items: [],
