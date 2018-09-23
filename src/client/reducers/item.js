@@ -10,6 +10,23 @@ import {
   postCommentSucceeded,
   fetchItemsSucceeded,
 } from '../actions';
+import type { User, Comment, Tag, Item as ItemType } from '../types';
+
+export type Item = {
+  id?: string,
+  userId?: string,
+  title?: string,
+  body?: string,
+  status?: string,
+  createdAt?: Date,
+  updatedAt?: Date,
+  user?: User,
+  likers: Array<User>,
+  comments: Array<Comment>,
+  tags: Array<Tag>,
+};
+
+export type Items = Array<ItemType>;
 
 const itemDefaultState = {
   tags: [],

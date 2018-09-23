@@ -3,8 +3,10 @@
 import React from 'react';
 import Chip from '@material-ui/core/Chip';
 
+import type { Tag } from '../../types';
+
 type Props = {
-  tags: Array<any>,
+  tags: Array<Tag>,
 };
 
 const Tags = (props: Props) => {

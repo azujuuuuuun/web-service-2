@@ -6,6 +6,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import LabelIcon from '@material-ui/icons/Label';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import NotFound from '../../components/NotFound';
@@ -15,18 +16,21 @@ import {
   followTagRequested,
   unfollowTagRequested,
 } from '../../actions';
+import type { Viewer } from '../../reducers/viewer';
+import type { Tag } from '../../reducers/tag';
+import type { Match } from '../../types';
 
 type PProps = {
-  tag: any,
+  tag: Tag,
   hasFollowed: boolean,
   handleClickFollow: any,
   handleClickUnfollow: any,
 };
 
 type CProps = {
-  viewer: any,
-  tag: any,
-  match: any,
+  viewer: Viewer,
+  tag: Tag,
+  match: Match,
   fetchTagRequest: any,
   followTagRequest: any,
   unfollowTagRequest: any,
@@ -79,7 +83,7 @@ const TagPage = (props: PProps) => {
                   </div>
                   <div>
                     <ThumbUpIcon />
-                    <span>{i.likers.length}</span>
+                    {i.likers && <span>{i.likers.length}</span>}
                   </div>
                   <div>
                     <LabelIcon />
@@ -137,7 +141,7 @@ const mapStateToProps = state => ({
   tag: state.tag,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   fetchTagRequest: tagName => dispatch(fetchTagRequested({ tagName })),
   followTagRequest: (tag, user) =>
     dispatch(

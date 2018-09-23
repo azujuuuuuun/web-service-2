@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import NotFound from '../../components/NotFound';
@@ -16,19 +17,22 @@ import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 import Loading from '../../components/Loading';
 import { fetchItemRequested } from '../../actions';
+import type { Viewer } from '../../reducers/viewer';
+import type { Item as ItemType } from '../../reducers/item';
+import type { Match } from '../../types';
 
 type PProps = {
-  item: any,
+  item: ItemType,
   hasLiked: boolean,
   hasStocked: boolean,
-  viewer: any,
+  viewer: Viewer,
 };
 
 type CProps = {
-  item: any,
-  viewer: any,
+  item: ItemType,
+  viewer: Viewer,
   fetchItemRequest: any,
-  match: any,
+  match: Match,
 };
 
 const Item = styled.div`
@@ -125,7 +129,7 @@ const mapStateToProps = state => ({
   viewer: state.viewer,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   fetchItemRequest: itemId => dispatch(fetchItemRequested({ itemId })),
 });
 

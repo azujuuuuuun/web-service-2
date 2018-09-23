@@ -4,9 +4,10 @@ import React from 'react';
 
 import DraftsPreviewHeader from './DraftsPreviewHeader';
 import DraftsPreviewContent from './DraftsPreviewContent';
+import type { Item } from '../../types';
 
 type Props = {
-  item: any,
+  item: Item,
 };
 
 const DraftsPreview = (props: Props) => {

@@ -10,9 +10,10 @@ import Loading from '../../components/Loading';
 import GlobalHeader from '../../components/GlobalHeader';
 import SettingsMenu from '../../components/SettingsMenu';
 import TitleSection from '../../components/TitleSection';
+import type { Viewer } from '../../reducers/viewer';
 
 type Props = {
-  viewer: any,
+  viewer: Viewer,
 };
 
 const Img = styled.img`
@@ -40,11 +41,14 @@ const AccountPage = (props: Props) => {
           </Grid>
           <Grid item xs={7}>
             <div>
-              <TitleSection
-                avatarImgSrc={viewer.avatarImgSrc}
-                username={viewer.username}
-                title="アカウント"
-              />
+              {viewer.avatarImgSrc &&
+                viewer.username && (
+                  <TitleSection
+                    avatarImgSrc={viewer.avatarImgSrc}
+                    username={viewer.username}
+                    title="アカウント"
+                  />
+                )}
               <div>
                 <div>アイコン</div>
                 <Img src={viewer.avatarImgSrc} alt="アバター" />

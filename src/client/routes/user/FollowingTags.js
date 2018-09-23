@@ -5,8 +5,10 @@ import styled from 'styled-components';
 import LabelIcon from '@material-ui/icons/Label';
 import { Link } from 'react-router-dom';
 
+import type { Tag as TagType } from '../../types';
+
 type Props = {
-  tags: Array<any>,
+  tags: Array<TagType>,
 };
 
 const InlineBlock = styled.div`

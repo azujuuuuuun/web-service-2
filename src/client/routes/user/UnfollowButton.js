@@ -3,6 +3,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import { unfollowRequested } from '../../actions';
 
@@ -18,7 +19,7 @@ const UnfollowButton = (props: Props) => {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   unfollowRequest: followedId => dispatch(unfollowRequested({ followedId })),
 });
 

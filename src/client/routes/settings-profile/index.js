@@ -15,9 +15,10 @@ import SettingsMenu from '../../components/SettingsMenu';
 import TitleSection from '../../components/TitleSection';
 import Loading from '../../components/Loading';
 import { updateUserRequested } from '../../actions';
+import type { Viewer } from '../../reducers/viewer';
 
 type PProps = {
-  viewer: any,
+  viewer: Viewer,
   firstName: FieldProps,
   lastName: FieldProps,
   web: FieldProps,
@@ -28,8 +29,8 @@ type PProps = {
 };
 
 type CProps = {
-  viewer: any,
-  handleSubmit: any,
+  viewer: Viewer,
+  handleSubmit: FormProps,
 };
 
 const InputWrapper = styled.div`
@@ -61,11 +62,14 @@ const SettingsProfilePage = (props: PProps) => {
         </Grid>
         <Grid item xs={7}>
           <div>
-            <TitleSection
-              avatarImgSrc={viewer.avatarImgSrc}
-              username={viewer.username}
-              title="公開用プロフィール"
-            />
+            {viewer.avatarImgSrc &&
+              viewer.username && (
+                <TitleSection
+                  avatarImgSrc={viewer.avatarImgSrc}
+                  username={viewer.username}
+                  title="公開用プロフィール"
+                />
+              )}
             <InputWrapper>
               <div>名前</div>
               <FirstName>

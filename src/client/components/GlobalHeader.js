@@ -13,15 +13,15 @@ import PeopleIcon from '@material-ui/icons/People';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import { openDropdown, closeDropdown as closeDropdownAction } from '../actions';
+import type { Viewer } from '../reducers/viewer';
+import type { Dropdown } from '../reducers/dropdown';
 
 type Props = {
-  viewer: any,
-  dropdown: {
-    kind: string,
-    isOpen: boolean,
-  },
+  viewer: Viewer,
+  dropdown: Dropdown,
   openCommunityDropdown: () => void,
   openViewerDropdown: () => void,
   closeDropdown: () => void,
@@ -77,9 +77,11 @@ const GlobalHeader = (props: Props) => {
             onClose={closeDropdown}
           >
             <MenuItem>
-              <Link to={`/${viewer.username}`} onClick={closeDropdown}>
-                マイページ
-              </Link>
+              {viewer.username && (
+                <Link to={`/${viewer.username}`} onClick={closeDropdown}>
+                  マイページ
+                </Link>
+              )}
             </MenuItem>
             <MenuItem>
               {draftItemId ? (
@@ -111,7 +113,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   openCommunityDropdown: () => dispatch(openDropdown({ kind: 'community' })),
   openViewerDropdown: () => dispatch(openDropdown({ kind: 'viewer' })),
   closeDropdown: () => dispatch(closeDropdownAction()),

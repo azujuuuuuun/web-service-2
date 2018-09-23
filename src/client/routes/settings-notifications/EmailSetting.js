@@ -15,7 +15,7 @@ type PProps = {
 };
 
 type CProps = {
-  handleSubmit: any,
+  handleSubmit: FormProps,
 };
 
 const EmailSetting = (props: PProps) => {

@@ -16,17 +16,18 @@ import GlobalHeader from '../../components/GlobalHeader';
 import SettingsMenu from '../../components/SettingsMenu';
 import Loading from '../../components/Loading';
 import { updatePasswordRequested } from '../../actions';
+import type { Viewer } from '../../reducers/viewer';
 
 type PProps = {
-  viewer: any,
+  viewer: Viewer,
   currentPassword: FieldProps,
   newPassword: FieldProps,
   handleSubmit: FormProps,
 };
 
 type CProps = {
-  viewer: any,
-  handleSubmit: any,
+  viewer: Viewer,
+  handleSubmit: FormProps,
 };
 
 const SettingsPasswordPage = (props: PProps) => {
@@ -39,10 +40,12 @@ const SettingsPasswordPage = (props: PProps) => {
         <div>
           <div>
             <Avatar src={viewer.avatarImgSrc}>{viewer.username}</Avatar>
-            <Link to={`/${viewer.username}`}>
-              {viewer.username}
-              アカウント
-            </Link>
+            {viewer.username && (
+              <Link to={`/${viewer.username}`}>
+                {viewer.username}
+                アカウント
+              </Link>
+            )}
           </div>
           <div>
             <span>パスワード</span>

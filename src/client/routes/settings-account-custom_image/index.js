@@ -7,21 +7,23 @@ import { Link } from 'react-router-dom';
 import ImageIcon from '@material-ui/icons/Image';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import SettingsMenu from '../../components/SettingsMenu';
 import TitleSection from '../../components/TitleSection';
 import Loading from '../../components/Loading';
 import { uploadImageRequested } from '../../actions';
+import type { Viewer } from '../../reducers/viewer';
 
 type PProps = {
-  viewer: any,
+  viewer: Viewer,
   handleChangeFile: any,
   handleClickUploadImage: any,
 };
 
 type CProps = {
-  viewer: any,
+  viewer: Viewer,
   uploadImageRequest: any,
 };
 
@@ -75,11 +77,14 @@ const ProfileImageUploadPage = (props: PProps) => {
         </Grid>
         <Grid item xs={7}>
           <div>
-            <TitleSection
-              avatarImgSrc={viewer.avatarImgSrc}
-              username={viewer.username}
-              title="プロフィール画像アップロード"
-            />
+            {viewer.avatarImgSrc &&
+              viewer.username && (
+                <TitleSection
+                  avatarImgSrc={viewer.avatarImgSrc}
+                  username={viewer.username}
+                  title="プロフィール画像アップロード"
+                />
+              )}
             <div>
               <div>
                 {viewer.avatarImgSrc ? (
@@ -148,7 +153,7 @@ const mapStateToProps = state => ({
   viewer: state.viewer,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   uploadImageRequest: image => dispatch(uploadImageRequested({ image })),
 });
 

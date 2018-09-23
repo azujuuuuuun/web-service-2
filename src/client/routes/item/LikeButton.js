@@ -6,22 +6,26 @@ import Button from '@material-ui/core/Button';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import CheckIcon from '@material-ui/icons/Check';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import { likeRequested, unlikeRequested } from '../../actions';
+import type { Viewer } from '../../reducers/viewer';
+import type { User } from '../../reducers/user';
+import type { Item } from '../../reducers/item';
 
 type PProps = {
   hasLiked: boolean,
   handleClickLike: any,
-  item: any,
+  item: Item,
   handleClickUnlike: any,
 };
 
 type CProps = {
-  viewer: any,
-  likeRequest: (item: any, user: any) => void,
+  viewer: Viewer,
+  likeRequest: (item: Item, user: User) => void,
   unlikeRequest: (itemId: string, userId: string) => void,
   hasLiked: boolean,
-  item: any,
+  item: Item,
 };
 
 const LikeButton = (props: PProps) => {
@@ -55,7 +59,9 @@ class LikeButtonContainer extends React.Component<CProps> { // eslint-disable-li
 
   handleClickUnlike = itemId => {
     const { unlikeRequest, viewer } = this.props;
-    unlikeRequest(itemId, viewer.id);
+    if (viewer.id) {
+      unlikeRequest(itemId, viewer.id);
+    }
   };
 
   render() {
@@ -73,7 +79,7 @@ class LikeButtonContainer extends React.Component<CProps> { // eslint-disable-li
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   likeRequest: (item, user) =>
     dispatch(
       likeRequested({

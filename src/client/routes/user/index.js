@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import NotFound from '../../components/NotFound';
@@ -14,17 +15,20 @@ import FollowingTags from './FollowingTags';
 import TableList from './TableList';
 import Loading from '../../components/Loading';
 import { fetchUserRequested } from '../../actions';
+import type { Viewer } from '../../reducers/viewer';
+import type { User } from '../../reducers/user';
+import type { Match } from '../../types';
 
 type PProps = {
-  user: any,
+  user: User,
   isViewer: boolean,
   hasFollowed: boolean,
 };
 
 type CProps = {
-  match: any,
-  viewer: any,
-  user: any,
+  match: Match,
+  viewer: Viewer,
+  user: User,
   fetchUserRequest: any,
 };
 
@@ -95,7 +99,7 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   fetchUserRequest: username => dispatch(fetchUserRequested({ username })),
 });
 

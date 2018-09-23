@@ -6,13 +6,15 @@ import IconButton from '@material-ui/core/IconButton';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import { stockRequested, unstockRequested } from '../../actions';
+import type { Item } from '../../reducers/item';
 
 type Props = {
   hasStocked: boolean,
   handleClickStock: any,
-  item: any,
+  item: Item,
   handleClickUnstock: any,
 };
 
@@ -45,7 +47,7 @@ const StockButton = (props: Props) => {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   handleClickStock: item => dispatch(stockRequested({ item })),
   handleClickUnstock: itemId => dispatch(unstockRequested({ itemId })),
 });

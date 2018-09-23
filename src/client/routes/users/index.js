@@ -6,17 +6,19 @@ import PeopleIcon from '@material-ui/icons/People';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import Loading from '../../components/Loading';
 import { fetchUsersRequested } from '../../actions';
+import type { Users } from '../../reducers/user';
 
 type PProps = {
-  users: Array<any>,
+  users: Users,
 };
 
 type CProps = {
-  users: Array<any>,
+  users: Users,
   fetchUsersRequest: any,
 };
 
@@ -74,7 +76,7 @@ const mapStateToProps = state => ({
   users: state.users,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   fetchUsersRequest: () => dispatch(fetchUsersRequested()),
 });
 

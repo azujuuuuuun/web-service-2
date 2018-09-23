@@ -12,9 +12,10 @@ import { connect } from 'react-redux';
 
 import Loading from '../../components/Loading';
 import GlobalHeader from '../../components/GlobalHeader';
+import type { Item } from '../../types';
 
 type Props = {
-  stocks: Array<any>,
+  stocks: Array<Item>,
 };
 
 const StockPage = (props: Props) => {

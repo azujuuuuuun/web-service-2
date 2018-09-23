@@ -7,6 +7,7 @@ import CreateIcon from '@material-ui/icons/Create';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import { deleteItemRequested } from '../../actions';
 
@@ -44,7 +45,7 @@ const DraftsPreviewHeader = (props: Props) => {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   handleClickDelete: (itemId: string) =>
     dispatch(deleteItemRequested({ itemId })),
 });

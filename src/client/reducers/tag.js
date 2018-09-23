@@ -8,6 +8,18 @@ import {
   followTagSucceeded,
   unfollowTagSucceeded,
 } from '../actions';
+import type { Item, User, Tag as TagType } from '../types';
+
+export type Tag = {
+  id?: string,
+  name?: string,
+  createdAt?: Date,
+  updatedAt?: Date,
+  items: Array<Item>,
+  followers: Array<User>,
+};
+
+export type Tags = Array<TagType>;
 
 const tagDefaultState = {
   items: [],

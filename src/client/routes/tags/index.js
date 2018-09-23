@@ -3,17 +3,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import Loading from '../../components/Loading';
 import { fetchTagsRequested } from '../../actions';
+import type { Tags } from '../../reducers/tag';
 
 type PProps = {
-  tags: Array<any>,
+  tags: Tags,
 };
 
 type CProps = {
-  tags: Array<any>,
+  tags: Tags,
   fetchTagsRequest: any,
 };
 
@@ -29,7 +31,7 @@ const TagsPage = (props: PProps) => {
             <li key={t.id}>
               <Link to={`/tags/${t.name}`}>
                 <span>{t.name}</span>
-                <span>{t.followers.length}</span>
+                {t.followers && <span>{t.followers.length}</span>}
               </Link>
             </li>
           ))}
@@ -59,7 +61,7 @@ const mapStateToProps = state => ({
   tags: state.tags,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   fetchTagsRequest: () => dispatch(fetchTagsRequested()),
 });
 

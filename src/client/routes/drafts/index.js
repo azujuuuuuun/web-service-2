@@ -7,11 +7,12 @@ import { connect } from 'react-redux';
 import GlobalHeader from '../../components/GlobalHeader';
 import DraftsSidebar from './DraftsSidebar';
 import DraftsPreview from './DraftsPreview';
+import type { Item } from '../../types';
 
 type Props = {
-  draftItems: Array<any>,
-  postedItems: Array<any>,
-  item: any,
+  draftItems: Array<Item>,
+  postedItems: Array<Item>,
+  item: Item,
 };
 
 const DraftsPage = (props: Props) => {
