@@ -24,6 +24,8 @@ export type User = {
   followingTags: Array<Tag>,
 };
 
+export type Users = Array<User>;
+
 const userDefaultState = {
   items: [],
   followingTags: [],
