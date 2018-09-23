@@ -58,6 +58,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const items = await Item.findAll({
+      where: { status: 'posted' },
       include: [
         {
           association: Item.User,
@@ -76,7 +77,7 @@ router.get('/:itemId', async (req, res) => {
   try {
     const { itemId } = req.params;
     const item = await Item.findOne({
-      where: { id: itemId },
+      where: { id: itemId, status: 'posted' },
       include: [
         {
           association: Item.User,
