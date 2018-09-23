@@ -15,9 +15,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
-import { openDropdown, closeDropdown as closeDropdownAction } from '../actions';
-import type { Viewer } from '../reducers/viewer';
-import type { Dropdown } from '../reducers/dropdown';
+import {
+  openDropdown,
+  closeDropdown as closeDropdownAction,
+} from '../../actions';
+import type { Viewer } from '../../reducers/viewer';
+import type { Dropdown } from '../../reducers/dropdown';
 
 type Props = {
   viewer: Viewer,
