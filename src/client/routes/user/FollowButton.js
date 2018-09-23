@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
 import { followRequested } from '../../actions';
+import type { User } from '../../reducers/user';
 
 type Props = {
   followRequest: any,
-  user: any,
+  user: User,
 };
 
 const FollowButton = (props: Props) => {
