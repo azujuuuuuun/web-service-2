@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { authenticateRequested } from './actions';
 
 type Props = {
   authenticateRequest: any,
-  children: any,
+  children: React.Node,
 };
 
 class AuthContainer extends React.Component<Props, void> {
