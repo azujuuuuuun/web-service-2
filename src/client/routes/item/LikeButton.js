@@ -11,20 +11,21 @@ import type { Dispatch } from 'redux';
 import { likeRequested, unlikeRequested } from '../../actions';
 import type { Viewer } from '../../reducers/viewer';
 import type { User } from '../../reducers/user';
+import type { Item } from '../../reducers/item';
 
 type PProps = {
   hasLiked: boolean,
   handleClickLike: any,
-  item: any,
+  item: Item,
   handleClickUnlike: any,
 };
 
 type CProps = {
   viewer: Viewer,
-  likeRequest: (item: any, user: User) => void,
+  likeRequest: (item: Item, user: User) => void,
   unlikeRequest: (itemId: string, userId: string) => void,
   hasLiked: boolean,
-  item: any,
+  item: Item,
 };
 
 const LikeButton = (props: PProps) => {

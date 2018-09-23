@@ -18,16 +18,17 @@ import CommentForm from './CommentForm';
 import Loading from '../../components/Loading';
 import { fetchItemRequested } from '../../actions';
 import type { Viewer } from '../../reducers/viewer';
+import type { Item as ItemType } from '../../reducers/item';
 
 type PProps = {
-  item: any,
+  item: ItemType,
   hasLiked: boolean,
   hasStocked: boolean,
   viewer: Viewer,
 };
 
 type CProps = {
-  item: any,
+  item: ItemType,
   viewer: Viewer,
   fetchItemRequest: any,
   match: any,

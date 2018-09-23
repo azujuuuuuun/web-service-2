@@ -9,11 +9,12 @@ import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
 import { stockRequested, unstockRequested } from '../../actions';
+import type { Item } from '../../reducers/item';
 
 type Props = {
   hasStocked: boolean,
   handleClickStock: any,
-  item: any,
+  item: Item,
   handleClickUnstock: any,
 };
 
