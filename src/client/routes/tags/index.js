@@ -8,13 +8,14 @@ import type { Dispatch } from 'redux';
 import GlobalHeader from '../../components/GlobalHeader';
 import Loading from '../../components/Loading';
 import { fetchTagsRequested } from '../../actions';
+import type { Tags } from '../../reducers/tag';
 
 type PProps = {
-  tags: Array<any>,
+  tags: Tags,
 };
 
 type CProps = {
-  tags: Array<any>,
+  tags: Tags,
   fetchTagsRequest: any,
 };
 
@@ -30,7 +31,7 @@ const TagsPage = (props: PProps) => {
             <li key={t.id}>
               <Link to={`/tags/${t.name}`}>
                 <span>{t.name}</span>
-                <span>{t.followers.length}</span>
+                {t.followers && <span>{t.followers.length}</span>}
               </Link>
             </li>
           ))}

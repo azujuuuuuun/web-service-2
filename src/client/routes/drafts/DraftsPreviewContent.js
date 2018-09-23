@@ -3,9 +3,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import type { Tag as TagType } from '../../types';
+
 type Props = {
   title: string,
-  tags: Array<any>,
+  tags: Array<TagType>,
   body: string,
 };
 
