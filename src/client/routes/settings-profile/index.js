@@ -30,7 +30,7 @@ type PProps = {
 
 type CProps = {
   viewer: Viewer,
-  handleSubmit: any,
+  handleSubmit: FormProps,
 };
 
 const InputWrapper = styled.div`
