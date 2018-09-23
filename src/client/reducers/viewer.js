@@ -18,7 +18,7 @@ import {
   updateNotificationsSucceeded,
   uploadImageSucceeded,
 } from '../actions';
-import type { User, Item, Tag, Comment } from '../types';
+import type { User, Item, Tag, Comment, Notification } from '../types';
 
 export type Viewer = {
   isLoggedIn: boolean,
@@ -40,7 +40,7 @@ export type Viewer = {
   followings: Array<User>,
   followers?: Array<User>,
   followingTags: Array<Tag>,
-  notifications: Array<any>,
+  notifications: Array<Notification>,
 };
 
 const defaultState = {
