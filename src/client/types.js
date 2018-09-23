@@ -13,13 +13,13 @@ export type User = {
   avatarImgSrc: string,
   createdAt: Date,
   updatedAt: Date,
-  items?: Array<Item>,
-  likes?: Array<Item>,
-  stocks?: Array<Item>,
-  comments?: Array<Comment>,
-  followings?: Array<User>,
-  followers?: Array<User>,
-  followingTags?: Array<Tag>,
+  items: Array<Item>,
+  likes: Array<Item>,
+  stocks: Array<Item>,
+  comments: Array<Comment>,
+  followings: Array<User>,
+  followers: Array<User>,
+  followingTags: Array<Tag>,
 };
 
 export type Item = {
@@ -31,8 +31,8 @@ export type Item = {
   createdAt: Date,
   updatedAt: Date,
   user: User,
-  likers?: Array<User>,
-  comments?: Array<Comment>,
+  likers: Array<User>,
+  comments: Array<Comment>,
   tags: Array<Tag>,
 };
 
@@ -41,8 +41,8 @@ export type Tag = {
   name: string,
   createdAt: Date,
   updatedAt: Date,
-  items?: Array<Item>,
-  followers?: Array<User>,
+  items: Array<Item>,
+  followers: Array<User>,
 };
 
 export type Comment = {
@@ -52,8 +52,8 @@ export type Comment = {
   text: string,
   createdAt: Date,
   updatedAt: Date,
-  user?: User,
-  item?: Item,
+  user: User,
+  item: Item,
 };
 
 export type Notification = {
