@@ -19,6 +19,7 @@ import Loading from '../../components/Loading';
 import { fetchItemRequested } from '../../actions';
 import type { Viewer } from '../../reducers/viewer';
 import type { Item as ItemType } from '../../reducers/item';
+import type { Match } from '../../types';
 
 type PProps = {
   item: ItemType,
@@ -31,7 +32,7 @@ type CProps = {
   item: ItemType,
   viewer: Viewer,
   fetchItemRequest: any,
-  match: any,
+  match: Match,
 };
 
 const Item = styled.div`
