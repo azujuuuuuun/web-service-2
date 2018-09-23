@@ -9,14 +9,15 @@ import GlobalHeader from '../../components/GlobalHeader';
 import ItemList from './ItemList';
 import Loading from '../../components/Loading';
 import { fetchItemsRequested } from '../../actions';
+import type { Items } from '../../reducers/item';
 
 type PProps = {
-  items: Array<any>,
+  items: Items,
 };
 
 type CProps = {
   fetchItemsRequest: any,
-  items: Array<any>,
+  items: Items,
 };
 
 const AppPage = (props: PProps) => {

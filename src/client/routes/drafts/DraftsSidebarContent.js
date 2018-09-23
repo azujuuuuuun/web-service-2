@@ -4,16 +4,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 import DraftsSidebarItems from './DraftsSidebarItems';
+import type { Item } from '../../types';
 
 type PProps = {
   draftItemsCount: number,
-  items: Array<any>,
+  items: Array<Item>,
   handleSelect: (status: string) => void,
 };
 
 type CProps = {
-  draftItems: Array<any>,
-  postedItems: Array<any>,
+  draftItems: Array<Item>,
+  postedItems: Array<Item>,
 };
 
 type State = { isDraftSelected: boolean };

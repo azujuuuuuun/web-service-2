@@ -10,8 +10,8 @@ import DraftsPreview from './DraftsPreview';
 import type { Item } from '../../types';
 
 type Props = {
-  draftItems: Array<any>,
-  postedItems: Array<any>,
+  draftItems: Array<Item>,
+  postedItems: Array<Item>,
   item: Item,
 };
 
