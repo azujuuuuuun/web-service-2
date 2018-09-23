@@ -17,9 +17,10 @@ import {
   unfollowTagRequested,
 } from '../../actions';
 import type { Viewer } from '../../reducers/viewer';
+import type { Tag } from '../../reducers/tag';
 
 type PProps = {
-  tag: any,
+  tag: Tag,
   hasFollowed: boolean,
   handleClickFollow: any,
   handleClickUnfollow: any,
@@ -27,7 +28,7 @@ type PProps = {
 
 type CProps = {
   viewer: Viewer,
-  tag: any,
+  tag: Tag,
   match: any,
   fetchTagRequest: any,
   followTagRequest: any,
@@ -81,7 +82,7 @@ const TagPage = (props: PProps) => {
                   </div>
                   <div>
                     <ThumbUpIcon />
-                    <span>{i.likers.length}</span>
+                    {i.likers && <span>{i.likers.length}</span>}
                   </div>
                   <div>
                     <LabelIcon />
