@@ -10,6 +10,7 @@ import type { Dispatch } from 'redux';
 
 import { likeRequested, unlikeRequested } from '../../actions';
 import type { Viewer } from '../../reducers/viewer';
+import type { User } from '../../reducers/user';
 
 type PProps = {
   hasLiked: boolean,
@@ -20,7 +21,7 @@ type PProps = {
 
 type CProps = {
   viewer: Viewer,
-  likeRequest: (item: any, user: any) => void,
+  likeRequest: (item: any, user: User) => void,
   unlikeRequest: (itemId: string, userId: string) => void,
   hasLiked: boolean,
   item: any,

@@ -16,9 +16,10 @@ import TableList from './TableList';
 import Loading from '../../components/Loading';
 import { fetchUserRequested } from '../../actions';
 import type { Viewer } from '../../reducers/viewer';
+import type { User } from '../../reducers/user';
 
 type PProps = {
-  user: any,
+  user: User,
   isViewer: boolean,
   hasFollowed: boolean,
 };
@@ -26,7 +27,7 @@ type PProps = {
 type CProps = {
   match: any,
   viewer: Viewer,
-  user: any,
+  user: User,
   fetchUserRequest: any,
 };
 
