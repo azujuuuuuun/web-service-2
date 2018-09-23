@@ -27,7 +27,7 @@ type PProps = {
 
 type CProps = {
   viewer: Viewer,
-  handleSubmit: any,
+  handleSubmit: FormProps,
 };
 
 const SettingsPasswordPage = (props: PProps) => {
