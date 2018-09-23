@@ -10,7 +10,7 @@ import {
   postCommentSucceeded,
   fetchItemsSucceeded,
 } from '../actions';
-import type { User, Comment, Tag } from '../types';
+import type { User, Comment, Tag, Item as ItemType } from '../types';
 
 export type Item = {
   id?: string,
@@ -25,6 +25,8 @@ export type Item = {
   comments: Array<Comment>,
   tags: Array<Tag>,
 };
+
+export type Items = Array<ItemType>;
 
 const itemDefaultState = {
   tags: [],
