@@ -1,6 +1,28 @@
 import { createReducer } from 'redux-act';
 
 import { fetchUserSucceeded, fetchUsersSucceeded } from '../actions';
+import type { User as UserType, Item, Tag, Comment } from '../types';
+
+export type User = {
+  id?: string,
+  username?: string,
+  firstName?: string,
+  lastName?: string,
+  web?: string,
+  organization?: string,
+  location?: string,
+  desctiption?: string,
+  avatarImgSrc?: string,
+  createdAt?: Date,
+  updatedAt?: Date,
+  items: Array<Item>,
+  likes?: Array<Item>,
+  stocks?: Array<Item>,
+  comments?: Array<Comment>,
+  followings?: Array<UserType>,
+  followers?: Array<UserType>,
+  followingTags: Array<Tag>,
+};
 
 const userDefaultState = {
   items: [],
