@@ -4,6 +4,7 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import type { Dispatch } from 'redux';
 
 import { authenticateRequested } from './actions';
 
@@ -26,7 +27,7 @@ class AuthContainer extends React.Component<Props, void> {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   authenticateRequest: () => dispatch(authenticateRequested()),
 });
 
