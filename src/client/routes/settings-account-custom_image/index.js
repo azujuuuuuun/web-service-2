@@ -14,15 +14,16 @@ import SettingsMenu from '../../components/SettingsMenu';
 import TitleSection from '../../components/TitleSection';
 import Loading from '../../components/Loading';
 import { uploadImageRequested } from '../../actions';
+import type { Viewer } from '../../reducers/viewer';
 
 type PProps = {
-  viewer: any,
+  viewer: Viewer,
   handleChangeFile: any,
   handleClickUploadImage: any,
 };
 
 type CProps = {
-  viewer: any,
+  viewer: Viewer,
   uploadImageRequest: any,
 };
 
@@ -76,11 +77,14 @@ const ProfileImageUploadPage = (props: PProps) => {
         </Grid>
         <Grid item xs={7}>
           <div>
-            <TitleSection
-              avatarImgSrc={viewer.avatarImgSrc}
-              username={viewer.username}
-              title="プロフィール画像アップロード"
-            />
+            {viewer.avatarImgSrc &&
+              viewer.username && (
+                <TitleSection
+                  avatarImgSrc={viewer.avatarImgSrc}
+                  username={viewer.username}
+                  title="プロフィール画像アップロード"
+                />
+              )}
             <div>
               <div>
                 {viewer.avatarImgSrc ? (
