@@ -5,8 +5,10 @@ import styled from 'styled-components';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 
+import type { Item as ItemType } from '../../types';
+
 type Props = {
-  items: Array<any>,
+  items: Array<ItemType>,
 };
 
 const Item = styled.div`
