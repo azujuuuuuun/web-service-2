@@ -11,13 +11,14 @@ import type { Dispatch } from 'redux';
 import GlobalHeader from '../../components/GlobalHeader';
 import Loading from '../../components/Loading';
 import { fetchUsersRequested } from '../../actions';
+import type { Users } from '../../reducers/user';
 
 type PProps = {
-  users: Array<any>,
+  users: Users,
 };
 
 type CProps = {
-  users: Array<any>,
+  users: Users,
   fetchUsersRequest: any,
 };
 
