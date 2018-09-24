@@ -29,6 +29,9 @@ import {
   postCommentRequested,
   postCommentSucceeded,
   postCommentFailed,
+  searchItemsRequested,
+  searchItemsSucceeded,
+  searchItemsFailed,
 } from '../actions';
 import history from '../history';
 
@@ -190,6 +193,23 @@ const Api = {
       return { err };
     }
   },
+  searchItems: async searchQuery => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: '/api/search',
+        params: {
+          q: searchQuery,
+        },
+      });
+      const { data } = res;
+      const { items } = data;
+      return { items };
+    } catch (err) {
+      console.log(err); // eslint-disable-line no-console
+      return { err };
+    }
+  },
 };
 
 function* postItem(action): Saga<void> {
@@ -309,6 +329,22 @@ function* postComment(action): Saga<void> {
   }
 }
 
+function* searchItems(action): Saga<void> {
+  try {
+    const { searchQuery } = action.payload;
+    const { err, items } = yield call(Api.searchItems, searchQuery);
+    const q = searchQuery.trim().replace(' ', '+');
+    if (err) {
+      yield put(searchItemsFailed({ message: err.message }));
+    } else if (items) {
+      yield call(history.push, `/search?q=${q}`);
+      yield put(searchItemsSucceeded({ items }));
+    }
+  } catch (e) {
+    yield put(searchItemsFailed({ message: e.message }));
+  }
+}
+
 function* watchPostItem() {
   yield takeEvery(postItemRequested.getType(), postItem);
 }
@@ -341,6 +377,10 @@ function* watchPostComment() {
   yield takeEvery(postCommentRequested.getType(), postComment);
 }
 
+function* watchSearchItems() {
+  yield takeEvery(searchItemsRequested.getType(), searchItems);
+}
+
 function* rootSaga(): Saga<void> {
   yield all([
     fork(watchPostItem),
@@ -351,6 +391,7 @@ function* rootSaga(): Saga<void> {
     fork(watchStock),
     fork(watchUnstock),
     fork(watchPostComment),
+    fork(watchSearchItems),
   ]);
 }
 
