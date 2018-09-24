@@ -8,10 +8,10 @@ const router = express.Router();
 const { User, Item, Tag } = db;
 
 router.post('/signup', async (req, res) => {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
   try {
     const user = await User.create(
-      { username, password },
+      { username, email, password },
       {
         attributes: User.customAttributes,
       },
