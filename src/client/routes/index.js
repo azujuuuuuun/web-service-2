@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import AppPage from './app';
 import UserPage from './user';
 import UsersPage from './users';
+import SearchPage from './search';
 import StockPage from './stock';
 import AccountPage from './settings-account';
 import ProfileImageUploadPage from './settings-account-custom_image';
@@ -34,6 +35,7 @@ class Routing extends React.Component<Props, void> { // eslint-disable-line
       <Switch>
         <Route exact path="/" component={AppPage} />
         <Route path="/users" component={UsersPage} />
+        <Route path="/search" component={SearchPage} />
         <Route path="/stock" component={StockPage} />
         <Route exact path="/settings/account" component={AccountPage} />
         <Route
