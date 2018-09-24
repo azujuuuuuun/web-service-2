@@ -23,9 +23,13 @@ router.get('/:username', async (req, res) => {
               attributes: User.customAttributes,
             },
           ],
+          required: false,
         },
         {
           association: User.FollowingTags,
+        },
+        {
+          association: User.Followings,
         },
       ],
     });

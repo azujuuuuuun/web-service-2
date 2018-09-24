@@ -29,6 +29,7 @@ export type Users = Array<User>;
 const userDefaultState = {
   items: [],
   followingTags: [],
+  followings: [],
 };
 
 export const user = createReducer(
