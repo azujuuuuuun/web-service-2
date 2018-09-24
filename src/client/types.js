@@ -70,3 +70,11 @@ export type Match = {
   path: string,
   url: string,
 };
+
+export type Location = {
+  key: string,
+  pathname: string,
+  search: string,
+  hash: string,
+  state: Object,
+};

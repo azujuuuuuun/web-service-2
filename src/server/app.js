@@ -19,6 +19,7 @@ const usersRouter = require('./routes/users');
 const itemsRouter = require('./routes/items');
 const tagsRouter = require('./routes/tags');
 const notificationsRouter = require('./routes/notifications');
+const searchRouter = require('./routes/search');
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/items', itemsRouter);
 app.use('/api/tags', tagsRouter);
 app.use('/api/notifications', notificationsRouter);
+app.use('/api/search', searchRouter);
 
 const renderFullPage = (html, preloadedState) =>
   `

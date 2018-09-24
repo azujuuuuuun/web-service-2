@@ -39,3 +39,7 @@ export const unstockFailed = createAction('UNSTOCK_FAILED');
 export const postCommentRequested = createAction('POST_COMMENT_REQUESTED');
 export const postCommentSucceeded = createAction('POST_COMMENT_SUCCEEDED');
 export const postCommentFailed = createAction('POST_COMMENT_FAILED');
+
+export const searchItemsRequested = createAction('SEARCH_ITEM_REQUESTED');
+export const searchItemsSucceeded = createAction('SEARCH_ITEM_SUCCEEDED');
+export const searchItemsFailed = createAction('SEARCH_ITEM_FAILED');
