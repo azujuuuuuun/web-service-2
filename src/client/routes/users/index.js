@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import PeopleIcon from '@material-ui/icons/People';
 import Avatar from '@material-ui/core/Avatar';
@@ -22,6 +23,35 @@ type CProps = {
   fetchUsersRequest: any,
 };
 
+const User = styled.div`
+  padding: 0.75rem;
+  :not(:last-child) {
+    border-bottom: 1px solid lightgray;
+  }
+`;
+
+const AvatarWrapper = styled.div`
+  display: inline-block;
+  margin-right: 0.5rem;
+`;
+
+const Body = styled.div`
+  display: inline-block;
+`;
+
+const StyledLink = styled(Link)`
+  font-size: 0.75rem;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const Desc = styled.p`
+  font-size: 0.75rem;
+  margin: 0;
+`;
+
 const UsersPage = (props: PProps) => {
   const { users } = props;
   return (
@@ -40,15 +70,19 @@ const UsersPage = (props: PProps) => {
         </Grid>
         <Grid item xs={7}>
           {users.map(u => (
-            <div key={u.id}>
-              <Avatar src={u.avatarImgSrc} alt="アバター">
-                {u.username}
-              </Avatar>
-              <div>
-                <Link to={`/${u.username}`}>{u.username}</Link>
-              </div>
-              <p>{u.description}</p>
-            </div>
+            <User key={u.id}>
+              <AvatarWrapper>
+                <Avatar src={u.avatarImgSrc} alt="アバター">
+                  {u.username}
+                </Avatar>
+              </AvatarWrapper>
+              <Body>
+                <div>
+                  <StyledLink to={`/${u.username}`}>{u.username}</StyledLink>
+                </div>
+                <Desc>{u.description}</Desc>
+              </Body>
+            </User>
           ))}
         </Grid>
       </Grid>
