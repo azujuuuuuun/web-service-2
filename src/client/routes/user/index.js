@@ -12,6 +12,7 @@ import FollowButton from './FollowButton';
 import UnfollowButton from './UnfollowButton';
 import EditProfileLink from './EditProfileLink';
 import FollowingTags from './FollowingTags';
+import FollowingUsers from './FollowingUsers';
 import TableList from './TableList';
 import Loading from '../../components/Loading';
 import { fetchUserRequested } from '../../actions';
@@ -65,6 +66,7 @@ const UserPage = (props: PProps) => {
               </div>
             )}
             <FollowingTags tags={user.followingTags} />
+            <FollowingUsers users={user.followings} />
           </Grid>
           <Grid item xs={7}>
             <TableList items={user.items} />
