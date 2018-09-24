@@ -19,6 +19,7 @@ import SearchInput from './SearchInput';
 import {
   openDropdown,
   closeDropdown as closeDropdownAction,
+  logoutRequested,
 } from '../../actions';
 import type { Viewer } from '../../reducers/viewer';
 import type { Dropdown } from '../../reducers/dropdown';
@@ -30,6 +31,7 @@ type Props = {
   openViewerDropdown: () => void,
   closeDropdown: () => void,
   draftItemId: string,
+  handleClickLogout: () => any,
 };
 
 const Header = styled.div`
@@ -44,6 +46,7 @@ const GlobalHeader = (props: Props) => {
     openViewerDropdown,
     closeDropdown,
     draftItemId,
+    handleClickLogout,
   } = props;
   return (
     <Header>
@@ -104,6 +107,7 @@ const GlobalHeader = (props: Props) => {
                 設定
               </Link>
             </MenuItem>
+            <MenuItem onClick={handleClickLogout}>ログアウト</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
@@ -127,6 +131,10 @@ const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   openCommunityDropdown: () => dispatch(openDropdown({ kind: 'community' })),
   openViewerDropdown: () => dispatch(openDropdown({ kind: 'viewer' })),
   closeDropdown: () => dispatch(closeDropdownAction()),
+  handleClickLogout: () => {
+    dispatch(closeDropdownAction());
+    dispatch(logoutRequested());
+  },
 });
 
 export default connect(
