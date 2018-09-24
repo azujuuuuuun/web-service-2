@@ -99,6 +99,11 @@ const GlobalHeader = (props: Props) => {
                 </Link>
               )}
             </MenuItem>
+            <MenuItem>
+              <Link to="settings/account" onClick={closeDropdown}>
+                設定
+              </Link>
+            </MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
