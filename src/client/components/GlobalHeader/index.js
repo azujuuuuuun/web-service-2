@@ -15,6 +15,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
+import SearchInput from './SearchInput';
 import {
   openDropdown,
   closeDropdown as closeDropdownAction,
@@ -64,6 +65,7 @@ const GlobalHeader = (props: Props) => {
               </Link>
             </MenuItem>
           </Menu>
+          <SearchInput />
           <Link to="/stock">
             <FolderOpenIcon />
             <span>ストック一覧</span>
