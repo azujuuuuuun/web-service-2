@@ -21,13 +21,14 @@ import {
 import history from '../history';
 
 const Api = {
-  signup: async (username, password) => {
+  signup: async (username, email, password) => {
     try {
       const res = await axios({
         method: 'post',
         url: '/signup',
         data: {
           username,
+          email,
           password,
         },
       });
@@ -87,6 +88,7 @@ function* signup(action): Saga<void> {
     const { err, user } = yield call(
       Api.signup,
       action.payload.username,
+      action.payload.email,
       action.payload.password,
     );
     if (err) {
