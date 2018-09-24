@@ -36,7 +36,11 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-    res.status(200).send({ items });
+    if (items.length === 0) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).send({ items });
+    }
   } catch (err) {
     console.log(err); // eslint-disable-line no-console
     res.status(400).send(err);
