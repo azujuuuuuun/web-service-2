@@ -9,6 +9,7 @@ import {
   unlikeSucceeded,
   postCommentSucceeded,
   fetchItemsSucceeded,
+  searchItemsSucceeded,
 } from '../actions';
 import type { User, Comment, Tag, Item as ItemType } from '../types';
 
@@ -58,6 +59,7 @@ export const item = createReducer(
 export const items = createReducer(
   {
     [fetchItemsSucceeded.getType()]: (state, payload) => payload.items,
+    [searchItemsSucceeded.getType()]: (state, payload) => payload.items,
   },
   itemsDefaultState,
 );
