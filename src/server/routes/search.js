@@ -1,13 +1,9 @@
-const express = require('express');
-
 const db = require('../models');
-
-const router = express.Router();
 
 const { Sequelize, Item, User } = db;
 const { Op } = Sequelize;
 
-router.get('/', async (req, res) => {
+exports.search = async (req, res) => {
   try {
     const { q } = req.query;
     const qs = q.split(' ').map(p => `%${p}%`);
@@ -45,6 +41,4 @@ router.get('/', async (req, res) => {
     console.log(err); // eslint-disable-line no-console
     res.status(400).send(err);
   }
-});
-
-module.exports = router;
+};

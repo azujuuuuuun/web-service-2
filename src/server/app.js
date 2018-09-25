@@ -13,13 +13,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const authRouter = require('./routes/auth');
-const uploadRouter = require('./routes/upload');
-const usersRouter = require('./routes/users');
-const itemsRouter = require('./routes/items');
-const tagsRouter = require('./routes/tags');
-const notificationsRouter = require('./routes/notifications');
-const searchRouter = require('./routes/search');
+const passport = require('./passport');
+const router = require('./routes');
 
 const app = express();
 
@@ -34,13 +29,9 @@ app.use(
   express.static(path.resolve(__dirname, '../../uploads')),
 );
 
-app.use('/', authRouter);
-app.use('/upload', uploadRouter);
-app.use('/api/users', usersRouter);
-app.use('/api/items', itemsRouter);
-app.use('/api/tags', tagsRouter);
-app.use('/api/notifications', notificationsRouter);
-app.use('/api/search', searchRouter);
+app.use(passport.initialize());
+
+app.use(router);
 
 const renderFullPage = (html, preloadedState) =>
   `
