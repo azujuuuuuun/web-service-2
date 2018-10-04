@@ -12,3 +12,6 @@ postgres/
 
 # uploaded avatar images directory
 uploads/
+
+# flow type directory
+flow-typed/
