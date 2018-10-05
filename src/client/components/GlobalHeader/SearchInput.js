@@ -17,7 +17,7 @@ type CProps = {
   handleSubmit: FormProps,
 };
 
-const SearchInput = (props: PProps) => {
+export const SearchInput = (props: PProps) => {
   const { searchQuery, handleSubmit } = props;
   return (
     <div>
