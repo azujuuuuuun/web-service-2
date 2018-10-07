@@ -11,24 +11,30 @@ import ItemList from '../../components/molecules/ItemList';
 import Loading from '../../components/Loading';
 import { fetchItemsRequested } from '../../actions';
 import type { Items } from '../../reducers/item';
+import type { History } from '../../types';
 
 type PProps = {
+  handleListItemClick: (e: Event, path: string) => any,
   items: Items,
 };
 
 type CProps = {
   fetchItemsRequest: any,
   items: Items,
+  history: History,
 };
 
 const AppPage = (props: PProps) => {
-  const { items } = props;
+  const { handleListItemClick, items } = props;
   return (
     <div>
       <GlobalHeader />
       <Grid container justify="center">
         <Grid item xs={3}>
-          <HomeMenu />
+          <HomeMenu
+            selectedPath="/"
+            handleListItemClick={handleListItemClick}
+          />
         </Grid>
         <Grid item xs={7}>
           <ItemList items={items} />
@@ -44,11 +50,16 @@ class AppPageContainer extends React.Component<CProps, void> { // eslint-disable
     fetchItemsRequest();
   }
 
+  handleListItemClick = (e: Event, path: string) => {
+    const { history } = this.props;
+    history.push(path);
+  };
+
   render() {
     const { items } = this.props;
     return (
       <Loading>
-        <AppPage items={items} />
+        <AppPage items={items} handleListItemClick={this.handleListItemClick} />
       </Loading>
     );
   }
