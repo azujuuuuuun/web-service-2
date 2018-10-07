@@ -6,6 +6,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import AppPage from './app';
+import TagFeedPage from '../components/pages/TagFeedPage';
 import UserPage from './user';
 import UsersPage from './users';
 import SearchPage from './search';
@@ -34,6 +35,7 @@ class Routing extends React.Component<Props, void> { // eslint-disable-line
     return isLoggedIn ? (
       <Switch>
         <Route exact path="/" component={AppPage} />
+        <Route path="/tag-feed" component={TagFeedPage} />
         <Route path="/users" component={UsersPage} />
         <Route path="/search" component={SearchPage} />
         <Route path="/stock" component={StockPage} />
