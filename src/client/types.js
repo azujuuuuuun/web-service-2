@@ -64,6 +64,23 @@ export type Notification = {
   updatedAt: Date,
 };
 
+export type History = {
+  length: number,
+  action: string,
+  location: {
+    pathname: string,
+    search: string,
+    hash: string,
+    state: Object,
+  },
+  push: Function,
+  replace: Function,
+  go: Function,
+  goBack: Function,
+  goForward: Function,
+  block: Function,
+};
+
 export type Match = {
   params: Object,
   isExact: boolean,

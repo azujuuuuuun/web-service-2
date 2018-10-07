@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 
-import type { Items } from '../../reducers/item';
+import type { Items } from '../../../reducers/item';
 
 type Props = {
   items: Items,

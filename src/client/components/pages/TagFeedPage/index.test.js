@@ -1,0 +1,5 @@
+// @flow
+
+describe('TagFeedPage', () => {
+  test('', () => {});
+});
