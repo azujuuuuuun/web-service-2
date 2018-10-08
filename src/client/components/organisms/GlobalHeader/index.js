@@ -9,13 +9,12 @@ import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import PeopleIcon from '@material-ui/icons/People';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
 import HomeDropdown from '../../molecules/HomeDropdown';
+import CommunityDropdown from '../../molecules/CommunityDropdown';
+import ViewerDropdown from '../../molecules/ViewerDropdown';
 import SearchFormContainer from '../../molecules/SearchForm';
 import {
   openDropdown,
@@ -65,17 +64,10 @@ const GlobalHeader = (props: Props) => {
           <IconButton onClick={openCommunityDropdown}>
             <ArrowDropDownIcon />
           </IconButton>
-          <Menu
-            open={dropdown.isOpen && dropdown.kind === 'community'}
-            onClose={closeDropdown}
-          >
-            <MenuItem>
-              <Link to="/users" onClick={closeDropdown}>
-                <PeopleIcon />
-                <span>ユーザー一覧</span>
-              </Link>
-            </MenuItem>
-          </Menu>
+          <CommunityDropdown
+            dropdown={dropdown}
+            closeDropdown={closeDropdown}
+          />
           <SearchFormContainer />
           <Link to="/stock">
             <FolderOpenIcon />
@@ -88,35 +80,13 @@ const GlobalHeader = (props: Props) => {
           <IconButton onClick={openViewerDropdown}>
             <ArrowDropDownIcon />
           </IconButton>
-          <Menu
-            open={dropdown.isOpen && dropdown.kind === 'viewer'}
-            onClose={closeDropdown}
-          >
-            <MenuItem>
-              {viewer.username && (
-                <Link to={`/${viewer.username}`} onClick={closeDropdown}>
-                  マイページ
-                </Link>
-              )}
-            </MenuItem>
-            <MenuItem>
-              {draftItemId ? (
-                <Link to={`/drafts/${draftItemId}`} onClick={closeDropdown}>
-                  下書き一覧
-                </Link>
-              ) : (
-                <Link to="/drafts" onClick={closeDropdown}>
-                  下書き一覧
-                </Link>
-              )}
-            </MenuItem>
-            <MenuItem>
-              <Link to="settings/account" onClick={closeDropdown}>
-                設定
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClickLogout}>ログアウト</MenuItem>
-          </Menu>
+          <ViewerDropdown
+            dropdown={dropdown}
+            closeDropdown={closeDropdown}
+            username={viewer.username}
+            draftItemId={draftItemId}
+            handleClickLogout={handleClickLogout}
+          />
         </Toolbar>
       </AppBar>
     </Header>
