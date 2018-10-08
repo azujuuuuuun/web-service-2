@@ -3,9 +3,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { SearchInput } from './SearchInput';
+import { SearchForm } from './index';
 
-describe('SearchInput', () => {
+describe('SearchForm', () => {
   test('renders a TextField component', () => {
     const mockFn = jest.fn();
     const props = {
@@ -18,7 +18,7 @@ describe('SearchInput', () => {
       handleSubmit: mockFn,
     };
     // $FlowFixMe
-    const wrapper = mount(<SearchInput {...props} />);
+    const wrapper = mount(<SearchForm {...props} />);
 
     expect(wrapper.find('TextField').length).toBe(1);
   });
@@ -35,7 +35,7 @@ describe('SearchInput', () => {
       handleSubmit: mockFn,
     };
     // $FlowFixMe
-    const wrapper = mount(<SearchInput {...props} />);
+    const wrapper = mount(<SearchForm {...props} />);
 
     expect(wrapper.find('input').prop('value')).toBe('hoge');
   });
@@ -52,7 +52,7 @@ describe('SearchInput', () => {
       handleSubmit: mockFn,
     };
     // $FlowFixMe
-    const wrapper = mount(<SearchInput {...props} />);
+    const wrapper = mount(<SearchForm {...props} />);
 
     expect(wrapper.find('input').prop('type')).toBe('search');
   });
@@ -69,7 +69,7 @@ describe('SearchInput', () => {
       handleSubmit: mockFn,
     };
     // $FlowFixMe
-    const wrapper = mount(<SearchInput {...props} />);
+    const wrapper = mount(<SearchForm {...props} />);
 
     expect(wrapper.find('input').prop('placeholder')).toBe('キーワードを入力');
   });
@@ -86,7 +86,7 @@ describe('SearchInput', () => {
       handleSubmit: mockFn,
     };
     // $FlowFixMe
-    const wrapper = mount(<SearchInput {...props} />);
+    const wrapper = mount(<SearchForm {...props} />);
 
     wrapper.find('input').simulate('change');
     expect(mockFn).toHaveBeenCalled();
@@ -104,7 +104,7 @@ describe('SearchInput', () => {
       handleSubmit: mockFn,
     };
     // $FlowFixMe
-    const wrapper = mount(<SearchInput {...props} />);
+    const wrapper = mount(<SearchForm {...props} />);
 
     expect(wrapper.find('Button').length).toBe(1);
   });
@@ -121,7 +121,7 @@ describe('SearchInput', () => {
       handleSubmit: mockFn,
     };
     // $FlowFixMe
-    const wrapper = mount(<SearchInput {...props} />);
+    const wrapper = mount(<SearchForm {...props} />);
 
     expect(wrapper.find('button').text()).toBe('検索');
   });
@@ -138,7 +138,7 @@ describe('SearchInput', () => {
       handleSubmit: mockFn,
     };
     // $FlowFixMe
-    const wrapper = mount(<SearchInput {...props} />);
+    const wrapper = mount(<SearchForm {...props} />);
 
     wrapper.find('button').simulate('click');
     expect(mockFn).toHaveBeenCalled();
