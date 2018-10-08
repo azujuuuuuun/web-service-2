@@ -5,7 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import SettingsMenu from '../../components/SettingsMenu';
 import EmailSetting from './EmailSetting';
 import NotificationsSetting from './NotificationsSetting';

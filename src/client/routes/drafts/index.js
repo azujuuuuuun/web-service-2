@@ -4,7 +4,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import DraftsSidebar from './DraftsSidebar';
 import DraftsPreview from './DraftsPreview';
 import type { Item } from '../../types';

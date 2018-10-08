@@ -15,14 +15,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
-import SearchInput from './SearchInput';
+import SearchFormContainer from '../../molecules/SearchForm';
 import {
   openDropdown,
   closeDropdown as closeDropdownAction,
   logoutRequested,
-} from '../../actions';
-import type { Viewer } from '../../reducers/viewer';
-import type { Dropdown } from '../../reducers/dropdown';
+} from '../../../actions';
+import type { Viewer } from '../../../reducers/viewer';
+import type { Dropdown } from '../../../reducers/dropdown';
 
 type Props = {
   viewer: Viewer,
@@ -68,7 +68,7 @@ const GlobalHeader = (props: Props) => {
               </Link>
             </MenuItem>
           </Menu>
-          <SearchInput />
+          <SearchFormContainer />
           <Link to="/stock">
             <FolderOpenIcon />
             <span>ストック一覧</span>

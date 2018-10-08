@@ -3,7 +3,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
-import GlobalHeader from '../../GlobalHeader';
+import GlobalHeader from '../../organisms/GlobalHeader';
 import HomeMenu from '../../molecules/HomeMenu';
 import ItemList from '../../molecules/ItemList';
 import type { Item } from '../../../types';

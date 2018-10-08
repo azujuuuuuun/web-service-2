@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import NotFound from '../../components/NotFound';
 import Tags from './Tags';
 import LikeButton from './LikeButton';

@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import NotFound from '../../components/NotFound';
 import FollowButton from './FollowButton';
 import UnfollowButton from './UnfollowButton';

@@ -11,7 +11,7 @@ import ChatBubbleOutline from '@material-ui/icons/ChatBubbleOutline';
 import { connect } from 'react-redux';
 
 import Loading from '../../components/Loading';
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import type { Item } from '../../types';
 
 type Props = {

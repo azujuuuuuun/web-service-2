@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import HomeMenu from '../../components/molecules/HomeMenu';
 import ItemList from '../../components/molecules/ItemList';
 import Loading from '../../components/Loading';

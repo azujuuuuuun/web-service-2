@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import Loading from '../../components/Loading';
 import { fetchTagsRequested } from '../../actions';
 import type { Tags } from '../../reducers/tag';
