@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Loading from '../../components/Loading';
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import SettingsMenu from '../../components/SettingsMenu';
 import TitleSection from '../../components/TitleSection';
 import type { Viewer } from '../../reducers/viewer';

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import Loading from '../../components/Loading';
 import { fetchUsersRequested } from '../../actions';
 import type { Users } from '../../reducers/user';

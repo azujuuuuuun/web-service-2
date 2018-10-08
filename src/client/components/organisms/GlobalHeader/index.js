@@ -15,18 +15,20 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
-import SearchInput from './SearchInput';
+import HomeDropdown from '../../molecules/HomeDropdown';
+import SearchFormContainer from '../../molecules/SearchForm';
 import {
   openDropdown,
   closeDropdown as closeDropdownAction,
   logoutRequested,
-} from '../../actions';
-import type { Viewer } from '../../reducers/viewer';
-import type { Dropdown } from '../../reducers/dropdown';
+} from '../../../actions';
+import type { Viewer } from '../../../reducers/viewer';
+import type { Dropdown } from '../../../reducers/dropdown';
 
 type Props = {
   viewer: Viewer,
   dropdown: Dropdown,
+  openHomeDropdown: () => void,
   openCommunityDropdown: () => void,
   openViewerDropdown: () => void,
   closeDropdown: () => void,
@@ -42,6 +44,7 @@ const GlobalHeader = (props: Props) => {
   const {
     viewer,
     dropdown,
+    openHomeDropdown,
     openCommunityDropdown,
     openViewerDropdown,
     closeDropdown,
@@ -53,6 +56,11 @@ const GlobalHeader = (props: Props) => {
       <AppBar>
         <Toolbar posithin="static">
           <Link to="/">Qiita</Link>
+          <span>ホーム</span>
+          <IconButton onClick={openHomeDropdown}>
+            <ArrowDropDownIcon />
+          </IconButton>
+          <HomeDropdown dropdown={dropdown} closeDropdown={closeDropdown} />
           <span>コミュニティ</span>
           <IconButton onClick={openCommunityDropdown}>
             <ArrowDropDownIcon />
@@ -68,7 +76,7 @@ const GlobalHeader = (props: Props) => {
               </Link>
             </MenuItem>
           </Menu>
-          <SearchInput />
+          <SearchFormContainer />
           <Link to="/stock">
             <FolderOpenIcon />
             <span>ストック一覧</span>
@@ -128,6 +136,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
+  openHomeDropdown: () => dispatch(openDropdown({ kind: 'home' })),
   openCommunityDropdown: () => dispatch(openDropdown({ kind: 'community' })),
   openViewerDropdown: () => dispatch(openDropdown({ kind: 'viewer' })),
   closeDropdown: () => dispatch(closeDropdownAction()),

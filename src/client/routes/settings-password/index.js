@@ -12,7 +12,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import type { FieldProps, FormProps } from 'redux-form';
 
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import SettingsMenu from '../../components/SettingsMenu';
 import Loading from '../../components/Loading';
 import { updatePasswordRequested } from '../../actions';

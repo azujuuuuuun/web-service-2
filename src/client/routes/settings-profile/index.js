@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import type { FieldProps, FormProps } from 'redux-form';
 
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import SettingsMenu from '../../components/SettingsMenu';
 import TitleSection from '../../components/TitleSection';
 import Loading from '../../components/Loading';

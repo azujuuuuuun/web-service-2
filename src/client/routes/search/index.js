@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
 
 import Loading from '../../components/Loading';
-import GlobalHeader from '../../components/GlobalHeader';
+import GlobalHeader from '../../components/organisms/GlobalHeader';
 import TableList from '../user/TableList';
 import { searchItemsRequested } from '../../actions';
 import type { Items } from '../../reducers/item';
