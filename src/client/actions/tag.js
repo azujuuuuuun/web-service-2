@@ -19,3 +19,11 @@ export const followTagFailed = createAction('FOLLOW_TAG_FAILED');
 export const unfollowTagRequested = createAction('UNFOLLOW_TAG_REQUESTED');
 export const unfollowTagSucceeded = createAction('UNFOLLOW_TAG_SUCCEEDED');
 export const unfollowTagFailed = createAction('UNFOLLOW_TAG_FAILED');
+
+export const fetchTagRankingRequested = createAction(
+  'FETCH_TAG_RANKING_REQUESTED',
+);
+export const fetchTagRankingSucceeded = createAction(
+  'FETCH_TAG_RANKING_SUCCEEDED',
+);
+export const fetchTagRankingFailed = createAction('FETCH_TAG_RANKING_FAILED');
