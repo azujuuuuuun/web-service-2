@@ -1,6 +1,6 @@
 const db = require('../models');
 
-const { Tag, Item, User, UserTag } = db;
+const { Tag, Item, User, UserTag, sequelize } = db;
 
 exports.getTags = async (req, res) => {
   try {
@@ -87,6 +87,43 @@ exports.unfollowTag = async (req, res) => {
       await UserTag.destroy({ where: { userId, tagId } });
       res.sendStatus(204);
     }
+  } catch (err) {
+    console.log(err); // eslint-disable-line no-console
+    res.status(400).send(err);
+  }
+};
+
+const selectStatement = `SELECT COUNT(*) FROM "ItemTags"`;
+const oneWeek = '1week';
+const oneMonth = '1month';
+const createWhereClause = interval =>
+  `WHERE
+    "ItemTags"."tagId" = "Tag"."id"
+    AND "ItemTags"."createdAt" > now() - interval '${interval}'`;
+const weeklyWhereClause = createWhereClause(oneWeek);
+const monthlyWhereClause = createWhereClause(oneMonth);
+const createSql = interval => {
+  if (interval === 'weekly') {
+    return `(${selectStatement} ${weeklyWhereClause})`;
+  }
+  if (interval === 'monthly') {
+    return `(${selectStatement} ${monthlyWhereClause})`;
+  }
+  return `(${selectStatement})`;
+};
+exports.ranking = async (req, res) => {
+  try {
+    const { interval } = req.query;
+    const sql = createSql(interval);
+    const tags = await Tag.findAll({
+      attributes: [
+        ...Object.keys(Tag.attributes),
+        [sequelize.literal(sql), 'itemsCount'],
+      ],
+      order: [[sequelize.literal('"itemsCount"'), 'DESC']],
+      limit: 10,
+    });
+    res.status(200).send(tags);
   } catch (err) {
     console.log(err); // eslint-disable-line no-console
     res.status(400).send(err);
