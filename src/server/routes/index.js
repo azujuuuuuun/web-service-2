@@ -85,6 +85,7 @@ router.post(
 
 // tags
 router.get('/api/tags', tagsRouter.getTags);
+router.get('/api/tags/ranking', tagsRouter.ranking);
 router.get('/api/tags/:tagName', tagsRouter.getTag);
 router.post(
   '/api/tags/:tagId/follow',
