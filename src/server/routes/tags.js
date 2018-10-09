@@ -93,23 +93,27 @@ exports.unfollowTag = async (req, res) => {
   }
 };
 
-const selectStatement = `SELECT COUNT(*) FROM "ItemTags"`;
+const allTagRankingSql = `
+  SELECT
+    COUNT(*)
+  FROM
+    "ItemTags"
+  WHERE
+    "ItemTags"."tagId" = "Tag"."id"`;
 const oneWeek = '1week';
 const oneMonth = '1month';
-const createWhereClause = interval =>
-  `WHERE
-    "ItemTags"."tagId" = "Tag"."id"
-    AND "ItemTags"."createdAt" > now() - interval '${interval}'`;
-const weeklyWhereClause = createWhereClause(oneWeek);
-const monthlyWhereClause = createWhereClause(oneMonth);
+const createCondition = interval =>
+  `AND "ItemTags"."createdAt" > now() - interval '${interval}'`;
+const weeklyCondition = createCondition(oneWeek);
+const monthlyCondition = createCondition(oneMonth);
 const createSql = interval => {
   if (interval === 'weekly') {
-    return `(${selectStatement} ${weeklyWhereClause})`;
+    return `(${allTagRankingSql} ${weeklyCondition})`;
   }
   if (interval === 'monthly') {
-    return `(${selectStatement} ${monthlyWhereClause})`;
+    return `(${allTagRankingSql} ${monthlyCondition})`;
   }
-  return `(${selectStatement})`;
+  return `(${allTagRankingSql})`;
 };
 exports.ranking = async (req, res) => {
   try {
@@ -123,7 +127,7 @@ exports.ranking = async (req, res) => {
       order: [[sequelize.literal('"itemsCount"'), 'DESC']],
       limit: 10,
     });
-    res.status(200).send(tags);
+    res.status(200).send({ tags });
   } catch (err) {
     console.log(err); // eslint-disable-line no-console
     res.status(400).send(err);
