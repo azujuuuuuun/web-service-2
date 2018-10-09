@@ -17,6 +17,9 @@ import {
   unfollowTagRequested,
   unfollowTagSucceeded,
   unfollowTagFailed,
+  fetchTagRankingRequested,
+  fetchTagRankingSucceeded,
+  fetchTagRankingFailed,
 } from '../actions';
 
 const Api = {
@@ -87,6 +90,20 @@ const Api = {
       return { err };
     }
   },
+  fetchTagRanking: async interval => {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `/api/tags/ranking?interval=${interval}`,
+      });
+      const { data } = res;
+      const { tags } = data;
+      return { tags };
+    } catch (err) {
+      console.log(err); // eslint-disable-line no-console
+      return { err };
+    }
+  },
 };
 
 function* fetchTag(action): Saga<void> {
@@ -143,6 +160,20 @@ function* unfollowTag(action): Saga<void> {
   }
 }
 
+function* fetchTagRanking(action): Saga<void> {
+  try {
+    const { interval } = action.payload;
+    const { err, tags } = yield call(Api.fetchTagRanking, interval);
+    if (err) {
+      yield put(fetchTagRankingFailed({ message: err.message }));
+    } else if (tags) {
+      yield put(fetchTagRankingSucceeded({ interval, tags }));
+    }
+  } catch (e) {
+    yield put(fetchTagRankingFailed({ message: e.message }));
+  }
+}
+
 function* watchFetchTag() {
   yield takeEvery(fetchTagRequested.getType(), fetchTag);
 }
@@ -159,12 +190,17 @@ function* watchUnfollowTag() {
   yield takeEvery(unfollowTagRequested.getType(), unfollowTag);
 }
 
+function* watchFetchTagRanking() {
+  yield takeEvery(fetchTagRankingRequested.getType(), fetchTagRanking);
+}
+
 function* rootSaga(): Saga<void> {
   yield all([
     fork(watchFetchTag),
     fork(watchFetchTags),
     fork(watchFollowTag),
     fork(watchUnfollowTag),
+    fork(watchFetchTagRanking),
   ]);
 }
 
