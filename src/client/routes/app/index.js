@@ -8,24 +8,37 @@ import type { Dispatch } from 'redux';
 import GlobalHeader from '../../components/organisms/GlobalHeader';
 import HomeMenu from '../../components/molecules/HomeMenu';
 import ItemList from '../../components/molecules/ItemList';
+import TagList from '../../components/organisms/TagList';
 import Loading from '../../components/Loading';
-import { fetchItemsRequested } from '../../actions';
+import { fetchItemsRequested, fetchTagRankingRequested } from '../../actions';
 import type { Items } from '../../reducers/item';
+import type { Tags, TagRanking } from '../../reducers/tagRanking';
 import type { History } from '../../types';
 
 type PProps = {
   handleListItemClick: (e: Event, path: string) => any,
   items: Items,
+  tagRanking: Tags,
+  handleClickTagRanking: (interval: string) => any,
 };
 
 type CProps = {
   fetchItemsRequest: any,
+  fetchTagRankingRequest: (interval: string) => any,
   items: Items,
+  tagRanking: TagRanking,
   history: History,
 };
 
+type State = { interval: string };
+
 const AppPage = (props: PProps) => {
-  const { handleListItemClick, items } = props;
+  const {
+    handleListItemClick,
+    items,
+    tagRanking,
+    handleClickTagRanking,
+  } = props;
   return (
     <div>
       <GlobalHeader />
@@ -36,18 +49,30 @@ const AppPage = (props: PProps) => {
             handleListItemClick={handleListItemClick}
           />
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={6}>
           <ItemList items={items} />
+        </Grid>
+        <Grid item xs={3}>
+          <TagList
+            tagRanking={tagRanking}
+            handleClickTagRanking={handleClickTagRanking}
+          />
         </Grid>
       </Grid>
     </div>
   );
 };
 
-class AppPageContainer extends React.Component<CProps, void> { // eslint-disable-line
+class AppPageContainer extends React.Component<CProps, State> { // eslint-disable-line
+  constructor(props: CProps) {
+    super(props);
+    this.state = { interval: 'weekly' };
+  }
+
   componentDidMount() {
-    const { fetchItemsRequest } = this.props;
+    const { fetchItemsRequest, fetchTagRankingRequest } = this.props;
     fetchItemsRequest();
+    fetchTagRankingRequest('weekly');
   }
 
   handleListItemClick = (e: Event, path: string) => {
@@ -55,11 +80,27 @@ class AppPageContainer extends React.Component<CProps, void> { // eslint-disable
     history.push(path);
   };
 
+  handleClickTagRanking = (interval: string) => {
+    const { tagRanking, fetchTagRankingRequest } = this.props;
+    // $FlowFixMe
+    if (tagRanking[interval].length === 0) {
+      fetchTagRankingRequest(interval);
+    }
+    this.setState({ interval });
+  };
+
   render() {
-    const { items } = this.props;
+    const { items, tagRanking } = this.props;
+    const { interval } = this.state;
     return (
       <Loading>
-        <AppPage items={items} handleListItemClick={this.handleListItemClick} />
+        <AppPage
+          items={items}
+          handleListItemClick={this.handleListItemClick}
+          // $FlowFixMe
+          tagRanking={tagRanking[interval]}
+          handleClickTagRanking={this.handleClickTagRanking}
+        />
       </Loading>
     );
   }
@@ -67,10 +108,13 @@ class AppPageContainer extends React.Component<CProps, void> { // eslint-disable
 
 const mapStateToProps = state => ({
   items: state.items,
+  tagRanking: state.tagRanking,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
   fetchItemsRequest: () => dispatch(fetchItemsRequested()),
+  fetchTagRankingRequest: interval =>
+    dispatch(fetchTagRankingRequested({ interval })),
 });
 
 export default connect(
