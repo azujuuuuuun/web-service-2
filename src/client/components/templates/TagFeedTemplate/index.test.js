@@ -11,6 +11,8 @@ describe('TagFeedTemplate', () => {
     const props = {
       handleListItemClick: mockFn,
       items: [],
+      tagRanking: [],
+      handleClickTagRanking: mockFn,
     };
     const wrapper = shallow(<TagFeedTemplate {...props} />);
 
@@ -22,6 +24,8 @@ describe('TagFeedTemplate', () => {
     const props = {
       handleListItemClick: mockFn,
       items: [],
+      tagRanking: [],
+      handleClickTagRanking: mockFn,
     };
     const wrapper = shallow(<TagFeedTemplate {...props} />);
 
