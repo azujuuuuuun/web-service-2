@@ -8,6 +8,7 @@ import viewer from './viewer';
 import { user, users } from './user';
 import { item, items } from './item';
 import { tag, tags } from './tag';
+import tagRanking from './tagRanking';
 import dropdown from './dropdown';
 
 export default combineReducers({
@@ -19,6 +20,7 @@ export default combineReducers({
   items,
   tag,
   tags,
+  tagRanking,
   dropdown,
   form: formReducer,
 });
